@@ -39,6 +39,62 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		287568FD2A0A0BA500043F94 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		287568FE2A0A0BC600043F94 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		287568FF2A0A0BCB00043F94 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		287569002A0A0BE200043F94 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		287569012A0A0BF300043F94 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		287569022A0A0BFD00043F94 /* OtherWorks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OtherWorks;
+			sourceTree = "<group>";
+		};
+		287569032A0A0C0700043F94 /* Flashcards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Flashcards;
+			sourceTree = "<group>";
+		};
+		287569042A0A0C0D00043F94 /* Quizzes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quizzes;
+			sourceTree = "<group>";
+		};
 		28A978132A00CC8C00B2A25A = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +114,14 @@
 		28A9781E2A00CC8C00B2A25A /* FlashyQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				287569042A0A0C0D00043F94 /* Quizzes */,
+				287569032A0A0C0700043F94 /* Flashcards */,
+				287569022A0A0BFD00043F94 /* OtherWorks */,
+				287569012A0A0BF300043F94 /* Settings */,
+				287569002A0A0BE200043F94 /* Main */,
+				287568FF2A0A0BCB00043F94 /* Register */,
+				287568FE2A0A0BC600043F94 /* Login */,
+				287568FD2A0A0BA500043F94 /* Home */,
 				28A9781F2A00CC8C00B2A25A /* AppDelegate.swift */,
 				28A978212A00CC8C00B2A25A /* SceneDelegate.swift */,
 				28A978232A00CC8C00B2A25A /* ViewController.swift */,
