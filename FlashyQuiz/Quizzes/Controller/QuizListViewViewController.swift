@@ -1,13 +1,13 @@
 //
-//  ViewController.swift
+//  QuizListViewViewController.swift
 //  FlashyQuiz
 //
-//  Created by Eren Atilgan on 2/5/2023.
+//  Created by Alyssa Rodriguez on 20/5/2023.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class QuizListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,3 +15,4 @@ class ViewController: UIViewController {
     }
 
 }
+
