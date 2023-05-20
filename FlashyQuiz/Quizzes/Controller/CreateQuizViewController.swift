@@ -9,6 +9,13 @@ import UIKit
 
 class CreateQuizViewController: UIViewController {
 
+    @IBOutlet weak var quizTitle: UITextField!
+    @IBOutlet weak var question: UITextField!
+    @IBOutlet weak var optionOne: UITextField!
+    @IBOutlet weak var optionTwo: UITextField!
+    @IBOutlet weak var optionThree: UITextField!
+    @IBOutlet weak var optionFour: UITextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
