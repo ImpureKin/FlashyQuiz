@@ -9,6 +9,7 @@ import UIKit
 
 class QuizListViewController: UIViewController {
 
+    @IBOutlet weak var userTable: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
