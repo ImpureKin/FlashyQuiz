@@ -14,6 +14,7 @@
 		28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A978282A00CC8D00B2A25A /* Assets.xcassets */; };
 		28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A9782A2A00CC8D00B2A25A /* LaunchScreen.storyboard */; };
 		28F121B62A133AD5000E1AFB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F121B52A133AD5000E1AFB /* Home.swift */; };
+		2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */; };
 		29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FEE2A18C5D200B152E2 /* Quiz.swift */; };
 		29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF12A18C65000B152E2 /* QuizMainMenuViewController.swift */; };
 		29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF72A18C6EB00B152E2 /* QuizListViewViewController.swift */; };
@@ -39,6 +40,7 @@
 		28F121BB2A1340A5000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		28F121BC2A1340B0000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		28F121BD2A1340BA000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
+		2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleCreateQuizViewController.swift; sourceTree = "<group>"; };
 		29EB9FEE2A18C5D200B152E2 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		29EB9FF12A18C65000B152E2 /* QuizMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainMenuViewController.swift; sourceTree = "<group>"; };
 		29EB9FF72A18C6EB00B152E2 /* QuizListViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				29EB9FF92A18CACC00B152E2 /* QuizResultsViewController.swift */,
 				29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */,
 				29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */,
+				2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
 				29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */,
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
