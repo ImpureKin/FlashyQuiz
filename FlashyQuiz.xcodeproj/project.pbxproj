@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
+		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
+		282DD5772A1B24E100003F6D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5762A1B24E100003F6D /* LoginController.swift */; };
+		282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */; };
+		282DD57B2A1B260100003F6D /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD57A2A1B260100003F6D /* MainController.swift */; };
+		282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD57F2A1B265F00003F6D /* DatabaseController.swift */; };
+		282DD5822A1B266F00003F6D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5812A1B266F00003F6D /* Database.swift */; };
+		286157782A1B47030023D85A /* FlashyQuiz.db in Resources */ = {isa = PBXBuildFile; fileRef = 286157772A1B47030023D85A /* FlashyQuiz.db */; };
+		2861577D2A1B4A350023D85A /* SQLite.swift in Resources */ = {isa = PBXBuildFile; fileRef = 2861577C2A1B4A350023D85A /* SQLite.swift */; };
+		2861577F2A1B4B660023D85A /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 2861577E2A1B4B660023D85A /* SQLite */; };
 		28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9781F2A00CC8C00B2A25A /* AppDelegate.swift */; };
 		28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A978212A00CC8C00B2A25A /* SceneDelegate.swift */; };
 		28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A978232A00CC8C00B2A25A /* ViewController.swift */; };
@@ -25,6 +35,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulController.swift; sourceTree = "<group>"; };
+		282DD57A2A1B260100003F6D /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		282DD57F2A1B265F00003F6D /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		282DD5812A1B266F00003F6D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		286157772A1B47030023D85A /* FlashyQuiz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlashyQuiz.db; sourceTree = "<group>"; };
+		2861577A2A1B49550023D85A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		2861577C2A1B4A350023D85A /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SQLite.swift; path = ../../../../../Downloads/SQLite.swift; sourceTree = "<group>"; };
+		286157802A1B4C020023D85A /* FlashyQuiz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlashyQuiz-Bridging-Header.h"; sourceTree = "<group>"; };
 		28A9781C2A00CC8C00B2A25A /* FlashyQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashyQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A9781F2A00CC8C00B2A25A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A978212A00CC8C00B2A25A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,9 +58,6 @@
 		28F121B82A134084000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		28F121B92A13408F000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		28F121BA2A134099000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
-		28F121BB2A1340A5000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
-		28F121BC2A1340B0000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
-		28F121BD2A1340BA000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleCreateQuizViewController.swift; sourceTree = "<group>"; };
 		29EB9FEE2A18C5D200B152E2 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		29EB9FF12A18C65000B152E2 /* QuizMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizMainMenuViewController.swift; sourceTree = "<group>"; };
@@ -55,12 +73,105 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2861577F2A1B4B660023D85A /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282DD5692A1B232200003F6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				282DD5702A1B23FB00003F6D /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		282DD56A2A1B232700003F6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				282DD57A2A1B260100003F6D /* MainController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		282DD56B2A1B23BB00003F6D /* UserAccess */ = {
+			isa = PBXGroup;
+			children = (
+				287569002A0A0BE200043F94 /* Main */,
+				287568FF2A0A0BCB00043F94 /* SignUp */,
+				287568FE2A0A0BC600043F94 /* Login */,
+			);
+			path = UserAccess;
+			sourceTree = "<group>";
+		};
+		282DD56C2A1B23CF00003F6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				282DD5742A1B24B600003F6D /* SignUpController.swift */,
+				282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		282DD56D2A1B23D500003F6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		282DD56E2A1B23DA00003F6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		282DD56F2A1B23DE00003F6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				282DD5762A1B24E100003F6D /* LoginController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		282DD57C2A1B264300003F6D /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				282DD57E2A1B265500003F6D /* Controller */,
+				282DD57D2A1B264B00003F6D /* Model */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		282DD57D2A1B264B00003F6D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2861577C2A1B4A350023D85A /* SQLite.swift */,
+				286157772A1B47030023D85A /* FlashyQuiz.db */,
+				282DD5812A1B266F00003F6D /* Database.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		282DD57E2A1B265500003F6D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				282DD57F2A1B265F00003F6D /* DatabaseController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		286157792A1B49540023D85A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2861577A2A1B49550023D85A /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		287568FD2A0A0BA500043F94 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,23 +183,26 @@
 		287568FE2A0A0BC600043F94 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				28F121BD2A1340BA000E1AFB /* dumbyfile.md */,
+				282DD56F2A1B23DE00003F6D /* Controller */,
+				282DD56E2A1B23DA00003F6D /* Model */,
 			);
 			path = Login;
 			sourceTree = "<group>";
 		};
-		287568FF2A0A0BCB00043F94 /* Register */ = {
+		287568FF2A0A0BCB00043F94 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
-				28F121BC2A1340B0000E1AFB /* dumbyfile.md */,
+				282DD56C2A1B23CF00003F6D /* Controller */,
+				282DD56D2A1B23D500003F6D /* Model */,
 			);
-			path = Register;
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		287569002A0A0BE200043F94 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				28F121BB2A1340A5000E1AFB /* dumbyfile.md */,
+				282DD56A2A1B232700003F6D /* Controller */,
+				282DD5692A1B232200003F6D /* Model */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -129,8 +243,10 @@
 		28A978132A00CC8C00B2A25A = {
 			isa = PBXGroup;
 			children = (
+				286157802A1B4C020023D85A /* FlashyQuiz-Bridging-Header.h */,
 				28A9781E2A00CC8C00B2A25A /* FlashyQuiz */,
 				28A9781D2A00CC8C00B2A25A /* Products */,
+				286157792A1B49540023D85A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,13 +261,12 @@
 		28A9781E2A00CC8C00B2A25A /* FlashyQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				282DD57C2A1B264300003F6D /* Database */,
+				282DD56B2A1B23BB00003F6D /* UserAccess */,
 				287569042A0A0C0D00043F94 /* Quizzes */,
 				287569032A0A0C0700043F94 /* Flashcards */,
 				287569022A0A0BFD00043F94 /* OtherWorks */,
 				287569012A0A0BF300043F94 /* Settings */,
-				287569002A0A0BE200043F94 /* Main */,
-				287568FF2A0A0BCB00043F94 /* Register */,
-				287568FE2A0A0BC600043F94 /* Login */,
 				287568FD2A0A0BA500043F94 /* Home */,
 				28A9781F2A00CC8C00B2A25A /* AppDelegate.swift */,
 				28A978212A00CC8C00B2A25A /* SceneDelegate.swift */,
@@ -202,6 +317,9 @@
 			dependencies = (
 			);
 			name = FlashyQuiz;
+			packageProductDependencies = (
+				2861577E2A1B4B660023D85A /* SQLite */,
+			);
 			productName = FlashyQuiz;
 			productReference = 28A9781C2A00CC8C00B2A25A /* FlashyQuiz.app */;
 			productType = "com.apple.product-type.application";
@@ -245,9 +363,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				47ED3CE52A0A04B900BC229D /* File in Resources */,
+				2861577D2A1B4A350023D85A /* SQLite.swift in Resources */,
 				28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */,
 				28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */,
 				28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */,
+				286157782A1B47030023D85A /* FlashyQuiz.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,17 +378,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */,
 				2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */,
+				282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
 				29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */,
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
+				282DD5822A1B266F00003F6D /* Database.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
+				282DD57B2A1B260100003F6D /* MainController.swift in Sources */,
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
 				29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */,
+				282DD5712A1B23FB00003F6D /* User.swift in Sources */,
 				29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */,
 				29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */,
+				282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */,
 				28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */,
+				282DD5772A1B24E100003F6D /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +613,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2861577E2A1B4B660023D85A /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28A978142A00CC8C00B2A25A /* Project object */;
 }
