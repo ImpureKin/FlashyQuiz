@@ -8,12 +8,12 @@
 import Foundation
 
 class Quiz: Codable {
-    var quizId = UUID().hashValue
-    var userId : String
+    var quizId: Int = UUID().hashValue
+    var userId : Int
     var title: String
     var questions: [Question]
     
-    init(userId: String, title: String, questions: [Question]) {
+    init(userId: Int, title: String, questions: [Question]) {
         self.userId = userId
         self.title = title
         self.questions = questions
