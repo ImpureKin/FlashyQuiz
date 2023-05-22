@@ -9,6 +9,7 @@ import UIKit
 
 class CreateQuizViewController: UIViewController {
 
+    @IBOutlet weak var quizTitle: UILabel!
     @IBOutlet weak var question: UITextField!
     @IBOutlet weak var optionOne: UITextField!
     @IBOutlet weak var optionTwo: UITextField!

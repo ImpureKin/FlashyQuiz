@@ -19,7 +19,6 @@ class Quiz: Codable {
     }
 }
 
-
 class Question : Codable {
     var text: String
     var correctAnswer: [String]
@@ -31,3 +30,4 @@ class Question : Codable {
         self.incorrectAnswers = incorrectAnswers
     }
 }
+
