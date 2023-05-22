@@ -7,24 +7,43 @@
 
 import UIKit
 
-class AddTittleCreateQuizViewController: UIViewController {
+class AddTittleCreateQuizViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var quizTitle: UITextField!
-    var dataManager = DataStorageManager()
-    let quiz = Quiz(title: "hope this works", questions: [], userID: "13")
-
+    @IBOutlet weak var errorMessage: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        errorMessage.isHidden = true
+        quizTitle.delegate = self
     }
     
-    @IBAction func submitTitle(_ sender: Any) {
-        dataManager.saveToFile([quiz])
-        let loadedQuizzes = dataManager.loadFromFile()
-        for quiz in loadedQuizzes {
-            print("Loaded quiz: \(quiz.title)")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+          if segue.identifier == "goToQuestions" {
+              if let title = quizTitle.text, !title.isEmpty {
+                  let destinationVC = segue.destination as! CreateQuizViewController
+                  destinationVC.selectedTitle = quizTitle.text!
+              } else {
+                  errorMessage.isHidden = false
+              }
+          }
+      }
+      
+      override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+          if identifier == "goToQuestions" {
+              if let title = quizTitle.text, title.isEmpty {
+            // The quiz title is empty
+                  errorMessage.isHidden = false
+                  return false
+              }
+          }
+          return true
+      }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            errorMessage.isHidden = true
+            return true
         }
-
-    }
-    
-}
+  }

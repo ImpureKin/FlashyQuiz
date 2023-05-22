@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class CreateQuizViewController: UIViewController {
 
@@ -16,10 +17,12 @@ class CreateQuizViewController: UIViewController {
     @IBOutlet weak var optionThree: UITextField!
     @IBOutlet weak var optionFour: UITextField!
     
+    var selectedTitle: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        quizTitle.text = selectedTitle
     }
 
 }

@@ -8,14 +8,15 @@
 import Foundation
 
 class Quiz: Codable {
+    var quizId = UUID().hashValue
+    var userId : String
     var title: String
     var questions: [Question]
-    var userId : String
     
-    init(title: String, questions: [Question], userID: String) {
+    init(userId: String, title: String, questions: [Question]) {
+        self.userId = userId
         self.title = title
         self.questions = questions
-        self.userId = userID
     }
 }
 
