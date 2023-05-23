@@ -26,13 +26,20 @@ class ReviewQuizViewController: UIViewController, UITableViewDataSource,  UITabl
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "QuestionCell")
     }
-
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return questions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath)
+        
+        // Retrieve the question at the corresponding index
+        let question = questions[indexPath.row]
+        
+        // Configure the cell with the question data
+        cell.textLabel?.text = question.text
+        
+        return cell
     }
 }
