@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */; };
 		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
 		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
 		282DD5772A1B24E100003F6D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5762A1B24E100003F6D /* LoginController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavModel.swift; sourceTree = "<group>"; };
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01C2FD202A1CE4D10074C7AD /* MainMenuNav */ = {
+			isa = PBXGroup;
+			children = (
+				01C2FD232A1CE4EF0074C7AD /* Controllers */,
+				01C2FD222A1CE4E80074C7AD /* View */,
+				01C2FD212A1CE4DF0074C7AD /* Models */,
+			);
+			path = MainMenuNav;
+			sourceTree = "<group>";
+		};
+		01C2FD212A1CE4DF0074C7AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01C2FD222A1CE4E80074C7AD /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		01C2FD232A1CE4EF0074C7AD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		282DD5692A1B232200003F6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +307,7 @@
 		28A9781E2A00CC8C00B2A25A /* FlashyQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				01C2FD202A1CE4D10074C7AD /* MainMenuNav */,
 				282DD57C2A1B264300003F6D /* Database */,
 				282DD56B2A1B23BB00003F6D /* UserAccess */,
 				287569042A0A0C0D00043F94 /* Quizzes */,
@@ -402,6 +437,7 @@
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
 				282DD5822A1B266F00003F6D /* DatabaseManager.swift in Sources */,
 				28B3C22D2A1C562B007554F7 /* QuizManager.swift in Sources */,
+				01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
