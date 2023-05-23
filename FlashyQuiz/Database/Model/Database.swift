@@ -2,15 +2,25 @@ import Foundation
 import SQLite
 
 struct Database {
+    
+    func getProjectRootDirectory() -> URL? {
+        let currentFileURL = URL(fileURLWithPath: #file)
+        let projectRootURL = currentFileURL
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+            .deletingLastPathComponent()
+        return projectRootURL
+    }
 
     func getDatabasePath() -> String {
-//        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-//            fatalError("Failed to retrieve documents directory.")
-//        }
-
-//        let databaseURL = documentsDirectory.appendingPathComponent("FlashyQuiz.db")
-//        return databaseURL.path
-        return "/Users/14300661/Desktop/FlashyQuiz/FlashyQuiz/Database/Model/FlashyQuiz.db"
+        if let projectRootURL = getProjectRootDirectory() {
+            let databaseFileFolderURL = projectRootURL.appendingPathComponent("Database/Model")
+            let databaseURL = databaseFileFolderURL.appendingPathComponent("FlashyQuiz.db")
+            print(databaseURL)
+            return databaseURL.absoluteString
+        } else {
+            return "Error: Failed to find database path."
+        }
     }
     
     // Function to retrieve user details by ID
@@ -53,7 +63,7 @@ struct Database {
             let email = Expression<String>("email")
 
             guard let user = try db.pluck(tableUsers.filter(username == usernameInput)) else {
-                return nil // User with the specified ID not found
+                return nil // User with the specified username not found
             }
 
             let userDetails = (
@@ -81,7 +91,7 @@ struct Database {
             let email = Expression<String>("email")
 
             guard let user = try db.pluck(tableUsers.filter(email == emailInput)) else {
-                return nil // User with the specified ID not found
+                return nil // User with the specified email not found
             }
 
             let userDetails = (

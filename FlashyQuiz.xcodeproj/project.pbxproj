@@ -21,6 +21,9 @@
 		28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A978252A00CC8C00B2A25A /* Main.storyboard */; };
 		28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A978282A00CC8D00B2A25A /* Assets.xcassets */; };
 		28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A9782A2A00CC8D00B2A25A /* LaunchScreen.storyboard */; };
+		28B3C2272A1C5075007554F7 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3C2262A1C5075007554F7 /* UserData.swift */; };
+		28B3C2292A1C51B6007554F7 /* SQLite.swift in Resources */ = {isa = PBXBuildFile; fileRef = 28B3C2282A1C51B6007554F7 /* SQLite.swift */; };
+		28B3C22B2A1C51C2007554F7 /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 28B3C22A2A1C51C2007554F7 /* SQLite */; };
 		28F121B62A133AD5000E1AFB /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F121B52A133AD5000E1AFB /* Home.swift */; };
 		2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */; };
 		29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FEE2A18C5D200B152E2 /* Quiz.swift */; };
@@ -51,7 +54,8 @@
 		28A978282A00CC8D00B2A25A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		28A9782B2A00CC8D00B2A25A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		28A9782D2A00CC8D00B2A25A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		28B3C2252A1C4C4C007554F7 /* SQLite.swift-master */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = "SQLite.swift-master"; sourceTree = "<group>"; };
+		28B3C2262A1C5075007554F7 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		28B3C2282A1C51B6007554F7 /* SQLite.swift */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SQLite.swift; sourceTree = "<group>"; };
 		28F121B52A133AD5000E1AFB /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		28F121B82A134084000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
 		28F121B92A13408F000E1AFB /* dumbyfile.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = dumbyfile.md; sourceTree = "<group>"; };
@@ -71,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28B3C22B2A1C51C2007554F7 /* SQLite in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,9 +151,10 @@
 		282DD57D2A1B264B00003F6D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				28B3C2252A1C4C4C007554F7 /* SQLite.swift-master */,
+				28B3C2282A1C51B6007554F7 /* SQLite.swift */,
 				286157772A1B47030023D85A /* FlashyQuiz.db */,
 				282DD5812A1B266F00003F6D /* Database.swift */,
+				28B3C2262A1C5075007554F7 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -315,6 +321,7 @@
 			);
 			name = FlashyQuiz;
 			packageProductDependencies = (
+				28B3C22A2A1C51C2007554F7 /* SQLite */,
 			);
 			productName = FlashyQuiz;
 			productReference = 28A9781C2A00CC8C00B2A25A /* FlashyQuiz.app */;
@@ -359,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				47ED3CE52A0A04B900BC229D /* File in Resources */,
+				28B3C2292A1C51B6007554F7 /* SQLite.swift in Resources */,
 				28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */,
 				28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */,
 				28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */,
@@ -376,6 +384,7 @@
 				282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */,
 				2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */,
 				282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */,
+				28B3C2272A1C5075007554F7 /* UserData.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
 				29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */,
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
@@ -608,6 +617,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		28B3C22A2A1C51C2007554F7 /* SQLite */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SQLite;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 28A978142A00CC8C00B2A25A /* Project object */;
 }
