@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Main" id="BYZ-38-t0r" customClass="ViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,6 +34,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="dostuff" destination="pEw-aX-MJO" eventType="touchUpInside" id="fcy-EA-IO0"/>
+                                    <segue destination="UKf-XW-GOu" kind="show" id="now-HL-7bE"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1FE-6T-syX">
@@ -45,7 +46,7 @@
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="p3h-BA-xVd" kind="show" id="BQB-zo-xkF"/>
+                                    <segue destination="fAy-1R-txV" kind="show" id="xaY-xJ-bvk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -59,10 +60,10 @@
             </objects>
             <point key="canvasLocation" x="-927.48091603053433" y="-32.394366197183103"/>
         </scene>
-        <!--View Controller-->
+        <!--Login-->
         <scene sceneID="dHj-ib-9e8">
             <objects>
-                <viewController id="UKf-XW-GOu" sceneMemberID="viewController">
+                <viewController title="Login" id="UKf-XW-GOu" customClass="LoginController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="izk-zQ-B3F">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +76,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T11-gj-o1r">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="T11-gj-o1r">
                                 <rect key="frame" x="96" y="385" width="200" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -95,15 +96,33 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="UKf-XW-GOu" eventType="touchUpInside" id="cal-Wk-cns"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops! The email or password you have provided is incorrect. Please try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-la-KVO">
+                                <rect key="frame" x="30" y="317" width="333" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vfs-9b-W2r"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="cka-zx-TuS"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="T11-gj-o1r" id="9Ju-Gz-DqV"/>
+                        <outlet property="loginButton" destination="izg-HD-q0i" id="i6I-Fd-4Fa"/>
+                        <outlet property="loginFailedLabel" destination="dw2-la-KVO" id="uyV-0T-b2g"/>
+                        <outlet property="passwordTextField" destination="WxE-Hx-C8l" id="4nb-zz-nhu"/>
+                        <segue destination="3qh-fK-a0w" kind="show" identifier="goToHome" id="eW1-Wd-I01"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHP-rC-8Jm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-337" y="-745"/>
+            <point key="canvasLocation" x="-338.16793893129767" y="-745.07042253521126"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rMe-1b-I9s">
@@ -120,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="1797.709923664122" y="364.78873239436621"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign up-->
         <scene sceneID="UdC-Sj-moX">
             <objects>
-                <viewController id="fAy-1R-txV" sceneMemberID="viewController">
+                <viewController title="Sign up" id="fAy-1R-txV" customClass="SignupController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E3S-au-Cjt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,11 +181,22 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="signupButtonPressed:" destination="fAy-1R-txV" eventType="touchUpInside" id="Sno-qR-BAr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Znn-Be-BlJ"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nDb-eH-GB4"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="UMP-sf-b3t" id="Vpu-yT-bR8"/>
+                        <outlet property="passwordTextField" destination="huP-CC-RuS" id="ZIP-kb-Gg6"/>
+                        <outlet property="signupButton" destination="hCl-HP-PWn" id="0u3-kO-Wnk"/>
+                        <outlet property="usernameTextField" destination="fzO-3Z-oIg" id="t4Z-9v-xxi"/>
+                        <segue destination="xmu-4K-ppn" kind="show" identifier="goToSuccessfulSignup" id="MPd-33-Sza"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpE-va-SF2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -187,10 +217,10 @@
             </objects>
             <point key="canvasLocation" x="2620.6106870229005" y="364.78873239436621"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign up successful-->
         <scene sceneID="bpb-3F-gUP">
             <objects>
-                <viewController id="xmu-4K-ppn" sceneMemberID="viewController">
+                <viewController title="Sign up successful" id="xmu-4K-ppn" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CDD-bh-oFR">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,6 +241,9 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Login">
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="UKf-XW-GOu" kind="show" id="YFn-pO-hZs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have successfully signed up!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0PK-33-97j">
                                 <rect key="frame" x="34" y="396" width="324" height="26"/>
@@ -230,6 +263,7 @@
                         <viewLayoutGuide key="safeArea" id="t3R-uj-4N1"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="3iD-cl-Yeq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KWJ-RI-7vu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,20 +284,40 @@
             </objects>
             <point key="canvasLocation" x="3385.4961832061067" y="364.78873239436621"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="QzO-qd-mu5">
             <objects>
-                <viewController id="3qh-fK-a0w" sceneMemberID="viewController">
+                <viewController title="Home" id="3qh-fK-a0w" customClass="HomeViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rHj-mS-4br">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fake Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dKM-Yo-eah">
+                                <rect key="frame" x="109" y="136" width="174" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYj-36-0BA">
+                                <rect key="frame" x="69" y="292" width="254" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="ekk-wQ-gbV"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Oj8-FZ-bjS"/>
+                    <connections>
+                        <outlet property="usernameLabel" destination="YYj-36-0BA" id="Tde-ug-CY3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7kx-tq-agR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4208.3969465648852" y="-456.33802816901408"/>
+            <point key="canvasLocation" x="504.58015267175568" y="-745.07042253521126"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Hhb-PR-oNq">
@@ -451,7 +505,7 @@
             <objects>
                 <viewController id="SEN-pI-kFQ" customClass="QuizGameViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="379-bk-A6h">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aas-d8-c6p">
@@ -515,7 +569,7 @@
             <objects>
                 <viewController id="LoR-kT-tYK" customClass="AddTittleCreateQuizViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fkp-Yt-z0V">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quiz Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2st-Sd-gna">
@@ -563,7 +617,7 @@
             <objects>
                 <viewController id="Xig-Fz-AYf" customClass="CreateQuizViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XMM-0G-nMk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mOW-Db-mNf">
@@ -660,6 +714,9 @@
             <point key="canvasLocation" x="6547" y="-1258"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YFn-pO-hZs"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -675,6 +732,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,5 +7,4 @@
 
 import Foundation
 
-let db = Database()
 
