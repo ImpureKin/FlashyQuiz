@@ -32,6 +32,12 @@
 		29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF92A18CACC00B152E2 /* QuizResultsViewController.swift */; };
 		29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */; };
 		29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */; };
+		3148F9752A1C7BFC002C2C3C /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148F9742A1C7BFC002C2C3C /* FlashCard.swift */; };
+		34B7EBD32A1E637100F533D7 /* FlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBD22A1E637100F533D7 /* FlashCardViewController.swift */; };
+		34B7EBD52A1E63BD00F533D7 /* CreateFlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBD42A1E63BD00F533D7 /* CreateFlashCardViewController.swift */; };
+		34B7EBD92A1E64A900F533D7 /* ViewFlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBD82A1E64A900F533D7 /* ViewFlashcardsViewController.swift */; };
+		34B7EBDC2A1E64DD00F533D7 /* DeckListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBDB2A1E64DD00F533D7 /* DeckListViewController.swift */; };
+		34B7EBDE2A1E64FA00F533D7 /* EditDeckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBDD2A1E64FA00F533D7 /* EditDeckViewController.swift */; };
 		47ED3CE52A0A04B900BC229D /* File in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3CE42A0A04B900BC229D /* File */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +73,12 @@
 		29EB9FF92A18CACC00B152E2 /* QuizResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsViewController.swift; sourceTree = "<group>"; };
 		29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameViewController.swift; sourceTree = "<group>"; };
 		29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
+		3148F9742A1C7BFC002C2C3C /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
+		34B7EBD22A1E637100F533D7 /* FlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardViewController.swift; sourceTree = "<group>"; };
+		34B7EBD42A1E63BD00F533D7 /* CreateFlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateFlashCardViewController.swift; sourceTree = "<group>"; };
+		34B7EBD82A1E64A900F533D7 /* ViewFlashcardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFlashcardsViewController.swift; sourceTree = "<group>"; };
+		34B7EBDB2A1E64DD00F533D7 /* DeckListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeckListViewController.swift; sourceTree = "<group>"; };
+		34B7EBDD2A1E64FA00F533D7 /* EditDeckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeckViewController.swift; sourceTree = "<group>"; };
 		47ED3CE42A0A04B900BC229D /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -229,6 +241,8 @@
 		287569032A0A0C0700043F94 /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				3148F9732A1C7BE7002C2C3C /* Controller */,
+				3148F9722A1C7BDC002C2C3C /* Model */,
 				28F121B82A134084000E1AFB /* dumbyfile.md */,
 			);
 			path = Flashcards;
@@ -300,6 +314,26 @@
 				29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */,
 				29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */,
 				2934F4382A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		3148F9722A1C7BDC002C2C3C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3148F9742A1C7BFC002C2C3C /* FlashCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3148F9732A1C7BE7002C2C3C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				34B7EBD22A1E637100F533D7 /* FlashCardViewController.swift */,
+				34B7EBD42A1E63BD00F533D7 /* CreateFlashCardViewController.swift */,
+				34B7EBD82A1E64A900F533D7 /* ViewFlashcardsViewController.swift */,
+				34B7EBDB2A1E64DD00F533D7 /* DeckListViewController.swift */,
+				34B7EBDD2A1E64FA00F533D7 /* EditDeckViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -382,10 +416,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */,
+				34B7EBDC2A1E64DD00F533D7 /* DeckListViewController.swift in Sources */,
 				2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */,
+				34B7EBD92A1E64A900F533D7 /* ViewFlashcardsViewController.swift in Sources */,
 				282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */,
 				28B3C2272A1C5075007554F7 /* UserData.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
+				34B7EBD52A1E63BD00F533D7 /* CreateFlashCardViewController.swift in Sources */,
 				29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */,
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
 				282DD5822A1B266F00003F6D /* Database.swift in Sources */,
@@ -395,6 +432,9 @@
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
 				29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */,
 				282DD5712A1B23FB00003F6D /* User.swift in Sources */,
+				34B7EBDE2A1E64FA00F533D7 /* EditDeckViewController.swift in Sources */,
+				3148F9752A1C7BFC002C2C3C /* FlashCard.swift in Sources */,
+				34B7EBD32A1E637100F533D7 /* FlashCardViewController.swift in Sources */,
 				29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */,
 				29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */,
 				282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */,
