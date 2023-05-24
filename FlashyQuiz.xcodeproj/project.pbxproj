@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */; };
 		01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */; };
 		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
 		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageVC.swift; sourceTree = "<group>"; };
 		01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavModel.swift; sourceTree = "<group>"; };
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		01C2FD232A1CE4EF0074C7AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				28B3C22D2A1C562B007554F7 /* QuizManager.swift in Sources */,
 				01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
+				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
 				29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */,
