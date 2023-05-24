@@ -8,7 +8,7 @@
 import Foundation
 
 struct Quiz: Codable {
-    var quizId: Int = UUID().hashValue
+    var quizId: Int = UUID().hashValue //make ? optional when merging with database
     var userId : Int
     var title: String
     var privacy: String
@@ -20,7 +20,16 @@ struct Quiz: Codable {
         self.questions = questions
         self.privacy = privacy
     }
+    
+    /**init(quizid: Int,userId: Int, title: String, privacy: String, questions: [Question]) {
+        self.userId = userId
+        self.title = title
+        self.questions = questions
+        self.privacy = privacy
+    }  **/
 }
+
+
 
 struct Question : Codable {
     var text: String

@@ -37,26 +37,27 @@ class CreateQuizViewController: UIViewController {
     
     
     @IBAction func addQuestionButtonPressed(_ sender: Any) {
-        guard let questionText = question.text,
-              let optionOneText = optionOne.text,
-              let optionTwoText = optionTwo.text,
-              let optionThreeText = optionThree.text,
-              let optionFourText = optionFour.text else {
-            return
-        }
-        let newQuestion = Question(text: questionText, correctAnswer: [optionOneText], incorrectAnswers: [optionTwoText, optionThreeText, optionFourText])
-        
-        questions.append(newQuestion)
-        
-        clearInputFields()
-    }
+        guard let questionText = question.text, !questionText.isEmpty,
+                 let optionOneText = optionOne.text, !optionOneText.isEmpty,
+                 let optionTwoText = optionTwo.text, !optionTwoText.isEmpty,
+                 let optionThreeText = optionThree.text, !optionThreeText.isEmpty,
+                 let optionFourText = optionFour.text, !optionFourText.isEmpty else {
+               // Display error alert
+               UIAlertController.showAlert(title: "Error", message: "Please fill in all the fields.", in: self)
+               return
+           }
+           
+           let newQuestion = Question(text: questionText, correctAnswer: [optionOneText], incorrectAnswers: [optionTwoText, optionThreeText, optionFourText])
+           
+           questions.append(newQuestion)
+           
+           clearInputFields()
+       }
     
     @IBAction func reviewQuizButtonPressed(_ sender: Any) {
         guard !questions.isEmpty else {
             return
         }
-        
-        performSegue(withIdentifier: "goToReview", sender: self)
         
         questions = []
     }
@@ -70,4 +71,13 @@ class CreateQuizViewController: UIViewController {
     }
     
     
+}
+
+extension UIAlertController {
+    static func showAlert(title: String, message: String, in viewController: UIViewController) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        viewController.present(alertController, animated: true, completion: nil)
+    }
 }
