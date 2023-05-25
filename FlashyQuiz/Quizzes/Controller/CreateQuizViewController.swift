@@ -47,7 +47,7 @@ class CreateQuizViewController: UIViewController {
                return
            }
            
-           let newQuestion = Question(text: questionText, correctAnswer: [optionOneText], incorrectAnswers: [optionTwoText, optionThreeText, optionFourText])
+           let newQuestion = Question(text: questionText, correctAnswer: optionOneText, incorrectAnswers: [optionTwoText, optionThreeText, optionFourText])
            
            questions.append(newQuestion)
            

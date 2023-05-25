@@ -35,7 +35,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
 
         let question = questions[indexPath.row]
         cell.question.text = question.text
-        cell.correctAnswerLabel.text = question.correctAnswer.joined(separator: ", ")
+        cell.correctAnswerLabel.text = question.correctAnswer
 
         // Set the incorrect answers with new lines
         let incorrectAnswers = question.incorrectAnswers.joined(separator: "\n")
@@ -54,7 +54,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
-        let question = questions[indexPath.row]
+        _ = questions[indexPath.row]
         
         // Create an alert to confirm deletion
         let alert = UIAlertController(title: "Delete Question",

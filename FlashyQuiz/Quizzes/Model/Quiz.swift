@@ -33,10 +33,10 @@ struct Quiz: Codable {
 
 struct Question : Codable {
     var text: String
-    var correctAnswer: [String]
+    var correctAnswer: String
     var incorrectAnswers: [String]
     
-    init(text: String, correctAnswer: [String], incorrectAnswers: [String]) {
+    init(text: String, correctAnswer: String, incorrectAnswers: [String]) {
         self.text = text
         self.correctAnswer = correctAnswer
         self.incorrectAnswers = incorrectAnswers

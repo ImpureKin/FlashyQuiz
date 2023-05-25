@@ -90,5 +90,40 @@ class DataStorageManager {
         
         return quizzes
     }
+    
+    func loadQuizzes(forUserId userId: Int) -> [Quiz] {
+        var quizzes: [Quiz] = []
+        
+        if let projectRootURL = getProjectRootDirectory() {
+            let textFileFolderURL = projectRootURL.appendingPathComponent("Quizzes/Data")
+            let fileURL = textFileFolderURL.appendingPathComponent("quiz.txt")
+            
+            let fileManager = FileManager.default
+            if fileManager.fileExists(atPath: fileURL.path) {
+                do {
+                    let data = try Data(contentsOf: fileURL)
+                    let lines = String(data: data, encoding: .utf8)?.split(separator: "\n")
+                    
+                    let decoder = JSONDecoder()
+                    for line in lines ?? [] {
+                        if let lineData = line.data(using: .utf8),
+                           let quiz = try? decoder.decode(Quiz.self, from: lineData),
+                           quiz.userId == userId { // Check if the quiz is associated with the desired user ID
+                            quizzes.append(quiz)
+                        }
+                    }
+                    
+                    print("Loaded \(quizzes.count) quizzes from file: \(fileURL.path)")
+                } catch {
+                    print("Error loading quizzes from file: \(error)")
+                }
+            } else {
+                print("Quiz file does not exist at path: \(fileURL.path)")
+            }
+        }
+        
+        return quizzes
+    }
+
 }
 
