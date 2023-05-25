@@ -61,9 +61,9 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToQuizDetails",
-           let reviewAnswersVC = segue.destination as? QuizDetailsViewController,
+           let VC = segue.destination as? QuizDetailsViewController,
            let quiz = sender as? Quiz {
-            reviewAnswersVC.quiz = quiz
+            VC.quiz = quiz
         }
     }
 }

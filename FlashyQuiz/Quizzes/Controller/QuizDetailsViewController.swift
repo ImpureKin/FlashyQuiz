@@ -5,7 +5,7 @@
 //  Created by Alyssa Rodriguez on 25/5/2023.
 //
 
-import Foundation
+
 import UIKit
 
 class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITableViewDataSource  {
