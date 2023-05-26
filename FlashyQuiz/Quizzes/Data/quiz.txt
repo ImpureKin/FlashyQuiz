@@ -1,2 +1,2 @@
 
-{"quizId":-370602471362698973,"title":"test 1","userId":1,"privacy":"true","questions":[{"correctAnswer":"test 1 ","text":"test 1","incorrectAnswers":["test 1 ","test 1","test 1"]},{"correctAnswer":"test 2","text":"test 2","incorrectAnswers":["test 2","test 2","test 2"]}]}
+{"quizId":-3576059796332655656,"title":"General Knowledge","userId":1,"privacy":"true","questions":[{"correctAnswer":"50m","text":"How long is a swimming pool?","incorrectAnswers":["100m","25m","150m"]},{"correctAnswer":"12am","text":"What time is it ","incorrectAnswers":["1am","I don’t know","11pm"]}]}
