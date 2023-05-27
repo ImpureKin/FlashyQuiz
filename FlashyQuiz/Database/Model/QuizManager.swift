@@ -11,7 +11,7 @@ struct QuizManager {
         var quizzes: [Quiz] = []
         var questions: [Question] = []
         do {
-            let db = try Connection("path/to/db.sqlite3")
+            let db = try Connection(databaseURL)
             
             let quizzesView = View("FullQuiz") // Changed from Table() to View(), if encountering an error, switch back
             let quizId = Expression<Int>("id")
