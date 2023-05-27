@@ -14,6 +14,7 @@ class QuizGameViewController: UIViewController {
     @IBOutlet weak var timerButton: UIButton!
     @IBOutlet var answerButtons: [UIButton]!
     
+    var loggedUser: User?
     var quiz: Quiz?
     var currentQuestionIndex = 0
     var answeredQuestions: [Int] = []

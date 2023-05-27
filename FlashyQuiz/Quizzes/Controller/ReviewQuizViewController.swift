@@ -11,10 +11,10 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
 
     @IBOutlet weak var quizTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-
+    
+    var loggedUser: User?
     var quizTitle: String = ""
-    var priavcy: String = ""
-    var userId = 1
+    var privacy: String = ""
     var questions: [Question] = []
     var dataManager = DataStorageManager()
 
@@ -88,7 +88,8 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
        
        
        func saveQuizToDatabase() {
-           let quiz = Quiz(userId: userId, title: quizTitle, privacy: priavcy, questions: questions)
+           var userId = 1
+           let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
            dataManager.saveToFile([quiz])
            
            let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
@@ -103,6 +104,34 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
                   // Present the alert
                   present(alert, animated: true, completion: nil)
        }
+    
+    //add once user is fixed 
+    /** if let userId = loggedUser?.userId {
+     let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
+     dataManager.saveToFile([quiz])
+
+     let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
+
+     // Add an action to dismiss the view controller
+     let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+         // Navigate back to a certain page
+         self?.navigateBackToPage()
+     }
+     alert.addAction(okAction)
+
+     // Present the alert
+     present(alert, animated: true, completion: nil)
+ } else {
+     // Handle the case where userId is nil
+     let alert = UIAlertController(title: "User ID Not Available", message: "The user ID is not available.", preferredStyle: .alert)
+
+     // Add an action to dismiss the alert
+     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+     alert.addAction(okAction)
+
+     // Present the alert
+     present(alert, animated: true, completion: nil)
+ }**/
     
     func navigateBackToPage() {
             if let navigationController = navigationController {

@@ -17,6 +17,7 @@ class CreateQuizViewController: UIViewController {
     @IBOutlet weak var optionThree: UITextField!
     @IBOutlet weak var optionFour: UITextField!
     
+    var loggedUser: User?
     var selectedTitle: String = ""
     var selectedPrivacy: String = ""
     var questions : [Question] = []
@@ -68,7 +69,9 @@ class CreateQuizViewController: UIViewController {
             let VC = segue.destination as! ReviewQuizViewController
             VC.quizTitle = selectedTitle
             VC.questions = questions
-            VC.priavcy = selectedPrivacy
+            VC.privacy = selectedPrivacy
+            VC.loggedUser = loggedUser
+            
         }
     }
     

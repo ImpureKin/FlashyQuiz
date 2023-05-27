@@ -9,6 +9,7 @@ import UIKit
 
 class ModifyQuizViewController: UIViewController {
     
+    var loggedUser: User?
     var quiz: Quiz?
     var modifiedQuiz: Quiz?
     var selectedQuestionIndex: Int?

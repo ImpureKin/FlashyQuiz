@@ -14,14 +14,14 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
     var quizzes: [Quiz] = []
     var dataManager = DataStorageManager()
     var shouldPerformSegue = true
-    let userId = 1
+    var userId : Int? = 0
         
         override func viewDidLoad() {
             super.viewDidLoad()
             let nib = UINib(nibName: "QuizCell", bundle: nil)
             
             userTable.register(nib, forCellReuseIdentifier: "QuizCell")
-            
+            print("\(userId)")
             userTable.dataSource = self
             userTable.delegate = self
             

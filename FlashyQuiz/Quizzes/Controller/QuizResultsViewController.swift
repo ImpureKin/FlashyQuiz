@@ -11,6 +11,7 @@ class QuizResultsViewController: UIViewController {
     
     @IBOutlet weak var resultLabel: UILabel!
     
+    
     var correctAnswers = 0
     var totalQuestions = 0
     
