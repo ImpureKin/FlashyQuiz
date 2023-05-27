@@ -40,9 +40,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Sign Up">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="30"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="p3h-BA-xVd" kind="show" id="4f6-6Q-n2m"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -918,7 +915,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="0Nw-Pu-vd1"/>
-        <segue reference="4f6-6Q-n2m"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
