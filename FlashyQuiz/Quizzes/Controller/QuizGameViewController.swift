@@ -48,7 +48,7 @@ class QuizGameViewController: UIViewController {
             currentQuestionIndex = randomQuestionIndex
             
             let question = quiz.questions[randomQuestionIndex]
-            questionLabel.text = question.text
+            questionLabel.text = question.question
             
             let allAnswers = question.incorrectAnswers + [question.correctAnswer]
             let randomizedAnswers = allAnswers.shuffled()

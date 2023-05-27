@@ -124,6 +124,18 @@ class DataStorageManager {
         
         return quizzes
     }
+    
+    func modifyQuiz(_ quiz: Quiz) {
+            var quizzes = loadFromFile()
+            
+            if let index = quizzes.firstIndex(where: { $0.quizId == quiz.quizId }) {
+                quizzes[index] = quiz
+                saveToFile(quizzes)
+                print("Quiz modified successfully.")
+            } else {
+                print("Quiz not found.")
+            }
+        }
 
 }
 

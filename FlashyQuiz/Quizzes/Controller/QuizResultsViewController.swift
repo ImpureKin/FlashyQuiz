@@ -21,6 +21,7 @@ class QuizResultsViewController: UIViewController {
         
         resultLabel!.text = "\(correctAnswers)/\(totalQuestions)"
     }
+    
 
 }
 

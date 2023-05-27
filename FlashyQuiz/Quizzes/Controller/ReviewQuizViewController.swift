@@ -34,7 +34,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
 
         let question = questions[indexPath.row]
-        cell.question.text = question.text
+        cell.question.text = question.question
         cell.correctAnswerLabel.text = question.correctAnswer
 
         // Set the incorrect answers with new lines

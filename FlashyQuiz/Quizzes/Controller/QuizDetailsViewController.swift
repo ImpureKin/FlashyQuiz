@@ -35,7 +35,7 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         
         let question = quiz!.questions[indexPath.row]
-        cell.questionLabel.text = question.text
+        cell.questionLabel.text = question.question
         cell.correctAnswerLabel.text = question.correctAnswer
         
         
