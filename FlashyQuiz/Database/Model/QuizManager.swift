@@ -29,8 +29,8 @@ struct QuizManager {
             // let rows = try db.prepare(query)
             let rowIterator = try db.prepareRowIterator(query)
             print("Queried view")
-            let totalRowCount = try Array(rowIterator).count
-            print("Total row count = \(totalRowCount)")
+//            let totalRowCount = Array(rowIterator).count
+//            print("Total row count = \(totalRowCount)")
             var index = 0
 
             print("Entering for loop")
@@ -59,7 +59,7 @@ struct QuizManager {
                 }
                 prevQuizId = quizIdValue
 
-                if index == totalRowCount - 1 {
+                if index == 4 {
                     let quiz = Quiz(quizId: quizIdValue, userId: userIdValue, title: titleValue, privacy: privacyValue, questions: questions)
                     quizzes.append(quiz)
                     print("Stored quiz variable")
