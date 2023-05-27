@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             print("User not found.")
         }
         
-        if let quizzes = quizManager.getUserQuizzes(userId: 1) {
+        if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
             for quiz in quizzes {
                 print("Quiz ID: \(quiz.quizId ?? -1)")
                 print("Quiz Title: \(quiz.title)")
@@ -33,20 +33,6 @@ class ViewController: UIViewController {
                     print("Question Incorrect Answers: \(question.incorrectAnswers)")
                 }
             }
-        } else {
-            print("Error")
-        }
-        
-        if let userDetails = userManager.getUserDetails(userId: 1) {
-            print("User ID: \(userDetails.id)")
-            print("Username: \(userDetails.username)")
-            print("Email: \(userDetails.email)")
-        } else {
-            print("User not found.")
-        }
-        
-        if let quizzes = quizManager.getUserQuizzes(userId: 1) {
-            print("It worked")
         } else {
             print("Error")
         }
