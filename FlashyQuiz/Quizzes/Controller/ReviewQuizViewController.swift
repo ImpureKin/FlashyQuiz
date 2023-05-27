@@ -13,6 +13,8 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
 
     var quizTitle: String = ""
+    var priavcy: String = ""
+    var userId = 1
     var questions: [Question] = []
     var dataManager = DataStorageManager()
 
@@ -86,7 +88,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
        
        
        func saveQuizToDatabase() {
-           let quiz = Quiz(userId: 1, title: quizTitle, privacy: "true", questions: questions)
+           let quiz = Quiz(userId: userId, title: quizTitle, privacy: priavcy, questions: questions)
            dataManager.saveToFile([quiz])
            
            let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)

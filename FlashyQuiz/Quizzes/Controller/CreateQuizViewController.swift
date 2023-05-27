@@ -18,6 +18,7 @@ class CreateQuizViewController: UIViewController {
     @IBOutlet weak var optionFour: UITextField!
     
     var selectedTitle: String = ""
+    var selectedPrivacy: String = ""
     var questions : [Question] = []
     var dataManager = DataStorageManager()
     
@@ -67,6 +68,7 @@ class CreateQuizViewController: UIViewController {
             let VC = segue.destination as! ReviewQuizViewController
             VC.quizTitle = selectedTitle
             VC.questions = questions
+            VC.priavcy = selectedPrivacy
         }
     }
     
