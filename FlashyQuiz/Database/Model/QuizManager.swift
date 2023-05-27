@@ -15,7 +15,11 @@ struct QuizManager {
             let quizzesView = View("FullQuiz")
             let quizId = Expression<Int>("id")
             var prevQuizId: Int = 0
+            
+            
             let userId = Expression<Int>("userId")
+            
+            
             let title = Expression<String>("title")
             let privacy = Expression<String>("privacy")
             let question = Expression<String>("question")
@@ -31,7 +35,7 @@ struct QuizManager {
             print("Queried view")
 //            let totalRowCount = Array(rowIterator).count
 //            print("Total row count = \(totalRowCount)")
-            var index = 0
+            var currentRow = 1
 
             print("Entering for loop")
             for row in try Array(rowIterator) {
@@ -59,13 +63,13 @@ struct QuizManager {
                 }
                 prevQuizId = quizIdValue
 
-                if index == 4 {
+                if currentRow == 4 {
                     let quiz = Quiz(quizId: quizIdValue, userId: userIdValue, title: titleValue, privacy: privacyValue, questions: questions)
                     quizzes.append(quiz)
                     print("Stored quiz variable")
                 }
-                index += 1
-                print("Going to next row/end of for loop. Index = \(index)")
+                currentRow += 1
+                print("Going to next row/end of for loop. Index = \(currentRow)")
             }
         } catch {
             print("Error retrieving quizzes: \(error)")
