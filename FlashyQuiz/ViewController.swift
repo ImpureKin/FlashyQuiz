@@ -36,6 +36,20 @@ class ViewController: UIViewController {
         } else {
             print("Error")
         }
+        
+        if let userDetails = userManager.getUserDetails(userId: 1) {
+            print("User ID: \(userDetails.id)")
+            print("Username: \(userDetails.username)")
+            print("Email: \(userDetails.email)")
+        } else {
+            print("User not found.")
+        }
+        
+        if let quizzes = quizManager.getUserQuizzes(userId: 1) {
+            print("It worked")
+        } else {
+            print("Error")
+        }
 
         super.viewDidLoad()
         // Do any additional setup after loading the view.
