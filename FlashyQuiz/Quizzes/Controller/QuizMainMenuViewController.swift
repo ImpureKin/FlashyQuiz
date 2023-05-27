@@ -8,10 +8,13 @@
 import UIKit
 
 class QuizMainMenuViewController: UIViewController {
-
+    
+    var LoggedUser: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let TabCont = self.tabBarController as! BaseTabBarController
+        LoggedUser = TabCont.loggedUser;
     }
 
 }

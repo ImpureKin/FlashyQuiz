@@ -39,7 +39,7 @@ class LoginController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHome",
-           let destination = segue.destination as? HomeViewController,
+           let destination = segue.destination as? BaseTabBarController,
            let user = sender as? User {
             // Pass the user object to the Home view controller
             destination.loggedUser = user

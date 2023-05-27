@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */; };
-		01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */; };
+		01995FD62A21F8DA00ADB834 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */; };
 		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
 		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
 		282DD5772A1B24E100003F6D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5762A1B24E100003F6D /* LoginController.swift */; };
@@ -42,7 +42,7 @@
 
 /* Begin PBXFileReference section */
 		0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageVC.swift; sourceTree = "<group>"; };
-		01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomNavModel.swift; sourceTree = "<group>"; };
+		01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -105,7 +105,6 @@
 		01C2FD212A1CE4DF0074C7AD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				01C2FD242A1CE5230074C7AD /* BottomNavModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */,
+				01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -440,11 +440,11 @@
 				28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */,
 				282DD5822A1B266F00003F6D /* DatabaseManager.swift in Sources */,
 				28B3C22D2A1C562B007554F7 /* QuizManager.swift in Sources */,
-				01C2FD252A1CE5230074C7AD /* BottomNavModel.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
 				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
+				01995FD62A21F8DA00ADB834 /* BaseTabBarController.swift in Sources */,
 				29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */,
 				282DD5712A1B23FB00003F6D /* User.swift in Sources */,
 				29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */,
