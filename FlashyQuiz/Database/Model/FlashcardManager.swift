@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import SQLite
+
+struct FlashcardManager {
+    
+    let databaseURL = DatabaseManager().getDatabasePath()
+    
+
+}

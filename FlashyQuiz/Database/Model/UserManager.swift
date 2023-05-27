@@ -5,7 +5,7 @@ struct UserManager {
     
     let databaseURL = DatabaseManager().getDatabasePath()
     
-    // Add user to Database
+    // Add user to Database - Register user
     func addUser(username: String, email: String, password: String) -> String {
         var result = ""
         do {
@@ -28,7 +28,7 @@ struct UserManager {
         
     }
     
-    // Retrieve user from Database based on ID
+    // Retrieve user from Database based on ID - return their details -- REMOVE?
     func getUserDetails(userId: Int) -> (id: Int, username: String, email: String)? {
         do {
             let db = try Connection(databaseURL)
@@ -36,8 +36,8 @@ struct UserManager {
             let idCol = Expression<Int>("id")
             let usernameCol = Expression<String>("username")
             let emailCol = Expression<String>("email")
-
-            guard let user = try db.pluck(usersTable.filter(idCol == userId)) else {
+            
+            guard let user = try db.pluck(usersTable.filter(idCol == userId)) else { // Find user in database with matching userID
                 return nil // User with the specified ID not found
             }
 
@@ -54,6 +54,7 @@ struct UserManager {
         }
     }
     
+    // Login the user based on combination of email and password provided
     func loginUser(email: String, password: String) -> User? {
         do {
             let db = try Connection(databaseURL)
@@ -62,12 +63,12 @@ struct UserManager {
             let usernameCol = Expression<String>("username")
             let emailCol = Expression<String>("email")
             let passwordCol = Expression<String>("password")
-            guard let user = try db.pluck(usersTable.filter(emailCol == email.lowercased())) else {
+            guard let user = try db.pluck(usersTable.filter(emailCol == email.lowercased())) else { // Find user within database with email provided
                 return nil // User with the specified email not found
             }
             
-            if user[passwordCol] == password {
-                let loggedUser = User(userId: user[idCol], username: user[usernameCol], email: user[emailCol])
+            if user[passwordCol] == password { // User with specified email found. Check if provided password is correct
+                let loggedUser = User(userId: user[idCol], username: user[usernameCol], email: user[emailCol]) // create loggedUser with DB details
                 return loggedUser // User with specified email AND password is found
             } else {
                 return nil // User with sepcified email exists but provided password does not match database entry

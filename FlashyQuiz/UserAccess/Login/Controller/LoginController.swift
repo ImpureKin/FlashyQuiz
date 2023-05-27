@@ -28,9 +28,9 @@ class LoginController: UIViewController {
         let passwordInput = passwordTextField.text ?? ""
         
         // Attempt to log in the user
-        if let user = userManager.loginUser(email: emailInput, password: passwordInput) {
+        if let loggedUser = userManager.loginUser(email: emailInput, password: passwordInput) {
             // Login successful - redirect to home, passing User as well
-            performSegue(withIdentifier: "goToHome", sender: user)
+            performSegue(withIdentifier: "goToHome", sender: loggedUser)
         } else {
             // Login failed - show login failed message
             loginFailedLabel.isHidden = false
@@ -40,9 +40,9 @@ class LoginController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHome",
            let destination = segue.destination as? HomeViewController,
-           let user = sender as? User {
+           let loggedUser = sender as? User {
             // Pass the user object to the Home view controller
-            destination.loggedUser = user
+            destination.loggedUser = loggedUser
         }
     }
 }
