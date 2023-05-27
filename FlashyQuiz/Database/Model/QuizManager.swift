@@ -15,11 +15,7 @@ struct QuizManager {
             let quizzesView = View("FullQuiz")
             let quizId = Expression<Int>("id")
             var prevQuizId: Int = 0
-            
-            
-            let userId = Expression<Int>("userId")
-            
-            
+            let userId = Expression<Int?>("userId")
             let title = Expression<String>("title")
             let privacy = Expression<String>("privacy")
             let question = Expression<String>("question")
@@ -28,7 +24,7 @@ struct QuizManager {
             let incorrectAnswer2 = Expression<String>("incorrectAnswer2")
             let incorrectAnswer3 = Expression<String>("incorrectAnswer3")
 
-            let query = quizzesView.filter(quizzesView[userId] == userIdInput)
+            let query = quizzesView.filter(userId == userIdInput)
             print("SQL query: \(query)")
             // let rows = try db.prepare(query)
             let rowIterator = try db.prepareRowIterator(query)
@@ -41,7 +37,7 @@ struct QuizManager {
             for row in try Array(rowIterator) {
                 print("Beginning of for loop")
                 let quizIdValue = row[quizId]
-                let userIdValue = row[userId]
+                let userIdValue = row[userId] // I UNCOMMENTED THIS TO TRY
                 let titleValue = row[title]
                 let privacyValue = row[privacy]
                 let questionValue = row[question]
@@ -55,7 +51,7 @@ struct QuizManager {
                 } else if quizIdValue == prevQuizId {
                     questions.append(question)
                 } else {
-                    let quiz = Quiz(quizId: prevQuizId, userId: userIdValue, title: titleValue, privacy: privacyValue, questions: questions)
+                    let quiz = Quiz(quizId: prevQuizId, userId: userIdValue ?? userIdInput, title: titleValue, privacy: privacyValue, questions: questions)
                     quizzes.append(quiz)
                     print("Stored quiz variable")
                     questions = []
@@ -64,7 +60,7 @@ struct QuizManager {
                 prevQuizId = quizIdValue
 
                 if currentRow == 4 {
-                    let quiz = Quiz(quizId: quizIdValue, userId: userIdValue, title: titleValue, privacy: privacyValue, questions: questions)
+                    let quiz = Quiz(quizId: quizIdValue, userId: userIdValue ?? userIdInput, title: titleValue, privacy: privacyValue, questions: questions)
                     quizzes.append(quiz)
                     print("Stored quiz variable")
                 }
