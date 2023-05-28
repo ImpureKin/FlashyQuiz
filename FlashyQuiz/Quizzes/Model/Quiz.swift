@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Quiz: Codable {
-    var quizId: Int = UUID().hashValue //make ? optional when merging with database
+struct Quiz: Equatable {
+    var quizId: Int?
     var userId : Int
     var title: String
     var privacy: String
@@ -36,16 +36,29 @@ struct Quiz: Codable {
 
 
 
-struct Question : Codable {
+struct Question : Equatable {
+    var questionId: Int?
     var question: String
     var correctAnswer: String
     var incorrectAnswers: [String]
+    
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return lhs.question == rhs.question &&
+            lhs.correctAnswer == rhs.correctAnswer &&
+            lhs.incorrectAnswers == rhs.incorrectAnswers
+    }
     
     init(question: String, correctAnswer: String, incorrectAnswers: [String]) {
         self.question = question
         self.correctAnswer = correctAnswer
         self.incorrectAnswers = incorrectAnswers
-
+    }
+    
+    init(questionId: Int, question: String, correctAnswer: String, incorrectAnswers: [String]) {
+        self.questionId = questionId
+        self.question = question
+        self.correctAnswer = correctAnswer
+        self.incorrectAnswers = incorrectAnswers
     }
 }
 

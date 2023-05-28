@@ -10,4 +10,6 @@ import SQLite
 
 struct SettingsManager {
     
+    let databaseURL = DatabaseManager().getDatabasePath()
+    
 }

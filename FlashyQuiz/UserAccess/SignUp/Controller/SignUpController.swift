@@ -35,7 +35,7 @@ class SignupController: UIViewController {
         let passwordInput = passwordTextField.text ?? ""
         var result = ""
         
-        // Validate input
+        // Validate input - move to function
         if emailInput.isEmpty || usernameInput.isEmpty || passwordInput.isEmpty {
             print("Please fill in all fields.") // Convert to label
             return
@@ -58,6 +58,7 @@ class SignupController: UIViewController {
         }
     }
     
+    // Remove?
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHome",
            let destination = segue.destination as? HomeViewController,
