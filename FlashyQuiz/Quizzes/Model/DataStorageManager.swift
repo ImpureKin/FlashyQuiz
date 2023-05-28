@@ -91,7 +91,7 @@ class DataStorageManager {
         return quizzes
     }
     
-    func loadQuizzes(forUserId userId: Int?) -> [Quiz] {
+    func loadQuizzes(forUserId userId: Int) -> [Quiz] {
         var quizzes: [Quiz] = []
         
         if let projectRootURL = getProjectRootDirectory() {
@@ -132,6 +132,18 @@ class DataStorageManager {
                 quizzes[index] = quiz
                 saveToFile(quizzes)
                 print("Quiz modified successfully.")
+            } else {
+                print("Quiz not found.")
+            }
+        }
+    
+    func deleteQuiz(_ quiz: Quiz) {
+            var quizzes = loadFromFile()
+
+            if let index = quizzes.firstIndex(where: { $0.quizId == quiz.quizId }) {
+                quizzes.remove(at: index)
+                saveToFile(quizzes)
+                print("Quiz deleted successfully.")
             } else {
                 print("Quiz not found.")
             }

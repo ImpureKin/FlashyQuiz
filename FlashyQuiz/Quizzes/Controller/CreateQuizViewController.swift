@@ -17,7 +17,7 @@ class CreateQuizViewController: UIViewController {
     @IBOutlet weak var optionThree: UITextField!
     @IBOutlet weak var optionFour: UITextField!
     
-    var loggedUser: User?
+    var userId: Int = 0
     var selectedTitle: String = ""
     var selectedPrivacy: String = ""
     var questions : [Question] = []
@@ -26,6 +26,7 @@ class CreateQuizViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("userId: \(userId)")
         quizTitle.text = selectedTitle
     }
     
@@ -70,8 +71,7 @@ class CreateQuizViewController: UIViewController {
             VC.quizTitle = selectedTitle
             VC.questions = questions
             VC.privacy = selectedPrivacy
-            VC.loggedUser = loggedUser
-            
+            VC.userId = userId
         }
     }
     

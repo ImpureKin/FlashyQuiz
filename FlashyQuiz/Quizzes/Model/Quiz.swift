@@ -28,6 +28,10 @@ struct Quiz: Codable {
         self.questions = questions
         self.privacy = privacy
     }
+    
+    mutating func modifyQuestions(_ newQuestions: [Question]) {
+            self.questions = newQuestions
+        }
 }
 
 

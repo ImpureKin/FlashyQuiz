@@ -8,48 +8,51 @@
 import UIKit
 
 class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     @IBOutlet weak var quizTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var loggedUser: User?
+    var userId: Int = 0
     var quizTitle: String = ""
     var privacy: String = ""
     var questions: [Question] = []
     var dataManager = DataStorageManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         quizTitleLabel.text = quizTitle
+        
+        print("userId: \(userId)")
+        
         let nib = UINib(nibName: "QuestionCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "QuestionCell")
-
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questions.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionCell", for: indexPath) as! QuestionCell
-
+        
         let question = questions[indexPath.row]
         cell.question.text = question.question
         cell.correctAnswerLabel.text = question.correctAnswer
-
+        
         // Set the incorrect answers with new lines
         let incorrectAnswers = question.incorrectAnswers.joined(separator: "\n")
         cell.incorrectAnswerTextView.text = incorrectAnswers
-
+        
         cell.deleteButton.tintColor = UIColor.red
         cell.deleteButton.tag = indexPath.row
         cell.deleteButton.addTarget(self, action: #selector(deleteQuestion(_:)), for: .touchUpInside)
-
+        
         return cell
     }
-
+    
     @objc func deleteQuestion(_ sender: UIButton) {
         guard let cell = sender.superview?.superview as? UITableViewCell,
               let indexPath = tableView.indexPath(for: cell) else {
@@ -80,73 +83,41 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         // Present the alert
         present(alert, animated: true, completion: nil)
     }
-
+    
     
     @IBAction func submitButton(_ sender: UIButton) {
-           saveQuizToDatabase()
-       }
-       
-       
-       func saveQuizToDatabase() {
-           var userId = 1
-           let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-           dataManager.saveToFile([quiz])
-           
-           let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
-                  
-                  // Add an action to dismiss the view controller
-                  let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-                      // Navigate back to a certain page
-                      self?.navigateBackToPage()
-                  }
-                  alert.addAction(okAction)
-                  
-                  // Present the alert
-                  present(alert, animated: true, completion: nil)
-       }
+        saveQuizToDatabase()
+    }
     
-    //add once user is fixed 
-    /** if let userId = loggedUser?.userId {
-     let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-     dataManager.saveToFile([quiz])
-
-     let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
-
-     // Add an action to dismiss the view controller
-     let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-         // Navigate back to a certain page
-         self?.navigateBackToPage()
-     }
-     alert.addAction(okAction)
-
-     // Present the alert
-     present(alert, animated: true, completion: nil)
- } else {
-     // Handle the case where userId is nil
-     let alert = UIAlertController(title: "User ID Not Available", message: "The user ID is not available.", preferredStyle: .alert)
-
-     // Add an action to dismiss the alert
-     let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-     alert.addAction(okAction)
-
-     // Present the alert
-     present(alert, animated: true, completion: nil)
- }**/
+    
+    func saveQuizToDatabase() {
+        let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
+        dataManager.saveToFile([quiz])
+        
+        let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
+        
+        // Add an action to dismiss the view controller
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+            // Navigate back to a certain page
+            self?.navigateBackToPage()
+        }
+        alert.addAction(okAction)
+        
+        // Present the alert
+        present(alert, animated: true, completion: nil)
+    }
     
     func navigateBackToPage() {
-            if let navigationController = navigationController {
-                for viewController in navigationController.viewControllers {
-                    if viewController is QuizMainMenuViewController {
-                        navigationController.popToViewController(viewController, animated: true)
-                        return
-                    }
+        if let navigationController = navigationController {
+            for viewController in navigationController.viewControllers {
+                if let quizMainMenuVC = viewController as? BaseTabBarController{
+                    navigationController.popToViewController(quizMainMenuVC, animated: true)
+                    return
                 }
             }
-            
-            // Default fallback action
-            navigationController?.popViewController(animated: true)
         }
-
-
-
+        
+        // Default fallback action
+        navigationController?.popViewController(animated: true)
+    }
 }

@@ -13,7 +13,6 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var quizTitle: UILabel!
     @IBOutlet weak var detailTable: UITableView!
     
-    var loggedUser: User?
     var quiz: Quiz?
     
     override func viewDidLoad() {
