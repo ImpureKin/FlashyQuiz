@@ -9,68 +9,79 @@ import Foundation
 
 import UIKit
 
-class FlashCardViewController: UIViewController {
+class FlashcardViewController: UIViewController {
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var answerLabel: UILabel!
     
-    @IBOutlet weak var tableView: UITableView!
-    
-    var viewModel: FlashcardViewModel!
+    var deck: FlashcardGroup!
+    var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupGestures()
+        showFlashcard(at: currentIndex)
+    }
+    
+    private func setupGestures() {
+        let swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+        swipeRightGesture.direction = .right
+        view.addGestureRecognizer(swipeRightGesture)
         
-        viewModel = FlashcardViewModel()
-        viewModel.delegate = self
-        viewModel.loadFlashcardDecks()
+        let swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture(_:)))
+        swipeLeftGesture.direction = .left
+        view.addGestureRecognizer(swipeLeftGesture)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CreateFlashcardSegue" {
-            let createFlashcardVC = segue.destination as! CreateFlashcardViewController
-            createFlashcardVC.delegate = self
-            createFlashcardVC.viewModel = viewModel
-        } else if segue.identifier == "ViewFlashcardsSegue" {
-            let viewFlashcardsVC = segue.destination as! ViewFlashcardsViewController
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let selectedDeck = viewModel.flashcardDeck(at: indexPath.row)
-                viewFlashcardsVC.viewModel = FlashcardDeckViewModel(flashcardDeck: selectedDeck)
-            }
+    @objc private func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
+        if gesture.direction == .right {
+            showPreviousFlashcard()
+        } else if gesture.direction == .left {
+            showNextFlashcard()
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func createFlashcardDeck(_ sender: UIButton) {
-        performSegue(withIdentifier: "CreateFlashcardSegue", sender: nil)
+    @objc private func handleTapGesture(_ gesture: UITapGestureRecognizer) {
+        flipFlashcard()
     }
     
-    @IBAction func editFlashcardDeck(_ sender: UIButton) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            viewModel.editFlashcardDeck(at: indexPath.row)
+    private func showFlashcard(at index: Int) {
+        guard index >= 0 && index < deck.flashcards.count else { return }
+        
+        let flashcard = deck.flashcards[index]
+        questionLabel.text = flashcard.question
+        answerLabel.text = flashcard.answer
+        answerLabel.isHidden = true
+    }
+    
+    private func showNextFlashcard() {
+        if currentIndex < deck.flashcards.count - 1 {
+            currentIndex += 1
+            showFlashcard(at: currentIndex)
+            animateCardTransition(withDirection: .left)
         }
     }
     
-    @IBAction func deleteFlashcardDeck(_ sender: UIButton) {
-        if let indexPath = tableView.indexPathForSelectedRow {
-            viewModel.deleteFlashcardDeck(at: indexPath.row)
+    private func showPreviousFlashcard() {
+        if currentIndex > 0 {
+            currentIndex -= 1
+            showFlashcard(at: currentIndex)
+            animateCardTransition(withDirection: .right)
         }
     }
-}
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfFlashcardDecks()
+    
+    private func flipFlashcard() {
+        answerLabel.isHidden = !answerLabel.isHidden
+        animateCardFlip()
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FlashcardDeckCell", for: indexPath)
-        let deck = viewModel.flashcardDeck(at: indexPath.row)
-        cell.textLabel?.text = deck.name
-        return cell
+    private func animateCardTransition(withDirection direction: UIView.AnimationOptions) {
+        UIView.transition(with: view, duration: 0.3, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: nil, completion: nil)
     }
-}
-
-extension ViewController: FlashcardViewModelDelegate {
-    func flashcardDecksLoaded() {
-        tableView.reloadData()
+    
+    private func animateCardFlip() {
+        UIView.transition(with: view, duration: 0.3, options: [.transitionFlipFromLeft, .showHideTransitionViews], animations: nil, completion: nil)
     }
 }
