@@ -1055,7 +1055,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="saveButtonTapped:" destination="FM5-nY-OEZ" eventType="touchUpInside" id="Je7-Aq-u6q"/>
+                                    <action selector="updateQuizButtonTapped:" destination="FM5-nY-OEZ" eventType="touchUpInside" id="VN0-9h-4h5"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Modify Quiz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-h8-fWF">
