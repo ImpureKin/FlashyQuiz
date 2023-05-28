@@ -32,7 +32,7 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         modifyTableView.dataSource = self
     }
     
-    // MARK: - UITableViewDataSource
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return quiz?.questions.count ?? 0
@@ -57,7 +57,7 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
-    // MARK: - Button Actions
+   
     
     @objc func deleteQuestion(_ sender: UIButton) {
         let index = sender.tag
@@ -83,7 +83,7 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         quiz?.questions[index].incorrectAnswers = answers
     }
     
-    // MARK: - Update Quiz
+
     
     @IBAction func updateQuizButtonTapped(_ sender: UIButton) {
         guard let quizId = quiz?.quizId,
@@ -140,7 +140,6 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     
-    // MARK: - Helper Methods
     
     func displayAlert(message: String) {
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
