@@ -16,7 +16,7 @@ class ModifyQuizViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var privacySwitch: UISwitch!
-    @IBOutlet weak var questionsTableView: UITableView!
+    @IBOutlet weak var modifyTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
