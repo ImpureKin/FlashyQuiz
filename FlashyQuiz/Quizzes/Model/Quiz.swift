@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quiz: Codable {
+struct Quiz: Equatable {
     var quizId: Int?
     var userId : Int
     var title: String
@@ -36,11 +36,17 @@ struct Quiz: Codable {
 
 
 
-struct Question : Codable {
+struct Question : Equatable {
     var questionId: Int?
     var question: String
     var correctAnswer: String
     var incorrectAnswers: [String]
+    
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return lhs.question == rhs.question &&
+            lhs.correctAnswer == rhs.correctAnswer &&
+            lhs.incorrectAnswers == rhs.incorrectAnswers
+    }
     
     init(question: String, correctAnswer: String, incorrectAnswers: [String]) {
         self.question = question
