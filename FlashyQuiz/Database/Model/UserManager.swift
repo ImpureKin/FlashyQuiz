@@ -30,28 +30,6 @@ struct UserManager {
         
     }
     
-    // Retrieve user from Database based on ID - return their details -- REMOVE?
-//    func getUserDetails(userId: Int) -> (id: Int, username: String, email: String)? {
-//        do {
-//            let db = try Connection(databaseURL)
-//
-//            guard let user = try db.pluck(usersTable.filter(idCol == userId)) else { // Find user in database with matching userID
-//                return nil // User with the specified ID not found
-//            }
-//
-//            let userDetails = (
-//                id: user[idCol],
-//                username: user[usernameCol],
-//                email: user[emailCol]
-//            )
-//            print("Success - User '\(userDetails.username)' has been retrieved from database.")
-//            return userDetails
-//        } catch {
-//            print("Error - Unable to retrieve user details: \(error)")
-//            return nil
-//        }
-//    }
-    
     // Login the user based on combination of email and password provided
     func loginUser(email: String, password: String) -> User? {
         do {

@@ -13,15 +13,6 @@ class ViewController: UIViewController {
         let userManager = UserManager()
         let quizManager = QuizManager()
         
-        // Pull user details test
-        if let userDetails = userManager.getUserDetails(userId: 1) {
-            print("User ID: \(userDetails.id)")
-            print("Username: \(userDetails.username)")
-            print("Email: \(userDetails.email)")
-        } else {
-            print("User not found.")
-        }
-        
 //        // Get all user Quizzes test
 //        if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
 //            for quiz in quizzes {

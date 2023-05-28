@@ -34,8 +34,6 @@ struct Quiz: Equatable {
         }
 }
 
-
-
 struct Question : Equatable {
     var questionId: Int?
     var question: String

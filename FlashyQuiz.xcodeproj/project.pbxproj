@@ -49,6 +49,7 @@
 		29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */; };
 		29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */; };
 		47ED3CE52A0A04B900BC229D /* File in Resources */ = {isa = PBXBuildFile; fileRef = 47ED3CE42A0A04B900BC229D /* File */; };
+		69E4E3892A235EA300472C96 /* Flashcard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E4E3882A235EA300472C96 /* Flashcard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameViewController.swift; sourceTree = "<group>"; };
 		29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
 		47ED3CE42A0A04B900BC229D /* File */ = {isa = PBXFileReference; lastKnownFileType = text; path = File; sourceTree = "<group>"; };
+		69E4E3882A235EA300472C96 /* Flashcard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flashcard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				28F121B82A134084000E1AFB /* dumbyfile.md */,
+				69E4E3882A235EA300472C96 /* Flashcard.swift */,
 			);
 			path = Flashcards;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				28B3C22D2A1C562B007554F7 /* QuizManager.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
 				29702D732A1B923C00A8B3F3 /* ReviewQuizViewController.swift in Sources */,
+				69E4E3892A235EA300472C96 /* Flashcard.swift in Sources */,
 				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
 				2982E4032A1F8E4D00DB4DE2 /* ModifyQuizViewController.swift in Sources */,
