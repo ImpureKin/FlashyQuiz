@@ -122,14 +122,15 @@ struct QuizManager {
         return quizzes
     }
     
-    // Get a quiz via quizId
-    func getQuiz(quizId: Int) -> Quiz? {
+    // Get a quiz via quizId & userId
+    // Note: quizId on it's own should be sufficient as it is the primary key. However, we also need userId as a parameter to workaround an unknown issue.
+    func getQuiz(quizId: Int, userId: Int) -> Quiz? {
         do {
             // DB connection
             let db = try Connection(databaseURL)
             
             // Query execution and results
-            let query = fullQuizView.filter(quizIdCol == quizId) // SELECT * FROM FullQuiz WHERE userId = (userIdInput)
+            let query = fullQuizView.filter(quizIdCol == quizId) // SELECT * FROM FullQuiz WHERE id = quizId
             let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
             let rows = try Array(rowIterator) // Create array using result (to allow .count)
             
@@ -142,7 +143,6 @@ struct QuizManager {
             for row in rows {
                 // Get values from row/data and store into variables
                 let quizId = row[quizIdCol]
-                let userId = row[userIdCol]
                 let title = row[titleCol]
                 let privacy = row[privacyCol]
                 let questionId = row[questionIdColLiteral]
@@ -152,7 +152,7 @@ struct QuizManager {
                 let question = Question(questionId: questionId, question: questionText, correctAnswer: correctAnswer, incorrectAnswers: incorrectAnswers) // Create question
 
                 if currentRow == totalRowCount { // If this is the last row, append quiz before exiting loop
-                    let quiz = Quiz(quizId: quizId, userId: userId!, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
+                    let quiz = Quiz(quizId: quizId, userId: userId, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
                     return quiz // Append quiz
                 }
                 currentRow += 1 // Track current row
@@ -193,7 +193,7 @@ struct QuizManager {
             guard let oldQuizRow = try db.pluck(quizTable.filter(quizIdCol == quizId)) else { // Get row of data for old quiz
                 return false
             }
-            guard let oldQuiz = getQuiz(quizId: oldQuizRow[quizIdCol]) else { // Get old quiz as Quiz object
+            guard let oldQuiz = getQuiz(quizId: oldQuizRow[quizIdCol], userId: updatedQuiz.userId) else { // Get old quiz as Quiz object
                 return false
             }
             guard deleteRemovedQuestions(oldQuiz: oldQuiz, updatedQuiz: updatedQuiz) else { // Check for and delete any removed questions
@@ -309,4 +309,3 @@ struct QuizManager {
         }
     }
 }
-
