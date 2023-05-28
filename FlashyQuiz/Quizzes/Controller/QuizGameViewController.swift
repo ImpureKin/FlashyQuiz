@@ -14,7 +14,6 @@ class QuizGameViewController: UIViewController {
     @IBOutlet weak var timerButton: UIButton!
     @IBOutlet var answerButtons: [UIButton]!
     
-    var loggedUser: User?
     var quiz: Quiz?
     var currentQuestionIndex = 0
     var answeredQuestions: [Int] = []
@@ -151,7 +150,7 @@ class QuizGameViewController: UIViewController {
     }
     
     func showAlert(message: String) {
-        isAlertShown = true //
+        isAlertShown = true 
         
         let alert = UIAlertController(title: "Quiz", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in

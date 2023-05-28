@@ -91,7 +91,7 @@ class DataStorageManager {
         return quizzes
     }
     
-    func loadQuizzes(forUserId userId: Int?) -> [Quiz] {
+    func loadQuizzes(forUserId userId: Int) -> [Quiz] {
         var quizzes: [Quiz] = []
         
         if let projectRootURL = getProjectRootDirectory() {

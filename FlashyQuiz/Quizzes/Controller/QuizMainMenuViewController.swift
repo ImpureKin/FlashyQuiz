@@ -9,14 +9,16 @@ import UIKit
 
 class QuizMainMenuViewController: UIViewController {
     
-    var loggedUser: User!
-    var userId: Int!
-
+    var loggedUser: User?
+    var userId: Int?
+    var username : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let tabCont = self.tabBarController as! BaseTabBarController
         loggedUser = tabCont.loggedUser
+        username = tabCont.loggedUser?.username
         
         if let userIdValue = loggedUser?.userId {
             userId = userIdValue
@@ -28,21 +30,25 @@ class QuizMainMenuViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToCreate" {
-            // Retrieve the destination view controller
-            guard let createQuizVC = segue.destination as? CreateQuizViewController else {
+            guard let createQuizVC = segue.destination as? AddTittleCreateQuizViewController else {
                 return
             }
             
-            // Pass the loggedUser to createQuizVC
-            createQuizVC.loggedUser = loggedUser
+            if let userIdValue = userId {
+                createQuizVC.userId = userIdValue
+            }
+            
         } else if segue.identifier == "goToUserQuiz" {
-            // Retrieve the destination view controller
             guard let userQuizVC = segue.destination as? QuizListViewController else {
                 return
             }
             
-            // Pass the userId to userQuizVC
-            userQuizVC.userId = userId
+            if let userIdValue = userId {
+                userQuizVC.userId = userIdValue
+            }
+            if let usernameValue = username {
+                userQuizVC.username = usernameValue
+            }
         }
     }
 }

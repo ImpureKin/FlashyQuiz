@@ -10,15 +10,19 @@ import UIKit
 class QuizListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var userTable: UITableView!
+    @IBOutlet weak var userLabel: UILabel!
     
     var quizzes: [Quiz] = []
     var dataManager = DataStorageManager()
     var shouldPerformSegue = true
-    var userId : Int? = 0
+    var userId : Int = 0
+    var username: String = ""
         
         override func viewDidLoad() {
             super.viewDidLoad()
             let nib = UINib(nibName: "QuizCell", bundle: nil)
+            
+            userLabel.text = "\(username)'s Quizzes"
             
             userTable.register(nib, forCellReuseIdentifier: "QuizCell")
             print("\(userId)")

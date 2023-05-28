@@ -13,11 +13,11 @@ class AddTittleCreateQuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var privacySwitch: UISwitch!
     
-    var loggedUser: User?
+    var userId: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            print("userId: \(userId)")
         errorMessage.isHidden = true
         quizTitle.delegate = self
     }
@@ -28,7 +28,7 @@ class AddTittleCreateQuizViewController: UIViewController, UITextFieldDelegate {
                 let VC = segue.destination as! CreateQuizViewController
                 VC.selectedTitle = quizTitle.text!
                 VC.selectedPrivacy = privacySwitch.isOn ? "public" : "private"
-                VC.loggedUser = loggedUser
+                VC.userId = userId
             } else {
                 errorMessage.isHidden = false
             }
