@@ -20,10 +20,8 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            let nib = UINib(nibName: "QuizCell", bundle: nil)
-            
             userLabel.text = "\(username)'s Quizzes"
-            
+            let nib = UINib(nibName: "QuizCell", bundle: nil)
             userTable.register(nib, forCellReuseIdentifier: "QuizCell")
             print("\(userId)")
             userTable.dataSource = self

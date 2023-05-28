@@ -40,6 +40,8 @@
 		2982E4032A1F8E4D00DB4DE2 /* ModifyQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982E4022A1F8E4D00DB4DE2 /* ModifyQuizViewController.swift */; };
 		29892DCC2A1DF568001725E0 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29892DCA2A1DF568001725E0 /* QuestionCell.swift */; };
 		29892DCD2A1DF568001725E0 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29892DCB2A1DF568001725E0 /* QuestionCell.xib */; };
+		2997100F2A231C7500944E3B /* ModifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2997100D2A231C7500944E3B /* ModifyCell.swift */; };
+		299710102A231C7500944E3B /* ModifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2997100E2A231C7500944E3B /* ModifyCell.xib */; };
 		29DF85BA2A1A4A51004EB124 /* DataStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DF85B92A1A4A51004EB124 /* DataStorageManager.swift */; };
 		29DF85C02A1A4AB0004EB124 /* quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 29DF85BF2A1A4AB0004EB124 /* quiz.txt */; };
 		29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FEE2A18C5D200B152E2 /* Quiz.swift */; };
@@ -91,6 +93,8 @@
 		2982E4022A1F8E4D00DB4DE2 /* ModifyQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyQuizViewController.swift; sourceTree = "<group>"; };
 		29892DCA2A1DF568001725E0 /* QuestionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		29892DCB2A1DF568001725E0 /* QuestionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionCell.xib; sourceTree = "<group>"; };
+		2997100D2A231C7500944E3B /* ModifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCell.swift; sourceTree = "<group>"; };
+		2997100E2A231C7500944E3B /* ModifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModifyCell.xib; sourceTree = "<group>"; };
 		29DF85B92A1A4A51004EB124 /* DataStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageManager.swift; sourceTree = "<group>"; };
 		29DF85BF2A1A4AB0004EB124 /* quiz.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = quiz.txt; sourceTree = "<group>"; };
 		29EB9FEE2A18C5D200B152E2 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				2982E3FB2A1F0B3F00DB4DE2 /* QuizCell.xib */,
 				2982E3FE2A1F5BA500DB4DE2 /* DetailCell.swift */,
 				2982E3FF2A1F5BA500DB4DE2 /* DetailCell.xib */,
+				2997100D2A231C7500944E3B /* ModifyCell.swift */,
+				2997100E2A231C7500944E3B /* ModifyCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -468,6 +474,7 @@
 				28B3C2292A1C51B6007554F7 /* SQLite.swift in Resources */,
 				28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */,
 				28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */,
+				299710102A231C7500944E3B /* ModifyCell.xib in Resources */,
 				28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */,
 				29DF85C02A1A4AB0004EB124 /* quiz.txt in Resources */,
 				286157782A1B47030023D85A /* FlashyQuiz.db in Resources */,
@@ -500,6 +507,7 @@
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
 				29702D732A1B923C00A8B3F3 /* ReviewQuizViewController.swift in Sources */,
 				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
+				2997100F2A231C7500944E3B /* ModifyCell.swift in Sources */,
 				28F121B62A133AD5000E1AFB /* Home.swift in Sources */,
 				2982E4032A1F8E4D00DB4DE2 /* ModifyQuizViewController.swift in Sources */,
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
