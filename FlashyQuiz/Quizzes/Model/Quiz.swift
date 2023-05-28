@@ -8,7 +8,7 @@
 import Foundation
 
 struct Quiz: Codable {
-    var quizId: Int = UUID().hashValue //make ? optional when merging with database
+    var quizId: Int?
     var userId : Int
     var title: String
     var privacy: String
