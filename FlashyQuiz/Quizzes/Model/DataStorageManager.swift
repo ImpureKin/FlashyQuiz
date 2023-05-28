@@ -8,7 +8,7 @@
 import Foundation
 
 class DataStorageManager {
-    // Function to get the project's root directory
+   /** // Function to get the project's root directory
     func getProjectRootDirectory() -> URL? {
         let currentFileURL = URL(fileURLWithPath: #file)
         let projectRootURL = currentFileURL
@@ -165,6 +165,6 @@ class DataStorageManager {
                 print("Quiz not found.")
             }
         }
-
+**/
 }
 

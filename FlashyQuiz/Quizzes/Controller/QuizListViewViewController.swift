@@ -31,7 +31,7 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         func fetchQuizzes() {
-            quizzes = dataManager.loadQuizzes(forUserId: userId)
+            
             userTable.reloadData()
         }
     

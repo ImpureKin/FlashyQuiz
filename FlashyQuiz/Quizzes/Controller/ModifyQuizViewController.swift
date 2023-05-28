@@ -37,17 +37,7 @@ class ModifyQuizViewController: UIViewController {
     func modifySetup() {
             guard let quiz = quiz else { return }
             
-            do {
-                let encoder = JSONEncoder()
-                let data = try encoder.encode(quiz)
-                let decoder = JSONDecoder()
-                modifiedQuiz = try decoder.decode(Quiz.self, from: data)
-                
-                // Assign the copied questions to modifiedQuiz
-                modifiedQuiz?.questions = quiz.questions
-            } catch {
-                print("Error during deep copy: \(error)")
-            }
+           
         }
     
     @IBAction func deleteQuizButtom(_ sender: UIButton) {
@@ -64,7 +54,7 @@ class ModifyQuizViewController: UIViewController {
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
             // Delete the quiz
             if let quiz = self?.quiz {
-                DataStorageManager().deleteQuiz(quiz)
+            
                 
                 // Navigate back to a certain page
                 self?.navigateBackToPage()

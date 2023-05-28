@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let userManager = UserManager()
         let quizManager = QuizManager()
         
-        // Pull user details test
+        /**  // Pull user details test
         if let userDetails = userManager.getUserDetails(userId: 1) {
             print("User ID: \(userDetails.id)")
             print("Username: \(userDetails.username)")
@@ -21,7 +21,6 @@ class ViewController: UIViewController {
         } else {
             print("User not found.")
         }
-        
 //        // Get all user Quizzes test
 //        if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
 //            for quiz in quizzes {
@@ -106,7 +105,7 @@ class ViewController: UIViewController {
             }
         }
         
-        
+        **/
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
