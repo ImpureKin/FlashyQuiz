@@ -49,7 +49,6 @@ class ViewController: UIViewController {
         } else {
             print("ERROR: QUIZ NOT ADDED.")
         }
-
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }

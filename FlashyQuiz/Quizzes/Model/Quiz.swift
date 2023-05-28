@@ -37,6 +37,7 @@ struct Quiz: Codable {
 
 
 struct Question : Codable {
+    var questionId: Int?
     var question: String
     var correctAnswer: String
     var incorrectAnswers: [String]
@@ -45,7 +46,13 @@ struct Question : Codable {
         self.question = question
         self.correctAnswer = correctAnswer
         self.incorrectAnswers = incorrectAnswers
-
+    }
+    
+    init(questionId: Int, question: String, correctAnswer: String, incorrectAnswers: [String]) {
+        self.questionId = questionId
+        self.question = question
+        self.correctAnswer = correctAnswer
+        self.incorrectAnswers = incorrectAnswers
     }
 }
 
