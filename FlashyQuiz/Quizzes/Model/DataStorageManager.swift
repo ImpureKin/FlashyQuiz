@@ -28,27 +28,8 @@ class DataStorageManager {
             do {
                 try fileManager.createDirectory(at: textFileFolderURL, withIntermediateDirectories: true, attributes: nil)
                 
-                let encoder = JSONEncoder()
-                let lines = quizzes.compactMap { try? encoder.encode($0) }
-                if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
-                    fileHandle.seekToEndOfFile()
-                    for line in lines {
-                        fileHandle.write(line)
-                        fileHandle.write("\n".data(using: .utf8)!)
-                    }
-                    fileHandle.closeFile()
-                } else {
-                    fileManager.createFile(atPath: fileURL.path, contents: nil, attributes: nil)
-                    if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
-                        for line in lines {
-                            fileHandle.write(line)
-                            fileHandle.write("\n".data(using: .utf8)!)
-                        }
-                        fileHandle.closeFile()
-                    } else {
-                        print("Failed to create file handle for writing.")
-                    }
-                }
+                let filteredLines = filterExistingQuizzes(in: fileURL, quizzes: quizzes)
+                writeToFile(fileURL: fileURL, lines: filteredLines + quizzes)
                 
                 print("Quizzes saved to file: \(fileURL.path)")
             } catch {
@@ -56,7 +37,43 @@ class DataStorageManager {
             }
         }
     }
-    
+
+    func filterExistingQuizzes(in fileURL: URL, quizzes: [Quiz]) -> [String] {
+        let fileManager = FileManager.default
+        if let existingData = fileManager.contents(atPath: fileURL.path),
+            let existingLines = String(data: existingData, encoding: .utf8) {
+            let modifiedLines = existingLines.split(separator: "\n").filter { line in
+                // Check if the line contains the quizId of the modified quiz
+                if let quizIdRange = line.range(of: "\"quizId\":") {
+                    let startIndex = line.index(quizIdRange.upperBound, offsetBy: 1)
+                    let endIndex = line.endIndex
+                    let quizIdSubstring = line[startIndex..<endIndex]
+                    return quizzes.contains { $0.quizId == Int(quizIdSubstring) }
+                }
+                return true
+            }
+            return modifiedLines.map { String($0) }
+        }
+        return []
+    }
+
+    func writeToFile(fileURL: URL, lines: [Codable]) {
+        let encoder = JSONEncoder()
+        let encodedLines = lines.compactMap { try? encoder.encode($0) }
+        
+        if let fileHandle = FileHandle(forWritingAtPath: fileURL.path) {
+            fileHandle.seekToEndOfFile() // Move to the end of the file
+            for line in encodedLines {
+                fileHandle.write(line)
+                fileHandle.write("\n".data(using: .utf8)!)
+            }
+            fileHandle.closeFile()
+        } else {
+            print("Failed to create file handle for writing.")
+        }
+    }
+
+
     // Function to load the Quiz objects from the text file
     func loadFromFile() -> [Quiz] {
         var quizzes: [Quiz] = []
