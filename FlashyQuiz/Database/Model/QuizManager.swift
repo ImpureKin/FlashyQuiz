@@ -10,17 +10,17 @@ struct QuizManager {
     let questionTable = Table("Questions")
     let fullQuizView = View("FullQuiz")
     
-    // Common Column variable (used in both Quizzes and Questions table)
+    // Common table column variables (used in both Quizzes and Questions table)
     let userIdCol = Expression<Int?>("userId")
     let rowIdCol = Expression<Int64>("ROWID")
     
-    // Column variables for Quizzes table
+    // Table column variables for Quizzes table
     let quizIdCol = Expression<Int>("id")
     let quizIdColLiteral = Expression<Int>("quizId")
     let titleCol = Expression<String>("title")
     let privacyCol = Expression<String>("privacy")
     
-    // Column variables for Questions table
+    // Table column variables for Questions table
     let questionIdCol = Expression<Int>("id")
     let questionIdColLiteral = Expression<Int>("questionId")
     let questionCol = Expression<String>("question")
@@ -39,7 +39,7 @@ struct QuizManager {
             let insertedQuizRowId = try db.run(quizTable.insert(titleCol <- quiz.title, userIdCol <- quiz.userId, privacyCol <- quiz.privacy))
             
             // Get the quizId of the recently inserted quiz using the generated rowId
-            let quizId = getQuizIdByRowid(rowIdInput: insertedQuizRowId)
+            let quizId = getQuizIdByRowid(rowId: insertedQuizRowId)
             if quizId != -1 { // Check if getting quizId was successful
                 // Retrieve and loop through questions within provided quiz
                 let questions: [Question] = quiz.questions
@@ -77,7 +77,7 @@ struct QuizManager {
             // Query execution and results
             let query = fullQuizView.filter(userIdCol == userIdInput) // SELECT * FROM FullQuiz WHERE userId = (userIdInput)
             let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result (to allow .count)
+            let rows = try Array(rowIterator) // Create array using result
             
             // Tracking / other
             let totalRowCount = rows.count // Get total row count for tracking
@@ -132,7 +132,7 @@ struct QuizManager {
             // Query execution and results
             let query = fullQuizView.filter(quizIdCol == quizId) // SELECT * FROM FullQuiz WHERE id = quizId
             let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result (to allow .count)
+            let rows = try Array(rowIterator) // Create array using result
             
             // Tracking / other
             let totalRowCount = rows.count // Get total row count for tracking
@@ -165,12 +165,12 @@ struct QuizManager {
     }
     
     // Get a quizId by table ROWID
-    func getQuizIdByRowid(rowIdInput: Int64) -> Int {
+    func getQuizIdByRowid(rowId: Int64) -> Int {
         do {
             // DB connection
             let db = try Connection(databaseURL)
             
-            let query = quizTable.filter(rowIdCol == rowIdInput)
+            let query = quizTable.filter(rowIdCol == rowId) // SELECT * FROM quizzes WHERE ROWID = rowId
             guard let quizRow = try db.pluck(query) else {
                 return -1
             }
@@ -190,7 +190,7 @@ struct QuizManager {
         
             let quizId = updatedQuiz.quizId!
             
-            guard let oldQuizRow = try db.pluck(quizTable.filter(quizIdCol == quizId)) else { // Get row of data for old quiz
+            guard let oldQuizRow = try db.pluck(quizTable.filter(quizIdCol == quizId)) else { // SELECT * FROM quizzes WHERE id = quizId
                 return false
             }
             guard let oldQuiz = getQuiz(quizId: oldQuizRow[quizIdCol], userId: updatedQuiz.userId) else { // Get old quiz as Quiz object
@@ -203,11 +203,14 @@ struct QuizManager {
                 return false
             }
             
+            let quizToUpdate = quizTable.filter(quizIdCol == quizId) // SELECT * FROM quizzes WHERE id = quizId
+            try db.run(quizToUpdate.update(titleCol <- updatedQuiz.title, privacyCol <- updatedQuiz.privacy)) // Update quiz
+            
+            return true
         } catch {
-            print("Error retrieving quizId: \(error)")
+            print("Error updating quiz: \(error)")
             return false
         }
-        return true
     }
     
     // Used as a loop to delete questions
@@ -239,7 +242,7 @@ struct QuizManager {
                                                incorrectAnswer3Col <- updatedQuestion.incorrectAnswers[2]))
             return true
         } catch {
-            print("Error retrieving quizId: \(error)")
+            print("Error updating question: \(error)")
             return false
         }
     }
@@ -268,22 +271,13 @@ struct QuizManager {
             let quizToDelete = quizTable.filter(quizIdCol == quizId) // Get quiz with matching quizId
             let questionsToDelete = questionTable.filter(quizIdColLiteral == quizId) // Get questions with matching quizId
             
-            // Delete all questions with matching quizId first due to FOREIGN KEY restraint
-            if try db.run(questionsToDelete.delete()) > 0 { // DELETE FROM questions WHERE quizId = quizId;
-                print("Deleted questions.")
-            } else {
-                print("Did not delete any questions.")
-            }
-            // Proceed to deleting quiz
-            if try db.run(quizToDelete.delete()) > 0 { // DELETE FROM quizzes WHERE quizId = quizId;
-                print("Deleted quiz.")
-                return true
-            } else {
-                print("Did not delete quiz.")
-                return false
-            }
+            let deletedQuestionsCount = try db.run(questionsToDelete.delete()) // Delete all questions with matching quizId first due to FOREIGN KEY restraint
+            
+            let deletedQuizCount = try db.run(quizToDelete.delete()) // Proceed to deleting quiz
+            
+            return deletedQuestionsCount > 0 && deletedQuizCount > 0
         } catch {
-            print("Error retrieving quizId: \(error)")
+            print("Error deleting quiz: \(error)")
             return false
         }
     }
@@ -295,17 +289,34 @@ struct QuizManager {
             let db = try Connection(databaseURL)
             
             let questionId = question.questionId!
-            let questionToDelete = questionTable.filter(questionIdCol == questionId)
+            let questionToDelete = questionTable.filter(questionIdCol == questionId) // SELECT * FROM questions WHERE id = questionId
             
-            if try db.run(questionToDelete.delete()) > 0 {
-                print("Deleted question.")
-                return true
-            } else {
-                return false
-            }
+            return try db.run(questionToDelete.delete()) > 0
         } catch {
-            print("Error retrieving quizId: \(error)")
+            print("Error deleting question: \(error)")
             return false
+        }
+    }
+    
+    // Check for existing quiz title
+    func isExitingTitle(title: String, userId: Int) -> Bool {
+        do {
+            // DB connection
+            let db = try Connection(databaseURL)
+            
+            let query = quizTable.filter(userIdCol == userId) // SELECT * FROM quizzes WHERE userId = userId
+            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
+            let rows = try Array(rowIterator) // Create array using result
+            
+            for row in rows { // Loop through results
+                if row[titleCol] == title { // Check if the current row's quiz title is equal to the provided title and return true if it is
+                    return true
+                }
+            }
+            return false
+        } catch {
+            print("Error checking for existing quiz title: \(error)")
+            return true
         }
     }
 }
