@@ -79,16 +79,9 @@ class ModifyQuizViewController: UIViewController {
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         guard var modifiedQuiz = modifiedQuiz else { return }
         
-        if let newTitle = titleTextField.text {
-            modifiedQuiz.title = newTitle
-            modifiedQuiz.privacy = privacySwitch.isOn ? "Public" : "Private"
-            
-            // Call the modifyQuiz function in the data storage manager to update the quiz
-            DataStorageManager().modifyQuiz(modifiedQuiz)
-            
-            // Pop the view controller to go back to the previous screen
-            self.navigateBackToPage()
-        }
+        //need to add a save button that also saves the questions
+        
+            //self.navigateBackToPage()}
     }
     
     func navigateBackToPage() {
@@ -116,7 +109,7 @@ extension ModifyQuizViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ModifyCell", for: indexPath) as! ModifyCell
            
-        let question = quiz!.questions[indexPath.row]
+        let question = modifiedQuiz!.questions[indexPath.row]
            cell.questionTextField.text = question.question
            cell.correctAnswerTextField.text = question.correctAnswer
            cell.incorrectAnswersTextField.text = question.incorrectAnswers.joined(separator: ", ")
