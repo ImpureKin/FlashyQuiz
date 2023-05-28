@@ -1,0 +1,6 @@
+
+{"quizId":5966622281008132661,"title":"lets try this","userId":1,"privacy":"public","questions":[{"correctAnswer":"wee","question":"you","incorrectAnswers":["we’re","we’re are","wndjawseww"]}]}
+{"quizId":68306673533806953,"title":"test","userId":1,"privacy":"public","questions":[{"correctAnswer":"test 1","question":"let test this","incorrectAnswers":["test 2 ","test 3","test 4"]}]}
+{"quizId":-799966494848022639,"title":"testing again","userId":1,"privacy":"public","questions":[{"correctAnswer":"1","question":"lets go","incorrectAnswers":["2","3","4"]}]}
+{"quizId":-3558102711212730245,"title":"hello","userId":1,"privacy":"public","questions":[{"correctAnswer":"12","question":"hello there","incorrectAnswers":["2","3","4"]}]}
+{"quizId":-2991716522252407444,"title":"help","userId":1,"privacy":"public","questions":[{"correctAnswer":"yes","question":"send help","incorrectAnswers":["no","maybe ","help pls"]}]}
