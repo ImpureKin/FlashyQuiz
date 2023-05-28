@@ -57,7 +57,7 @@
                         <textInputTraits key="textInputTraits"/>
                     </textField>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="gXS-ws-U96">
-                        <rect key="frame" x="125" y="251" width="148" height="49"/>
+                        <rect key="frame" x="123" y="239" width="148" height="49"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
                         <state key="normal" title="Button"/>
@@ -68,7 +68,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="correctAnswerTextField" destination="j7W-pA-vAy" id="mfi-Po-FVR"/>
-                <outlet property="deleteButton" destination="gXS-ws-U96" id="oAx-aD-cfR"/>
+                <outlet property="deleteButton" destination="gXS-ws-U96" id="bD2-PT-4kv"/>
                 <outlet property="incorrectAnswersTextField" destination="6Xv-Bf-qMT" id="YtB-54-glg"/>
                 <outlet property="questionTextField" destination="fS8-lB-HAT" id="XS0-4P-LIG"/>
             </connections>

@@ -32,6 +32,15 @@ struct Quiz: Equatable {
     mutating func modifyQuestions(_ newQuestions: [Question]) {
             self.questions = newQuestions
         }
+    
+    mutating func updateTitle(_ newTitle: String) {
+        self.title = newTitle
+    }
+    
+    mutating func updatePrivacy(_ newPrivacy: String) {
+        self.privacy = newPrivacy
+    }
+    
 }
 
 

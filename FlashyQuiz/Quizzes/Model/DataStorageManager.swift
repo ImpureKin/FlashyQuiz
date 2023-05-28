@@ -8,6 +8,8 @@
 import Foundation
 
 class DataStorageManager {
+    
+    //This was my textfile data mangaer. Allowed me to added and view quizzes as that was inital scope.
    /** // Function to get the project's root directory
     func getProjectRootDirectory() -> URL? {
         let currentFileURL = URL(fileURLWithPath: #file)

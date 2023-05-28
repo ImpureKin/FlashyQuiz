@@ -29,7 +29,6 @@ struct QuizManager {
     let incorrectAnswer2Col = Expression<String>("incorrectAnswer2")
     let incorrectAnswer3Col = Expression<String>("incorrectAnswer3")
 
-    // Add a quiz into the database
     func addQuiz(quiz: Quiz) -> Bool {
         do {
             // DB connection
@@ -64,6 +63,7 @@ struct QuizManager {
         print("Successfully inserted quiz.")
         return true
     }
+
     
     // Get all Quizzes owned by a user via their userId
     func getUserQuizzes(userIdInput: Int) -> [Quiz]? {
@@ -183,82 +183,81 @@ struct QuizManager {
     }
     
     // Update Quiz
+    func getQuizIdByRowid(rowIdInput: Int64) -> Int {
+        do {
+            // DB connection
+            let db = try Connection(databaseURL)
+            
+            let query = quizTable.filter(rowIdCol == rowIdInput)
+            guard let quizRow = try db.pluck(query) else {
+                return -1
+            }
+            let quizIdValue = quizRow[quizIdCol]
+            return quizIdValue
+        } catch {
+            print("Error retrieving quizId: \(error)")
+            return -1
+        }
+    }
+    
     func updateQuiz(updatedQuiz: Quiz) -> Bool {
         do {
             // DB connection
             let db = try Connection(databaseURL)
-        
-            let quizId = updatedQuiz.quizId!
             
-            guard let oldQuizRow = try db.pluck(quizTable.filter(quizIdCol == quizId)) else { // SELECT * FROM quizzes WHERE id = quizId
-                return false
-            }
-            guard let oldQuiz = getQuiz(quizId: oldQuizRow[quizIdCol], userId: updatedQuiz.userId) else { // Get old quiz as Quiz object
-                return false
-            }
-            guard deleteRemovedQuestions(oldQuiz: oldQuiz, updatedQuiz: updatedQuiz) else { // Check for and delete any removed questions
-                return false
-            }
-            guard updateQuestions(questions: updatedQuiz.questions) else { // Update remaining questions
+            guard let quizId = updatedQuiz.quizId else {
+                print("Invalid quiz ID")
                 return false
             }
             
-            let quizToUpdate = quizTable.filter(quizIdCol == quizId) // SELECT * FROM quizzes WHERE id = quizId
-            try db.run(quizToUpdate.update(titleCol <- updatedQuiz.title, privacyCol <- updatedQuiz.privacy)) // Update quiz
+            // Update title and privacy
+            let updatedRow = quizTable.filter(quizIdCol == quizId)
+                .update(titleCol <- updatedQuiz.title,
+                        privacyCol <- updatedQuiz.privacy)
+            
+            // Delete existing questions for the quiz
+            try deleteQuestions(forQuizId: quizId, inDatabase: db)
+            
+            // Insert or update questions
+            try insertOrUpdateQuestions(updatedQuiz.questions, forQuizId: quizId, userId: updatedQuiz.userId, inDatabase: db)
+            
+            // Commit the updates
+            try db.run(updatedRow)
             
             return true
         } catch {
             print("Error updating quiz: \(error)")
             return false
         }
-    }
-    
-    // Used as a loop to delete questions
-    func updateQuestions(questions: [Question]) -> Bool {
-        for question in questions {
-            if updateQuestion(updatedQuestion: question) {
-                print("Updated question.")
-            } else {
-                print("Unable to update question.")
-                return false
+        
+        func deleteQuestions(forQuizId quizId: Int, inDatabase db: Connection) throws {
+            let deleteQuery = questionTable.filter(quizIdColLiteral == quizId)
+            try db.run(deleteQuery.delete())
+        }
+
+        func insertOrUpdateQuestions(_ questions: [Question], forQuizId quizId: Int, userId: Int, inDatabase db: Connection) throws {
+            for updatedQuestion in questions {
+                let insertQuery = questionTable.insert(quizIdColLiteral <- quizId,
+                                                       userIdCol <- userId,
+                                                       questionCol <- updatedQuestion.question,
+                                                       correctAnswerCol <- updatedQuestion.correctAnswer,
+                                                       incorrectAnswer1Col <- updatedQuestion.incorrectAnswers[0],
+                                                       incorrectAnswer2Col <- updatedQuestion.incorrectAnswers[1],
+                                                       incorrectAnswer3Col <- updatedQuestion.incorrectAnswers[2])
+                
+                // Update or insert the question
+                let questionId = updatedQuestion.questionId ?? -1
+                if try db.run(insertQuery) > 0 {
+                    let lastInsertedRowID = db.lastInsertRowid
+                    if questionId != -1 {
+                        // Update the questionId with the newly inserted row ID
+                        let updateQuery = questionTable.filter(rowIdCol == lastInsertedRowID)
+                            .update(questionIdColLiteral <- questionId)
+                        try db.run(updateQuery)
+                    }
+                }
             }
         }
-        return true
-    }
-    
-    // Update question details
-    func updateQuestion(updatedQuestion: Question) -> Bool {
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            let questionId = updatedQuestion.questionId!
-            let questionToUpdate = questionTable.filter(questionIdCol == questionId)
-            
-            try db.run(questionToUpdate.update(questionCol <- updatedQuestion.question,
-                                               correctAnswerCol <- updatedQuestion.correctAnswer,
-                                               incorrectAnswer1Col <- updatedQuestion.incorrectAnswers[0],
-                                               incorrectAnswer2Col <- updatedQuestion.incorrectAnswers[1],
-                                               incorrectAnswer3Col <- updatedQuestion.incorrectAnswers[2]))
-            return true
-        } catch {
-            print("Error updating question: \(error)")
-            return false
-        }
-    }
-    
-    // Check for questions that can be deleted
-    func deleteRemovedQuestions(oldQuiz: Quiz, updatedQuiz: Quiz) -> Bool {
-        let deletedQuestions = oldQuiz.questions.filter { !updatedQuiz.questions.contains($0) }
-        for deletableQuestion in deletedQuestions {
-            if deleteQuestion(question: deletableQuestion) {
-                print("Deleted question.")
-            } else {
-                print("Unable to delete question.")
-                return false
-            }
-        }
-        return true
     }
     
     // Delete quiz

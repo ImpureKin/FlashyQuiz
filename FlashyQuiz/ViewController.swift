@@ -13,7 +13,7 @@ class ViewController: UIViewController {
         let userManager = UserManager()
         let quizManager = QuizManager()
         
-        /**  // Pull user details test
+        /** // Pull user details test
         if let userDetails = userManager.getUserDetails(userId: 1) {
             print("User ID: \(userDetails.id)")
             print("Username: \(userDetails.username)")
@@ -37,6 +37,7 @@ class ViewController: UIViewController {
 //        } else {
 //            print("Error")
 //        }
+         
         
         // Add quiz test
         let question1: Question = Question(question: "How are you?", correctAnswer: "No idea", incorrectAnswers: ["Good", "Bad", "Fine"])
@@ -48,7 +49,7 @@ class ViewController: UIViewController {
         } else {
             print("ERROR: QUIZ NOT ADDED.")
         }
-        
+        **/
         if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
             for quiz in quizzes {
                 print("Quiz ID: \(quiz.quizId ?? -1)")
@@ -64,29 +65,40 @@ class ViewController: UIViewController {
         } else {
             print("Error")
         }
-        
-        // Update quiz test
-        var testQuiz = quizManager.getQuiz(quizId: 7, userId: 1)
-        testQuiz?.questions.remove(at: 1)
-        if quizManager.updateQuiz(updatedQuiz: testQuiz!) {
-            if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
-                for quiz in quizzes {
-                    print("Quiz ID: \(quiz.quizId ?? -1)")
-                    print("Quiz Title: \(quiz.title)")
-                    print("Quiz Privacy: \(quiz.privacy)")
-                    print("Quiz UserId: \(quiz.userId)")
-                    for question in quiz.questions {
-                        print("Question: \(question.question)")
-                        print("Question Answer: \(question.correctAnswer)")
-                        print("Question Incorrect Answers: \(question.incorrectAnswers)")
-                    }
-                }
-            } else {
-                print("Error")
-            }
+        /**
+         // Update quiz test
+        let updatedQuiz = Quiz(quizId: 11, userId: 1, title: "Updated Quiz", privacy: "Public", questions: [
+            Question(question: "Updated Question 1", correctAnswer: "Option A", incorrectAnswers: ["Option B", "Option C", "Option D"]),
+        ])
+
+        let isSuccess = quizManager.updateQuiz(updatedQuiz: updatedQuiz)
+
+        if isSuccess {
+            print("Quiz updated successfully")
+        } else {
+            print("Failed to update quiz")
         }
-        
-        // Delete quiz test
+
+        // Retrieve the updated quiz
+        let retrievedQuiz = quizManager.getQuiz(quizId: 11, userId: 1)
+
+        if let quiz = retrievedQuiz {
+            print("Retrieved Quiz:")
+            print("Quiz ID: \(quiz.quizId ?? -1)")
+            print("Title: \(quiz.title)")
+            print("Privacy: \(quiz.privacy)")
+            print("Questions:")
+            for question in quiz.questions {
+                print("Question ID: \(question.questionId ?? -1)")
+                print("Question: \(question.question)")
+                print("Correct Answer: \(question.correctAnswer)")
+                print("Incorrect Answers: \(question.incorrectAnswers)")
+            }
+        } else {
+            print("Failed to retrieve quiz")
+        }
+      
+      // Delete quiz test
         if quizManager.deleteQuiz(quiz: testQuiz!) {
             if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
                 for quiz in quizzes {
@@ -104,7 +116,6 @@ class ViewController: UIViewController {
                 print("Error")
             }
         }
-        
         **/
         
         super.viewDidLoad()

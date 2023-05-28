@@ -16,7 +16,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     var quizTitle: String = ""
     var privacy: String = ""
     var questions: [Question] = []
-    var dataManager = DataStorageManager()
+    var quizManager = QuizManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,18 +92,22 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func saveQuizToDatabase() {
         let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-        
-        let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
-        
-        // Add an action to dismiss the view controller
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            // Navigate back to a certain page
-            self?.navigateBackToPage()
+        if quizManager.addQuiz(quiz: quiz) {
+            print("SUCCESSFULLY ADDED QUIZ.")
+            let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
+            
+            // Add an action to dismiss the view controller
+            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                // Navigate back to a certain page
+                self?.navigateBackToPage()
+            }
+            alert.addAction(okAction)
+            
+            // Present the alert
+            present(alert, animated: true, completion: nil)
+        } else {
+            print("ERROR: QUIZ NOT ADDED.")
         }
-        alert.addAction(okAction)
-        
-        // Present the alert
-        present(alert, animated: true, completion: nil)
     }
     
     func navigateBackToPage() {
