@@ -22,28 +22,40 @@ class LoginController: UIViewController {
     
     // Acquire UserManager
     let userManager = UserManager()
+    var loginSeguePerformed = false
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         let emailInput = emailTextField.text ?? ""
         let passwordInput = passwordTextField.text ?? ""
         
-        // Attempt to log in the user
-        if let loggedUser = userManager.loginUser(email: emailInput, password: passwordInput) {
-            // Login successful - redirect to home, passing User as well
-            performSegue(withIdentifier: "goToHome", sender: loggedUser)
+    
+        if let user = userManager.loginUser(email: emailInput, password: passwordInput),
+           !loginSeguePerformed {
+            
+            loginSeguePerformed = true
+            performSegue(withIdentifier: "goToHome", sender: user)
         } else {
-            // Login failed - show login failed message
+           
             loginFailedLabel.isHidden = false
         }
     }
-    
+
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "goToHome" && loginSeguePerformed {
+            
+            return false
+        }
+        return true
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHome",
-           let destination = segue.destination as? HomeViewController,
-           let loggedUser = sender as? User {
-            // Pass the user object to the Home view controller
-            destination.loggedUser = loggedUser
+           let destination = segue.destination as? BaseTabBarController,
+           let user = sender as? User {
+            
+            destination.loggedUser = user
         }
     }
+
 }
 

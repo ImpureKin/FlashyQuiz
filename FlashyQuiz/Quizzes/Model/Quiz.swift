@@ -7,27 +7,41 @@
 
 import Foundation
 
-class Quiz: Codable {
+struct Quiz: Codable {
+    var quizId: Int = UUID().hashValue //make ? optional when merging with database
+    var userId : Int
     var title: String
+    var privacy: String
     var questions: [Question]
-    var userId : String
     
-    init(title: String, questions: [Question], userID: String) {
+    init(userId: Int, title: String, privacy: String, questions: [Question]) {
+        self.userId = userId
         self.title = title
         self.questions = questions
-        self.userId = userID
+        self.privacy = privacy
+    }
+    
+    init(quizId: Int,userId: Int, title: String, privacy: String, questions: [Question]) {
+        self.quizId = quizId
+        self.userId = userId
+        self.title = title
+        self.questions = questions
+        self.privacy = privacy
     }
 }
 
 
-class Question : Codable {
-    var text: String
-    var correctAnswer: [String]
+
+struct Question : Codable {
+    var question: String
+    var correctAnswer: String
     var incorrectAnswers: [String]
     
-    init(text: String, correctAnswer: [String], incorrectAnswers: [String]) {
-        self.text = text
+    init(question: String, correctAnswer: String, incorrectAnswers: [String]) {
+        self.question = question
         self.correctAnswer = correctAnswer
         self.incorrectAnswers = incorrectAnswers
+
     }
 }
+
