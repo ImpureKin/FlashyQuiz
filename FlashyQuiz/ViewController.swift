@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         let userManager = UserManager()
         let quizManager = QuizManager()
+        let flashcardManager = FlashcardManager()
         let userId = 1
         
         /** // Pull user details test
@@ -62,6 +63,23 @@ class ViewController: UIViewController {
                     print("Question Answer: \(question.correctAnswer)")
                     print("Question Incorrect Answers: \(question.incorrectAnswers)")
                 }
+                print("----------------------------------------")
+            }
+        } else {
+            print("Error")
+        }
+        
+        if let flashcardGroups = flashcardManager.getUserFlashcardGroups(userIdInput: 1) {
+            for flashcardGroup in flashcardGroups {
+                print("Flashcard Group ID: \(flashcardGroup.flashcardGroupId ?? -1)")
+                print("Flashcard Group Title: \(flashcardGroup.title)")
+                print("Flashcard Group Privacy: \(flashcardGroup.privacy)")
+                print("Flashcard Group UserId: \(userId)")
+                for flashcard in flashcardGroup.flashcards {
+                    print("Flashcard Question: \(flashcard.question)")
+                    print("Flashcard Answer: \(flashcard.answer)")
+                }
+                print("----------------------------------------")
             }
         } else {
             print("Error")

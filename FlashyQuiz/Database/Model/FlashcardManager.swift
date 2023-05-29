@@ -18,7 +18,7 @@ struct FlashcardManager {
     let fullFlashcardGroupView = View("FullFlashcardGroups")
     
     // Common table column variables (used in both FlashcardGroups and Flashcards table)
-    let userIdCol = Expression<Int?>("userId")
+    let userIdCol = Expression<Int>("userId")
     let rowIdCol = Expression<Int64>("ROWID")
     
     // Table column variables for FlashcardGroups table
@@ -34,13 +34,13 @@ struct FlashcardManager {
     let answerCol = Expression<String>("answer")
     
     // Add a flashcardGroup into the database
-    func addFlashcardGroup(flashcardGroup: FlashcardGroup) -> Bool {
+    func addFlashcardGroup(flashcardGroup: FlashcardGroup, userId: Int) -> Bool {
         do {
             // DB connection
             let db = try Connection(databaseURL)
             
             // Insert flashcardGroup into DB and fetch created rowId
-            let insertedFlashcardGroupRowId = try db.run(flashcardGroupTable.insert(titleCol <- flashcardGroup.title, userIdCol <- flashcardGroup.userId, privacyCol <- flashcardGroup.privacy))
+            let insertedFlashcardGroupRowId = try db.run(flashcardGroupTable.insert(titleCol <- flashcardGroup.title, userIdCol <- userId, privacyCol <- flashcardGroup.privacy))
             
             // Get the flashcardGroupId of the recently inserted flashcardGroup using the generated rowId
             let flashcardGroupId = getFlashcardGroupIdByRowid(rowId: insertedFlashcardGroupRowId)
@@ -49,7 +49,7 @@ struct FlashcardManager {
                 let flashcards: [Flashcard] = flashcardGroup.flashcards
                 for flashcard in flashcards {
                     // Add flashcards into DB
-                    try db.run(flashcardTable.insert(userIdCol <- flashcardGroup.userId,
+                    try db.run(flashcardTable.insert(userIdCol <- userId,
                                                      flashcardGroupIdColLiteral <- flashcardGroupId,
                                                     questionCol <- flashcard.question,
                                                     answerCol <- flashcard.answer))
@@ -68,114 +68,12 @@ struct FlashcardManager {
     
     // Get all public Flashcard Groups (i.e. work of others) ############## Check userId ###################
     func getPublicFlashcardGroups() -> [FlashcardGroup]? {
-        var flashcardGroups: [FlashcardGroup] = []
-        var flashcards: [Flashcard] = []
-
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            // Query execution and results
-            let query = fullFlashcardGroupView.filter(privacyCol == "Public") // SELECT * FROM FullFlashcardGroups WHERE privacy = "Public"
-            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result
-            
-            // Tracking / other
-            let totalRowCount = rows.count // Get total row count for tracking
-            var prevFlashcardGroupId: Int = 0
-            var currentRow = 1
-
-            // Loop through results
-            for row in rows {
-                // Get values from row/data and store into variables
-                let flashcardGroupId = row[flashcardGroupIdCol]
-                let userId = row[userIdCol]
-                let title = row[titleCol]
-                let privacy = row[privacyCol]
-                let flashcardId = row[flashcardIdColLiteral]
-                let question = row[questionCol]
-                let answer = row[answerCol]
-                let flashcard = Flashcard(flashcardId: flashcardId, question: question, answer: answer) // Create flashcard
-
-                if prevFlashcardGroupId == 0 { // Is the first iteration/row
-                    flashcards.append(flashcard) // Append flashcard
-                } else if flashcardGroupId == prevFlashcardGroupId { // If the current row is a part of the same row
-                    flashcards.append(flashcard) // Append flashcard
-                } else { // Current row is part of a different flashcardGroup than before, append flashcardGroup, reset flashcards array
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: prevFlashcardGroupId, userId: userId!, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
-                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
-                    flashcards = [] // Reset flashcards array
-                    flashcards.append(flashcard) // Append flashcard to clean flashcards array
-                }
-                prevFlashcardGroupId = flashcardGroupId // Track previous flashcardGroupId
-
-                if currentRow == totalRowCount { // If this is the last row, append flashcardGroup before exiting loop
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, userId: userId!, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
-                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
-                }
-                currentRow += 1 // Track current row
-            }
-        } catch {
-            print("Error retrieving flashcardGroupzes: \(error)")
-        }
-        print("Successfully retrieved flashcardGroupzes")
-        return flashcardGroups
+        return getFilteredFlashcardGroups(columnFilter: privacyCol, filterValue: "Public")
     }
     
     // Get all Flashcard Groups (i.e. work of others) ############## Check userId ###################
     func getUserFlashcardGroups(userIdInput: Int) -> [FlashcardGroup]? {
-        var flashcardGroups: [FlashcardGroup] = []
-        var flashcards: [Flashcard] = []
-
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            // Query execution and results
-            let query = fullFlashcardGroupView.filter(userIdCol == userIdInput) // SELECT * FROM FullFlashcardGroups WHERE privacy = "Public"
-            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result
-            
-            // Tracking / other
-            let totalRowCount = rows.count // Get total row count for tracking
-            var prevFlashcardGroupId: Int = 0
-            var currentRow = 1
-
-            // Loop through results
-            for row in rows {
-                // Get values from row/data and store into variables
-                let flashcardGroupId = row[flashcardGroupIdCol]
-                let userId = row[userIdCol]
-                let title = row[titleCol]
-                let privacy = row[privacyCol]
-                let flashcardId = row[flashcardIdColLiteral]
-                let question = row[questionCol]
-                let answer = row[answerCol]
-                let flashcard = Flashcard(flashcardId: flashcardId, question: question, answer: answer) // Create flashcard
-
-                if prevFlashcardGroupId == 0 { // Is the first iteration/row
-                    flashcards.append(flashcard) // Append flashcard
-                } else if flashcardGroupId == prevFlashcardGroupId { // If the current row is a part of the same row
-                    flashcards.append(flashcard) // Append flashcard
-                } else { // Current row is part of a different flashcardGroup than before, append flashcardGroup, reset flashcards array
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: prevFlashcardGroupId, userId: userId ?? userIdInput, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
-                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
-                    flashcards = [] // Reset flashcards array
-                    flashcards.append(flashcard) // Append flashcard to clean flashcards array
-                }
-                prevFlashcardGroupId = flashcardGroupId // Track previous flashcardGroupId
-
-                if currentRow == totalRowCount { // If this is the last row, append flashcardGroup before exiting loop
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, userId: userId ?? userIdInput, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
-                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
-                }
-                currentRow += 1 // Track current row
-            }
-        } catch {
-            print("Error retrieving flashcardGroupzes: \(error)")
-        }
-        print("Successfully retrieved flashcardGroupzes")
-        return flashcardGroups
+        return getFilteredFlashcardGroups(columnFilter: userIdCol, filterValue: userIdInput)
     }
     
     // Get a FlashcardGroup via flashcardGroupId & userId ############## Check userId ###################
@@ -199,7 +97,6 @@ struct FlashcardManager {
             for row in rows {
                 // Get values from row/data and store into variables
                 let flashcardGroupId = row[flashcardGroupIdCol]
-                let userId = row[userIdCol]
                 let title = row[titleCol]
                 let privacy = row[privacyCol]
                 let flashcardId = row[flashcardIdColLiteral]
@@ -208,20 +105,76 @@ struct FlashcardManager {
                 let flashcard = Flashcard(flashcardId: flashcardId, question: question, answer: answer) // Create flashcard
 
                 if currentRow == totalRowCount { // If this is the last row, append flashcardGroup before exiting loop
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, userId: userId ?? userIdInput, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
+                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
                     return flashcardGroup // Append flashcardGroup
+                }
+                currentRow += 1 // Track current row
+            }
+        } catch {
+            print("Error retrieving flashcardGroups: \(error)")
+        }
+        print("Failed to retrieve flashcardGroup")
+        return nil
+    }
+    
+    // Get quizzes based on filter - used to recycle code
+    func getFilteredFlashcardGroups<T: Value>(columnFilter: Expression<T>, filterValue: T) -> [FlashcardGroup] where T.Datatype: Equatable {
+        var flashcardGroups: [FlashcardGroup] = []
+        var flashcards: [Flashcard] = []
+
+        do {
+            // DB connection
+            let db = try Connection(databaseURL)
+            
+            // Query execution and results
+            let query = fullFlashcardGroupView.filter(columnFilter == filterValue)
+                                              .order(flashcardGroupIdCol) // SELECT * FROM FullFlashcardGroups WHERE privacy = "Public" ORDER BY id
+            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
+            let rows = try Array(rowIterator) // Create array using result
+            
+            // Tracking / other
+            let totalRowCount = rows.count // Get total row count for tracking
+            var prevFlashcardGroupId: Int = 0
+            var currentRow = 1
+
+            // Loop through results
+            for row in rows {
+                // Get values from row/data and store into variables
+                let flashcardGroupId = row[flashcardGroupIdCol]
+                let title = row[titleCol]
+                let privacy = row[privacyCol]
+                let flashcardId = row[flashcardIdColLiteral]
+                let question = row[questionCol]
+                let answer = row[answerCol]
+                let flashcard = Flashcard(flashcardId: flashcardId, question: question, answer: answer) // Create flashcard
+
+                if prevFlashcardGroupId == 0 { // Is the first iteration/row
+                    flashcards.append(flashcard) // Append flashcard
+                } else if flashcardGroupId == prevFlashcardGroupId { // If the current row is a part of the same row
+                    flashcards.append(flashcard) // Append flashcard
+                } else { // Current row is part of a different flashcardGroup than before, append flashcardGroup, reset flashcards array
+                    let flashcardGroup = FlashcardGroup(flashcardGroupId: prevFlashcardGroupId, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
+                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
+                    flashcards = [] // Reset flashcards array
+                    flashcards.append(flashcard) // Append flashcard to clean flashcards array
+                }
+                prevFlashcardGroupId = flashcardGroupId // Track previous flashcardGroupId
+
+                if currentRow == totalRowCount { // If this is the last row, append flashcardGroup before exiting loop
+                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
+                    flashcardGroups.append(flashcardGroup) // Append flashcardGroup
                 }
                 currentRow += 1 // Track current row
             }
         } catch {
             print("Error retrieving flashcardGroupzes: \(error)")
         }
-        print("Failed to retrieve flashcardGroup")
-        return nil
+        print("Successfully retrieved flashcardGroupzes")
+        return flashcardGroups
     }
     
     // Update FlashcardGroup
-    func updateFlashcardGroup(updatedFlashcardGroup: FlashcardGroup) -> Bool {
+    func updateFlashcardGroup(updatedFlashcardGroup: FlashcardGroup, userId: Int) -> Bool {
         do {
             // DB connection
             let db = try Connection(databaseURL)
@@ -231,7 +184,7 @@ struct FlashcardManager {
             guard let oldFlashcardGroupRow = try db.pluck(flashcardGroupTable.filter(flashcardGroupIdCol == flashcardGroupId)) else { // SELECT * FROM flashcardGroupzes WHERE id = flashcardGroupId
                 return false
             }
-            guard let oldFlashcardGroup = getFlashcardGroup(flashcardGroupId: oldFlashcardGroupRow[flashcardGroupIdCol], userIdInput: updatedFlashcardGroup.userId) else { // Get old flashcardGroup as FlashcardGroup object
+            guard let oldFlashcardGroup = getFlashcardGroup(flashcardGroupId: oldFlashcardGroupRow[flashcardGroupIdCol], userIdInput: userId) else { // Get old flashcardGroup as FlashcardGroup object
                 return false
             }
             guard deleteRemovedFlashcards(oldFlashcardGroup: oldFlashcardGroup, updatedFlashcardGroup: updatedFlashcardGroup) else { // Check for and delete any removed flashcards
