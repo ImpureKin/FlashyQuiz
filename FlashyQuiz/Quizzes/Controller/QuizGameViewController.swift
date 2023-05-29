@@ -53,12 +53,15 @@ class QuizGameViewController: UIViewController {
             let randomQuestionIndex = unansweredQuestions.randomElement()!
             currentQuestionIndex = randomQuestionIndex
             
+            //chooses a random question
             let question = quiz.questions[randomQuestionIndex]
             questionLabel.text = question.question
             
+            //combinds the incorrect and correct answers and shuffles them
             let allAnswers = question.incorrectAnswers + [question.correctAnswer]
             let randomizedAnswers = allAnswers.shuffled()
             
+            //assugn random answers to random answer buttons
             for (index, button) in answerButtons.enumerated() {
                 button.setTitle(randomizedAnswers[index], for: .normal)
             }
@@ -73,58 +76,64 @@ class QuizGameViewController: UIViewController {
     //How timer is incremented and what happens when the title is invalidate
     @objc func updateTimer() {
         remainingTime -= 1 // decreasing by one
-        timerButton.setTitle("\(remainingTime)", for: .normal)
+        timerButton.setTitle("\(remainingTime)", for: .normal) //set title as the remaining time
         
+        //when the timer is 0 it will invalidate the timer
         if remainingTime == 0 {
             timer?.invalidate()
             
+            // Checks if the question has not been answered and an alert is not already shown
             if !isQuestionAnswered && !isAlertShown {
-                isQuestionAnswered = true
-                showAlert(message: "Time's up!")
-                showNextQuestion()
+                isQuestionAnswered = true // mark the current quetsion as answered
+                showAlert(message: "Time's up!") //shows alert
+                showNextQuestion() //goes to the
             }
         }
     }
     
+    // Function relating to any of the collection of Answer Buttons
     @IBAction func answerButtonTapped(_ sender: UIButton) {
-        guard let quiz = quiz else { return }
-        let question = quiz.questions[currentQuestionIndex]
+        guard let quiz = quiz else { return } //checks if quiz is avalaible
+        let question = quiz.questions[currentQuestionIndex] //retrives the current questions for the quiz
         
         // Disable all answer buttons
         for button in answerButtons {
             button.isEnabled = false
         }
         
+        // the button tapped as the same title as the stored correct answer
         if sender.currentTitle == question.correctAnswer {
-            correctAnswers += 1
-            sender.backgroundColor = UIColor.green
-            showAlert(message: "Correct Answer")
+            correctAnswers += 1 // add one to the score
+            sender.backgroundColor = UIColor.green //button will turn green to signify it is right
+            showAlert(message: "Correct Answer") //shows alert with the message
         } else {
-            sender.backgroundColor = UIColor.red
+            sender.backgroundColor = UIColor.red //if not the correct answer the button will be red
             
-            // Show the correct answer
+            // Shows the user the correct answer as well as the wrong anser
             for button in answerButtons {
                 if button.currentTitle == question.correctAnswer {
-                    button.backgroundColor = UIColor.green
+                    button.backgroundColor = UIColor.green // the button that contained the correct answer will be green
                     break
                 }
             }
             
+            //An alert will be shown showing the correct answer
             showAlert(message: "Incorrect Answer. The correct answer is \(question.correctAnswer)")
         }
         
-        timer?.invalidate()
-        isQuestionAnswered = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        timer?.invalidate() // the timer is invalidated
+        isQuestionAnswered = true //question will be marked as true
+       
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
             self.resetAnswerButtons()
-            self.showNextQuestion()
+    
         }
     }
     
+    // when the user is looking at the pop up message
     func resetAnswerButtons() {
         for button in answerButtons {
-            button.backgroundColor = UIColor.white
+            button.backgroundColor = UIColor.white // the answer buttons background colour is set to right
             button.isEnabled = true
         }
     }
@@ -163,6 +172,7 @@ class QuizGameViewController: UIViewController {
         let alert = UIAlertController(title: "Quiz", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
             self?.isAlertShown = false
+            self?.showNextQuestion()
         }))
         present(alert, animated: true, completion: nil)
     }
