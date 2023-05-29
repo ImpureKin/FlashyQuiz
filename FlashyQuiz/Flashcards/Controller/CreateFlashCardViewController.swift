@@ -17,6 +17,7 @@ class CreateFlashCardViewController: UIViewController {
     var selectedTitle: String = ""
     var selectedPrivacy: String = ""
     var flashcards: [Flashcard] = []
+    let flashcardManager = FlashcardManager()
     
     //var dataManager = DataStorageManager()
     
@@ -51,7 +52,7 @@ class CreateFlashCardViewController: UIViewController {
             return
         }
         
-        let flashcardGroup = FlashcardGroup(userId: userId, title: selectedTitle, privacy: selectedPrivacy, flashcards: flashcards)
+        let flashcardGroup = FlashcardGroup(title: selectedTitle, privacy: selectedPrivacy, flashcards: flashcards)
         saveFlashCardGroupToDatabase(flashcardGroup)
     }
     
@@ -69,8 +70,9 @@ class CreateFlashCardViewController: UIViewController {
         }
         
         // Save the flashcardGroup to the data manager
-        let flashcardGroup = FlashcardGroup(userId: flashcardGroup.userId, title: flashcardGroup.title, privacy: flashcardGroup.privacy, flashcards: []) // Modify as needed based on your data model
+        // let flashcardGroup = FlashcardGroup(title: flashcardGroup.title, privacy: flashcardGroup.privacy, flashcards: [])
         //dataManager.saveToFile([flashcardGroup])
+        flashcardManager.addFlashcardGroup(flashcardGroup: flashcardGroup, userId: userId)
         
         let alert = UIAlertController(title: "Flashcard Deck Saved", message: "The flashcard deck has been saved successfully.", preferredStyle: .alert)
         

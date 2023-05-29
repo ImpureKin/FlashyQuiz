@@ -103,13 +103,6 @@
                                     <segue destination="7aX-uU-fbw" kind="show" identifier="goToHome" id="jUo-WI-uaT"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oops! The email or password you have provided is incorrect. Please try again." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dw2-la-KVO">
-                                <rect key="frame" x="30" y="317" width="333" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vfs-9b-W2r"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -117,7 +110,6 @@
                     <navigationItem key="navigationItem" id="cka-zx-TuS"/>
                     <connections>
                         <outlet property="emailTextField" destination="T11-gj-o1r" id="9Ju-Gz-DqV"/>
-                        <outlet property="loginFailedLabel" destination="dw2-la-KVO" id="uyV-0T-b2g"/>
                         <outlet property="passwordTextField" destination="WxE-Hx-C8l" id="4nb-zz-nhu"/>
                     </connections>
                 </viewController>

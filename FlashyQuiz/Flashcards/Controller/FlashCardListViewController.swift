@@ -13,7 +13,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var userLabel: UILabel!
     
     var flashCardGroups: [FlashcardGroup] = []
-    var dataManager = DataStorageManager() // Uncomment this line
+    let flashcardManager = FlashcardManager()
     var shouldPerformSegue = true
     var userId: Int = 0
     var username: String = ""
@@ -33,7 +33,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
     }
         
     func fetchFlashCardGroups() {
-        flashCardGroups = dataManager.loadFlashCardGroups(forUserId: userId)
+        flashCardGroups = flashcardManager.getUserFlashcardGroups(userIdInput: userId)!
         flashCardTable.reloadData()
     }
     

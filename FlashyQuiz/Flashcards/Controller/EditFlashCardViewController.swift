@@ -27,7 +27,7 @@ class EditFlashCardViewController: UIViewController {
         guard let flashcardGroup = flashcardGroup else { return }
         
         // Create a deep copy of the flashcardGroup object
-        modifiedFlashcardGroup = FlashcardGroup(userId: flashcardGroup.userId, title: flashcardGroup.title, privacy: flashcardGroup.privacy, flashcards: flashcardGroup.flashcards)
+        modifiedFlashcardGroup = FlashcardGroup(title: flashcardGroup.title, privacy: flashcardGroup.privacy, flashcards: flashcardGroup.flashcards)
         
         titleTextField.text = modifiedFlashcardGroup?.title
         privacySwitch.isOn = modifiedFlashcardGroup?.privacy == "public"
