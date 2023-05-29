@@ -16,6 +16,10 @@ class FlashCardDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let nib = UINib(nibName: "FlashCardCell", bundle: nil)
+        flashCardTableView.register(nib, forCellReuseIdentifier: "FlashCardCell")
+        
         flashCardTableView.delegate = self
         flashCardTableView.dataSource = self
         setupUI()

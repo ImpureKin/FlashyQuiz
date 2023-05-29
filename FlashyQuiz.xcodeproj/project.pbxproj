@@ -143,24 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				01C2FD232A1CE4EF0074C7AD /* Controllers */,
-				01C2FD222A1CE4E80074C7AD /* View */,
-				01C2FD212A1CE4DF0074C7AD /* Models */,
 			);
 			path = MainMenuNav;
-			sourceTree = "<group>";
-		};
-		01C2FD212A1CE4DF0074C7AD /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		01C2FD222A1CE4E80074C7AD /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		01C2FD232A1CE4EF0074C7AD /* Controllers */ = {

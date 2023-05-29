@@ -307,6 +307,7 @@
                     <navigationItem key="navigationItem" id="oEr-yy-dew"/>
                     <connections>
                         <outlet property="PBQtable" destination="UI9-x3-V09" id="m31-vU-XhK"/>
+                        <segue destination="hbV-SL-7PO" kind="show" identifier="ExploreToQDetails" id="WzD-PE-0d6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Guc-r5-miK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -404,6 +405,7 @@
                     <navigationItem key="navigationItem" id="N0y-nU-6mV"/>
                     <connections>
                         <outlet property="PFCtable" destination="ArD-wF-U8K" id="mdl-co-Kie"/>
+                        <segue destination="Oeq-o2-Nvy" kind="show" identifier="ExploreToFCDetails" id="KJQ-Wn-6SY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lzo-7u-d51" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1535,7 +1537,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om2-dM-atj">
-                                <rect key="frame" x="-1" y="119" width="394" height="600"/>
+                                <rect key="frame" x="-2" y="116" width="392" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86j-DW-pKP">
@@ -1590,6 +1592,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="WzD-PE-0d6"/>
+        <segue reference="KJQ-Wn-6SY"/>
         <segue reference="now-HL-7bE"/>
     </inferredMetricsTieBreakers>
     <resources>

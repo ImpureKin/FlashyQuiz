@@ -52,8 +52,34 @@ class ExplorePageQuizViewController : UIViewController, UITableViewDelegate, UIT
             
             return cell
         }
+    
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            let quiz = PublicQuizzes[indexPath.row]
+            
+            if navigationController?.topViewController == self {
+                performSegue(withIdentifier: "ExploreToQDetails", sender: quiz)
+            }
+        }
+            
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "ExploreToQDetails",
+                let VC = segue.destination as? QuizDetailsViewController, //next view controller
+                let quiz = sender as? Quiz {
+                VC.quiz = quiz
+            }
+        }
         
+            
+            
     }
+    
+    
+        
+        
+        
+
     
     
     

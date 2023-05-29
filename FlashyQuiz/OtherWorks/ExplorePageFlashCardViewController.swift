@@ -11,14 +11,14 @@ import UIKit
 class ExplorePageFlashCardViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var PFCtable: UITableView!
-    let QM = FlashcardManager() // imports quiz manager
+    let FCM = FlashcardManager() // imports quiz manager
     
     var PublicFC: [FlashcardGroup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PublicFC = QM.getPublicFlashcardGroups() ?? []
+        PublicFC = FCM.getPublicFlashcardGroups() ?? []
         let nib = UINib(nibName: "FlashCardCell", bundle: nil)
         PFCtable.register(nib, forCellReuseIdentifier: "FlashCardCell")
         PFCtable.dataSource = self
@@ -46,4 +46,23 @@ class ExplorePageFlashCardViewController : UIViewController, UITableViewDelegate
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let FC = PublicFC[indexPath.row]
+        
+        if navigationController?.topViewController == self {
+            performSegue(withIdentifier: "ExploreToFCDetails", sender: FC)
+        }
+    }
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ExploreToFCDetails",
+           let VC = segue.destination as? FlashCardDetailsViewController, //next view controller
+           let FC = sender as? FlashcardGroup {
+            VC.flashCardGroup = FC
+        }
+    }
+        
 }
+
