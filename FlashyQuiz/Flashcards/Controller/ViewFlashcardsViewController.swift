@@ -9,15 +9,15 @@ import UIKit
 
 class ViewFlashcardsViewController: UIViewController {
     var flashCardGroup: FlashcardGroup?
+    var currentIndex = 0
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     @IBOutlet weak var flashCardTitleLabel: UILabel!
-    let questions = ["Question 1", "Question 2", "Question 3"]
-    let answers = ["Answer 1", "Answer 2", "Answer 3"]
     
-    var currentIndex = 0
+    var questions: [String] = []
+    var answers: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +36,12 @@ class ViewFlashcardsViewController: UIViewController {
         cardView.addGestureRecognizer(swipeRightGestureRecognizer)
     }
     
-    @IBAction func mainmenuButton(_ sender: Any) {
+    @IBAction func mainMenu(_ sender: Any) {
         navigateBackToPage()
     }
+    
     @objc func flipCard() {
-        UIView.transition(with: cardView, duration: 0.3, options: .transitionFlipFromRight, animations: {
+        UIView.transition(with: cardView, duration: 0.5, options: .transitionFlipFromRight, animations: {
             self.answerLabel.isHidden = !self.answerLabel.isHidden
             self.questionLabel.isHidden = !self.questionLabel.isHidden
         })
@@ -52,7 +53,7 @@ class ViewFlashcardsViewController: UIViewController {
             currentIndex = questions.count - 1
             return
         }
-        animateCard(direction: .transitionFlipFromRight)
+        animateCard(direction: .transitionCurlUp)
         updateCard()
     }
     
@@ -62,12 +63,12 @@ class ViewFlashcardsViewController: UIViewController {
             currentIndex = 0
             return
         }
-        animateCard(direction: .transitionFlipFromLeft)
+        animateCard(direction: .transitionCurlDown)
         updateCard()
     }
     
     func animateCard(direction: UIView.AnimationOptions) {
-        UIView.transition(with: cardView, duration: 0.3, options: [direction, .curveEaseInOut], animations: nil, completion: nil)
+        UIView.transition(with: cardView, duration: 0.5, options: [direction, .curveEaseInOut], animations: nil, completion: nil)
     }
     
     func updateCard() {
@@ -86,13 +87,11 @@ class ViewFlashcardsViewController: UIViewController {
     func navigateBackToPage() {
         if let navigationController = navigationController {
             for viewController in navigationController.viewControllers {
-                if let flashCardMainVC = viewController as? FlashCardMainMenuViewController {
-                    navigationController.popToViewController(flashCardMainVC, animated: true)
+                if let quizMainMenuVC = viewController as? BaseTabBarController {
+                    navigationController.popToViewController(quizMainMenuVC, animated: true)
                     return
                 }
             }
         }
     }
 }
-
-

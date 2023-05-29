@@ -48,7 +48,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
             
             let flashCardGroup = flashCardGroups[indexPath.row]
             cell.flashCardTitle.text = flashCardGroup.title
-            cell.termLabel.text = "\(flashCardGroup.flashcards.count) terms"
+            cell.termLabel.text = "\(flashCardGroup.flashcards.count) Cards"
             
             return cell
         }

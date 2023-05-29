@@ -523,10 +523,10 @@
             </objects>
             <point key="canvasLocation" x="2398" y="-80"/>
         </scene>
-        <!--Flash Card-->
+        <!--Flash Card Main Menu View Controller-->
         <scene sceneID="n3q-C0-apd">
             <objects>
-                <viewController id="Wio-B0-FNn" sceneMemberID="viewController">
+                <viewController title="Flash Card Main Menu View Controller" id="Wio-B0-FNn" customClass="FlashCardMainMenuViewController" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MtU-4U-OdV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -574,7 +574,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NeI-ni-UBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4774.8091603053435" y="922.53521126760563"/>
+            <point key="canvasLocation" x="5105" y="934"/>
         </scene>
         <!--Flash Card List View Controller-->
         <scene sceneID="9O0-O0-IiQ">
@@ -858,7 +858,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemGreenColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="DWb-kM-398" kind="show" id="dIa-MU-cFx"/>
+                                    <segue destination="DWb-kM-398" kind="show" identifier="goToPlayFlashcard" id="dIa-MU-cFx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3D-y3-mlo">
@@ -870,7 +870,7 @@
                                     <color key="baseBackgroundColor" red="0.99450367689999997" green="0.66717618010000002" blue="0.15193861959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="4Qc-Fy-gpK" kind="show" id="z6P-BV-HZV"/>
+                                    <segue destination="4Qc-Fy-gpK" kind="show" identifier="goToModifyFlashcard" id="z6P-BV-HZV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FlashCard Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kH-aL-H1Z">
@@ -886,8 +886,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="PDK-gc-RuC"/>
                     <connections>
-                        <outlet property="flashcardGroupTitleLabel" destination="5kH-aL-H1Z" id="kXR-pz-aun"/>
-                        <outlet property="flashcardTable" destination="hYI-PL-uj9" id="fAP-5e-fuo"/>
+                        <outlet property="flashcardGroupTitleLabel" destination="5kH-aL-H1Z" id="SED-3r-4LH"/>
+                        <outlet property="flashcardTable" destination="hYI-PL-uj9" id="7Bq-5f-SpA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51m-Zr-pQr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1507,9 +1507,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om2-dM-atj">
-                                <rect key="frame" x="0.0" y="120" width="393" height="600"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNk-qo-0Xn">
+                                <rect key="frame" x="0.0" y="120" width="393" height="590"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="2VK-e0-L3C" kind="embed" id="DrY-6F-shy"/>
+                                </connections>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86j-DW-pKP">
                                 <rect key="frame" x="0.0" y="120" width="393" height="590"/>
@@ -1541,8 +1544,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="mainMenuButton:" destination="0zF-hw-7wo" eventType="touchUpInside" id="KqG-i6-8y9"/>
-                                    <action selector="mainmenuButton:" destination="DWb-kM-398" eventType="touchUpInside" id="l7N-Js-FSP"/>
+                                    <action selector="mainMenu:" destination="DWb-kM-398" eventType="touchUpInside" id="q0M-3R-wJ1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1551,15 +1553,29 @@
                     </view>
                     <navigationItem key="navigationItem" id="UyQ-4t-AlU"/>
                     <connections>
-                        <outlet property="answerLabel" destination="EdW-gU-ydM" id="hkj-8S-M8o"/>
-                        <outlet property="cardView" destination="Om2-dM-atj" id="1HV-34-TQI"/>
-                        <outlet property="flashCardTitleLabel" destination="2pB-4z-SbS" id="75e-xK-OBx"/>
-                        <outlet property="questionLabel" destination="86j-DW-pKP" id="Dco-I4-7U7"/>
+                        <outlet property="answerLabel" destination="EdW-gU-ydM" id="OK9-qK-MSB"/>
+                        <outlet property="cardView" destination="KNk-qo-0Xn" id="Cll-Ts-tg4"/>
+                        <outlet property="flashCardTitleLabel" destination="2pB-4z-SbS" id="XIM-WK-q5r"/>
+                        <outlet property="questionLabel" destination="86j-DW-pKP" id="82q-zS-ZFe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RJl-jP-hBd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7661.8320610687024" y="1555.6338028169014"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="K9L-0u-OTm">
+            <objects>
+                <viewController id="2VK-e0-L3C" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A7Z-Gh-ebZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="590"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oyh-iI-ma5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7663" y="1547"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
