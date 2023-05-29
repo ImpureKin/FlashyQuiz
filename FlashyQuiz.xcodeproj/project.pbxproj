@@ -12,7 +12,6 @@
 		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
 		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
 		282DD5772A1B24E100003F6D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5762A1B24E100003F6D /* LoginController.swift */; };
-		282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */; };
 		282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD57F2A1B265F00003F6D /* DatabaseController.swift */; };
 		282DD5822A1B266F00003F6D /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5812A1B266F00003F6D /* DatabaseManager.swift */; };
 		286157782A1B47030023D85A /* FlashyQuiz.db in Resources */ = {isa = PBXBuildFile; fileRef = 286157772A1B47030023D85A /* FlashyQuiz.db */; };
@@ -60,7 +59,6 @@
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulController.swift; sourceTree = "<group>"; };
 		282DD57F2A1B265F00003F6D /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		282DD5812A1B266F00003F6D /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		286157772A1B47030023D85A /* FlashyQuiz.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = FlashyQuiz.db; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				282DD5742A1B24B600003F6D /* SignUpController.swift */,
-				282DD5782A1B25C700003F6D /* SignUpSuccessfulController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -496,7 +493,6 @@
 				29DF85BA2A1A4A51004EB124 /* DataStorageManager.swift in Sources */,
 				2982E3FC2A1F0B3F00DB4DE2 /* QuizCell.swift in Sources */,
 				28B3C2312A1C5865007554F7 /* SettingsManager.swift in Sources */,
-				282DD5792A1B25C700003F6D /* SignUpSuccessfulController.swift in Sources */,
 				28B3C2272A1C5075007554F7 /* UserManager.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
 				29892DCC2A1DF568001725E0 /* QuestionCell.swift in Sources */,
