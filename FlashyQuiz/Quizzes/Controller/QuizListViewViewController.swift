@@ -95,6 +95,7 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
             let VC = segue.destination as? QuizDetailsViewController, //next view controller
             let quiz = sender as? Quiz {
             VC.quiz = quiz //quiz being bassed through
+            VC.userId = userId
         }
     }
 }

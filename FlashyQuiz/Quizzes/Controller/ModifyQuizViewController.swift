@@ -9,6 +9,7 @@ import UIKit
 
 class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quiz: Quiz?
+    var userId: Int = 0 
     var quizManager = QuizManager()
     
     // Outlets
@@ -118,6 +119,35 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         quiz?.questions[index].incorrectAnswers = answers
     }
     
+    @IBAction func deleteQuizButtonTapped(_ sender: UIButton) {
+        // Create an alert to confirm deletion
+        let alert = UIAlertController(title: "Delete Quiz",
+                                      message: "Are you sure you want to delete this quiz?",
+                                      preferredStyle: .alert)
+        
+        // Add a cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        // Add a delete action
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            guard let quiz = self?.quiz else { return }
+            
+            let isDeleted = self?.quizManager.deleteQuiz(quiz: quiz) ?? false
+            
+            if isDeleted {
+                self?.displayAlertWithCompletion(message: "Quiz deleted successfully") { [weak self] in
+                    self?.navigateBackToPage()
+                }
+            } else {
+                self?.displayAlert(message: "Failed to delete quiz")
+            }
+        }
+        alert.addAction(deleteAction)
+        
+        // Present the alert
+        present(alert, animated: true, completion: nil)
+    }
 
     
     @IBAction func updateQuizButtonTapped(_ sender: UIButton) {
@@ -150,7 +180,7 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let updatedQuiz = Quiz(quizId: quizId, title: updatedTitle, privacy: updatedPrivacy, questions: updatedQuestions)
         
-        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: 1) { // ########### NEED TO ADD USER ID #############
+        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: userId) {
             displayAlertWithCompletion(message: "Quiz updated successfully") { [weak self] in
                 self?.navigateBackToPage()
             }
