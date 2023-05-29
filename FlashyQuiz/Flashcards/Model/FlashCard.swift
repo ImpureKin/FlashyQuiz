@@ -7,8 +7,6 @@
 
 import Foundation
 
-
-
 struct Flashcard : Equatable {
     var flashcardId: Int?
     var question: String
@@ -30,5 +28,3 @@ struct Flashcard : Equatable {
         self.answer = answer
     }
 }
-   
-  
