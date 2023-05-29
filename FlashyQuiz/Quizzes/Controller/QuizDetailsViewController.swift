@@ -14,6 +14,7 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var detailTable: UITableView!
     
     var quiz: Quiz?
+    var userId: Int = 0 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
             case "goToModifyQuiz":
                 if let modifyQuizVC = segue.destination as? ModifyQuizViewController {
                     modifyQuizVC.quiz = quiz
+                    modifyQuizVC.userId = userId
                 }
             case "goToPlayQuiz":
                 if let playQuizVC = segue.destination as? QuizGameViewController {

@@ -9,21 +9,18 @@ import Foundation
 
 struct Quiz: Equatable {
     var quizId: Int?
-    var userId : Int
     var title: String
     var privacy: String
     var questions: [Question]
     
-    init(userId: Int, title: String, privacy: String, questions: [Question]) {
-        self.userId = userId
+    init(title: String, privacy: String, questions: [Question]) {
         self.title = title
         self.questions = questions
         self.privacy = privacy
     }
     
-    init(quizId: Int,userId: Int, title: String, privacy: String, questions: [Question]) {
+    init(quizId: Int, title: String, privacy: String, questions: [Question]) {
         self.quizId = quizId
-        self.userId = userId
         self.title = title
         self.questions = questions
         self.privacy = privacy
@@ -32,33 +29,14 @@ struct Quiz: Equatable {
     mutating func modifyQuestions(_ newQuestions: [Question]) {
             self.questions = newQuestions
         }
-}
-
-
-
-struct Question : Equatable {
-    var questionId: Int?
-    var question: String
-    var correctAnswer: String
-    var incorrectAnswers: [String]
     
-    static func == (lhs: Question, rhs: Question) -> Bool {
-        return lhs.question == rhs.question &&
-            lhs.correctAnswer == rhs.correctAnswer &&
-            lhs.incorrectAnswers == rhs.incorrectAnswers
+    mutating func updateTitle(_ newTitle: String) {
+        self.title = newTitle
     }
     
-    init(question: String, correctAnswer: String, incorrectAnswers: [String]) {
-        self.question = question
-        self.correctAnswer = correctAnswer
-        self.incorrectAnswers = incorrectAnswers
+    mutating func updatePrivacy(_ newPrivacy: String) {
+        self.privacy = newPrivacy
     }
     
-    init(questionId: Int, question: String, correctAnswer: String, incorrectAnswers: [String]) {
-        self.questionId = questionId
-        self.question = question
-        self.correctAnswer = correctAnswer
-        self.incorrectAnswers = incorrectAnswers
-    }
 }
 

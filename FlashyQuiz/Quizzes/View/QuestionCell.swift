@@ -9,12 +9,10 @@ import UIKit
 
 class QuestionCell: UITableViewCell {
 
-    @IBOutlet weak var question: UILabel!
-    @IBOutlet weak var correctAnswer: UILabel!
-    @IBOutlet weak var correctAnswerLabel: UILabel!
-    @IBOutlet weak var incorrectAnswer: UILabel!
-    @IBOutlet weak var deleteButton: UIButton!
-    @IBOutlet weak var incorrectAnswerTextView: UITextView!
+    @IBOutlet weak var question: UILabel! //label that will show the quesiton
+    @IBOutlet weak var correctAnswerLabel: UILabel!//Shows correct answer stored for that question
+    @IBOutlet weak var deleteButton: UIButton! //button used to delete the question in the array
+    @IBOutlet weak var incorrectAnswerTextView: UITextView!//Shows incorrect answers stored for that question
     
     
     override func awakeFromNib() {

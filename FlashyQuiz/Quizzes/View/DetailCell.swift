@@ -8,11 +8,10 @@
 import UIKit
 
 class DetailCell: UITableViewCell {
-    
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var correctAnswer: UILabel!
-    @IBOutlet weak var correctAnswerLabel: UILabel!
-    
+
+    @IBOutlet weak var questionLabel: UILabel! //label that will show the quesiton
+    @IBOutlet weak var correctAnswerLabel: UILabel! //label that will show stored correct answer
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +22,5 @@ class DetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }
