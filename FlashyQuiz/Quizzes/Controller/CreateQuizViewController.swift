@@ -10,12 +10,12 @@ import Foundation
 
 class CreateQuizViewController: UIViewController {
 
-    @IBOutlet weak var quizTitle: UILabel!
-    @IBOutlet weak var question: UITextField!
-    @IBOutlet weak var optionOne: UITextField!
-    @IBOutlet weak var optionTwo: UITextField!
-    @IBOutlet weak var optionThree: UITextField!
-    @IBOutlet weak var optionFour: UITextField!
+    @IBOutlet weak var quizTitle: UILabel! //stores the quiz title
+    @IBOutlet weak var question: UITextField! //stores the question
+    @IBOutlet weak var optionOne: UITextField! //optionOne stores the correctAnswer
+    @IBOutlet weak var optionTwo: UITextField! // optionTwo stores an incorrectAnswers
+    @IBOutlet weak var optionThree: UITextField! //optionThree store an incorrectAnswer
+    @IBOutlet weak var optionFour: UITextField! //optionFour stores and incorrectAnswer 
     
     var userId: Int = 0
     var selectedTitle: String = ""

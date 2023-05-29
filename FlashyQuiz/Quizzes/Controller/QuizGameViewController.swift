@@ -138,8 +138,9 @@ class QuizGameViewController: UIViewController {
         }
     }
     
-    //Function to show next question 
+    //Function to show next question in currentQuestionIndex
     func showNextQuestion() {
+            //
             answeredQuestions.append(currentQuestionIndex)
             
             let unansweredQuestions = quiz?.questions.indices.filter { !answeredQuestions.contains($0) }
@@ -172,7 +173,7 @@ class QuizGameViewController: UIViewController {
         
         let alert = UIAlertController(title: "Quiz", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
-            self?.isAlertShown = false
+            self?.isAlertShown = false // alert is set to false
             self?.showNextQuestion()
         }))
         present(alert, animated: true, completion: nil)
