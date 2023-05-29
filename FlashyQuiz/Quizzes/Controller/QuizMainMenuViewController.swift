@@ -15,7 +15,9 @@ class QuizMainMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        navigationItem.hidesBackButton = true //hides back button
+        
         // used to pull the logged in users data from the BaseTabBarController which the data is currently being stored in.
         let tabCont = self.tabBarController as! BaseTabBarController
         loggedUser = tabCont.loggedUser //pulls the logged user data

@@ -9,6 +9,7 @@ import UIKit
 
 class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quiz: Quiz?
+    var userId: Int = 0 
     var quizManager = QuizManager()
     
     // Outlets
@@ -150,7 +151,7 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let updatedQuiz = Quiz(quizId: quizId, title: updatedTitle, privacy: updatedPrivacy, questions: updatedQuestions)
         
-        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: 1) { // ########### NEED TO ADD USER ID #############
+        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: userId) {
             displayAlertWithCompletion(message: "Quiz updated successfully") { [weak self] in
                 self?.navigateBackToPage()
             }

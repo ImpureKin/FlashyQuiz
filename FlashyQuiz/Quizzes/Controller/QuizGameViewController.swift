@@ -134,10 +134,11 @@ class QuizGameViewController: UIViewController {
     func resetAnswerButtons() {
         for button in answerButtons {
             button.backgroundColor = UIColor.white // the answer buttons background colour is set to right
-            button.isEnabled = true
+            button.isEnabled = true // button is enabled 
         }
     }
     
+    //Function to show next question 
     func showNextQuestion() {
             answeredQuestions.append(currentQuestionIndex)
             
