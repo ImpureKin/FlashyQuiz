@@ -95,7 +95,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func submitButton(_ sender: UIButton) {
-        saveQuizToDatabase()
+       // saveQuizToDatabase()
     }
     
     
