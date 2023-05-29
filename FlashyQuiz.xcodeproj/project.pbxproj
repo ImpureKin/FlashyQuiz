@@ -43,6 +43,7 @@
 		29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */; };
 		29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */; };
 		3148F9752A1C7BFC002C2C3C /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148F9742A1C7BFC002C2C3C /* FlashCard.swift */; };
+		319AC7712A247157009EAF82 /* FlashcardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC7702A247157009EAF82 /* FlashcardGroup.swift */; };
 		348FA69F2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA69E2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift */; };
 		348FA6A52A23D402009C1D8F /* AddTitleFlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA6A42A23D402009C1D8F /* AddTitleFlashCardViewController.swift */; };
 		348FA6A72A23DD36009C1D8F /* FlashCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA6A62A23DD36009C1D8F /* FlashCardListViewController.swift */; };
@@ -104,6 +105,7 @@
 		29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameViewController.swift; sourceTree = "<group>"; };
 		29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
 		3148F9742A1C7BFC002C2C3C /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
+		319AC7702A247157009EAF82 /* FlashcardGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardGroup.swift; sourceTree = "<group>"; };
 		348FA69E2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardMainMenuViewController.swift; sourceTree = "<group>"; };
 		348FA6A42A23D402009C1D8F /* AddTitleFlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleFlashCardViewController.swift; sourceTree = "<group>"; };
 		348FA6A62A23DD36009C1D8F /* FlashCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardListViewController.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 			isa = PBXGroup;
 			children = (
 				3148F9742A1C7BFC002C2C3C /* FlashCard.swift */,
+				319AC7702A247157009EAF82 /* FlashcardGroup.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */,
 				2982E4002A1F5BA500DB4DE2 /* DetailCell.swift in Sources */,
 				01995FD62A21F8DA00ADB834 /* BaseTabBarController.swift in Sources */,
+				319AC7712A247157009EAF82 /* FlashcardGroup.swift in Sources */,
 				348FA6A52A23D402009C1D8F /* AddTitleFlashCardViewController.swift in Sources */,
 				348FA6B12A23E0A2009C1D8F /* FlashCardCell.swift in Sources */,
 				29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */,
