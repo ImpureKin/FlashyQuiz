@@ -7,23 +7,20 @@
 
 import Foundation
 
-struct Quiz: Codable {
-    var quizId: Int = UUID().hashValue //make ? optional when merging with database
-    var userId : Int
+struct Quiz: Equatable {
+    var quizId: Int?
     var title: String
     var privacy: String
     var questions: [Question]
     
-    init(userId: Int, title: String, privacy: String, questions: [Question]) {
-        self.userId = userId
+    init(title: String, privacy: String, questions: [Question]) {
         self.title = title
         self.questions = questions
         self.privacy = privacy
     }
     
-    init(quizId: Int,userId: Int, title: String, privacy: String, questions: [Question]) {
+    init(quizId: Int, title: String, privacy: String, questions: [Question]) {
         self.quizId = quizId
-        self.userId = userId
         self.title = title
         self.questions = questions
         self.privacy = privacy
@@ -32,20 +29,40 @@ struct Quiz: Codable {
     mutating func modifyQuestions(_ newQuestions: [Question]) {
             self.questions = newQuestions
         }
+    
+    mutating func updateTitle(_ newTitle: String) {
+        self.title = newTitle
+    }
+    
+    mutating func updatePrivacy(_ newPrivacy: String) {
+        self.privacy = newPrivacy
+    }
+    
 }
 
-
-
-struct Question : Codable {
+struct Question : Equatable {
+    var questionId: Int?
     var question: String
     var correctAnswer: String
     var incorrectAnswers: [String]
+    
+    static func == (lhs: Question, rhs: Question) -> Bool {
+        return lhs.question == rhs.question &&
+            lhs.correctAnswer == rhs.correctAnswer &&
+            lhs.incorrectAnswers == rhs.incorrectAnswers
+    }
     
     init(question: String, correctAnswer: String, incorrectAnswers: [String]) {
         self.question = question
         self.correctAnswer = correctAnswer
         self.incorrectAnswers = incorrectAnswers
-
+    }
+    
+    init(questionId: Int, question: String, correctAnswer: String, incorrectAnswers: [String]) {
+        self.questionId = questionId
+        self.question = question
+        self.correctAnswer = correctAnswer
+        self.incorrectAnswers = incorrectAnswers
     }
 }
 

@@ -12,12 +12,9 @@ class LoginController: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var loginFailedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginFailedLabel.isHidden = true
     }
     
     // Acquire UserManager
@@ -28,21 +25,22 @@ class LoginController: UIViewController {
         let emailInput = emailTextField.text ?? ""
         let passwordInput = passwordTextField.text ?? ""
         
-    
         if let user = userManager.loginUser(email: emailInput, password: passwordInput),
            !loginSeguePerformed {
-            
             loginSeguePerformed = true
             performSegue(withIdentifier: "goToHome", sender: user)
         } else {
-           
-            loginFailedLabel.isHidden = false
+            let alert = UIAlertController(title: "Login Failed",
+                                          message: "You have provided the wrong details. Please try again.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "goToHome" && loginSeguePerformed {
-            
             return false
         }
         return true
@@ -52,7 +50,6 @@ class LoginController: UIViewController {
         if segue.identifier == "goToHome",
            let destination = segue.destination as? BaseTabBarController,
            let user = sender as? User {
-            
             destination.loggedUser = user
         }
     }
