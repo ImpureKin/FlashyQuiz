@@ -596,10 +596,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <accessibility key="accessibilityConfiguration" identifier="FlashCardCell"/>
-                                        <connections>
-                                            <segue destination="Oeq-o2-Nvy" kind="show" identifier="goToFlashCardDetails" id="Ecg-mb-hyR"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -611,12 +607,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QGm-rO-oAT">
+                                <rect key="frame" x="185" y="751" width="24" height="14"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <segue destination="Oeq-o2-Nvy" kind="show" identifier="goToFlashCardDetails" id="JVU-NH-9Wc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KvJ-zh-Q6r"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="mJV-ol-hpO"/>
                     <connections>
+                        <outlet property="button" destination="QGm-rO-oAT" id="S8h-d7-edY"/>
                         <outlet property="flashCardTable" destination="YaB-gk-ePz" id="kEH-mO-nRo"/>
                         <outlet property="userLabel" destination="373-dw-jc0" id="0KG-XE-Yxd"/>
                     </connections>
@@ -880,8 +886,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="PDK-gc-RuC"/>
                     <connections>
-                        <outlet property="flashCardTableView" destination="hYI-PL-uj9" id="wxq-PQ-bj3"/>
-                        <outlet property="flashCardTitleLabel" destination="5kH-aL-H1Z" id="L2p-Rx-Du2"/>
+                        <outlet property="flashcardGroupTitleLabel" destination="5kH-aL-H1Z" id="kXR-pz-aun"/>
+                        <outlet property="flashcardTable" destination="hYI-PL-uj9" id="fAP-5e-fuo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="51m-Zr-pQr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

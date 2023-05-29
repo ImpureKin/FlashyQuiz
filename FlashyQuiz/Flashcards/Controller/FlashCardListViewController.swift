@@ -12,6 +12,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var flashCardTable: UITableView!
     @IBOutlet weak var userLabel: UILabel!
     
+    @IBOutlet weak var button: UIButton!
     var flashCardGroups: [FlashcardGroup] = []
         let flashcardManager = FlashcardManager()
         var shouldPerformSegue = true
@@ -20,6 +21,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
             
         override func viewDidLoad() {
             super.viewDidLoad()
+            button.isEnabled = false
             let nib = UINib(nibName: "FlashCardCell", bundle: nil)
             
             userLabel.text = "\(username)'s Flash Cards"
@@ -65,7 +67,7 @@ class FlashCardListViewController: UIViewController, UITableViewDelegate, UITabl
             if segue.identifier == "goToFlashCardDetails",
                let destinationVC = segue.destination as? FlashCardDetailsViewController,
                let flashCardGroup = sender as? FlashcardGroup {
-                destinationVC.flashCardGroup = flashCardGroup
+                destinationVC.flashcardGroup = flashCardGroup
             }
         }
     }
