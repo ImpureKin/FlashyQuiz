@@ -21,7 +21,6 @@ class ExplorePageFlashCardViewController : UIViewController, UITableViewDelegate
         PublicFC = QM.getPublicFlashcardGroups() ?? []
         let nib = UINib(nibName: "FlashCardCell", bundle: nil)
         PFCtable.register(nib, forCellReuseIdentifier: "FlashCardCell")
-        
         PFCtable.dataSource = self
         PFCtable.delegate = self
     }
