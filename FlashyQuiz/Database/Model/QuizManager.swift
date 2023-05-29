@@ -11,7 +11,7 @@ struct QuizManager {
     let fullQuizView = View("FullQuiz")
     
     // Common table column variables (used in both Quizzes and Questions table)
-    let userIdCol = Expression<Int?>("userId")
+    let userIdCol = Expression<Int>("userId")
     let rowIdCol = Expression<Int64>("ROWID")
     
     // Table column variables for Quizzes table
@@ -30,13 +30,13 @@ struct QuizManager {
     let incorrectAnswer3Col = Expression<String>("incorrectAnswer3")
 
     // Add a quiz into the database
-    func addQuiz(quiz: Quiz) -> Bool {
+    func addQuiz(quiz: Quiz, userId: Int) -> Bool {
         do {
             // DB connection
             let db = try Connection(databaseURL)
             
             // Insert quiz into DB and fetch created rowId
-            let insertedQuizRowId = try db.run(quizTable.insert(titleCol <- quiz.title, userIdCol <- quiz.userId, privacyCol <- quiz.privacy))
+            let insertedQuizRowId = try db.run(quizTable.insert(titleCol <- quiz.title, userIdCol <- userId, privacyCol <- quiz.privacy))
             
             // Get the quizId of the recently inserted quiz using the generated rowId
             let quizId = getQuizIdByRowid(rowId: insertedQuizRowId)
@@ -45,7 +45,7 @@ struct QuizManager {
                 let questions: [Question] = quiz.questions
                 for question in questions {
                     // Add questions into DB
-                    try db.run(questionTable.insert(userIdCol <- quiz.userId,
+                    try db.run(questionTable.insert(userIdCol <- userId,
                                                     quizIdColLiteral <- quizId,
                                                     questionCol <- question.question,
                                                     correctAnswerCol <- question.correctAnswer,
@@ -65,123 +65,19 @@ struct QuizManager {
         return true
     }
     
-    // Get all public Quizzes (i.e. work of others) ############## Check userId ###################
+    // Get all public Quizzes (i.e. work of others)
     func getPublicQuizzes() -> [Quiz]? {
-        var quizzes: [Quiz] = []
-        var questions: [Question] = []
-
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            // Query execution and results
-            let query = fullQuizView.filter(privacyCol == "Public") // SELECT * FROM FullQuiz WHERE privacy = "Public"
-            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result
-            
-            // Tracking / other
-            let totalRowCount = rows.count // Get total row count for tracking
-            var prevQuizId: Int = 0
-            var currentRow = 1
-
-            // Loop through results
-            for row in rows {
-                // Get values from row/data and store into variables
-                let quizId = row[quizIdCol]
-                let userId = row[userIdCol]
-                let title = row[titleCol]
-                let privacy = row[privacyCol]
-                let questionId = row[questionIdColLiteral]
-                let questionText = row[questionCol]
-                let correctAnswer = row[correctAnswerCol]
-                let incorrectAnswers = [row[incorrectAnswer1Col], row[incorrectAnswer2Col], row[incorrectAnswer3Col]].compactMap { $0 }
-                let question = Question(questionId: questionId, question: questionText, correctAnswer: correctAnswer, incorrectAnswers: incorrectAnswers) // Create question
-
-                if prevQuizId == 0 { // Is the first iteration/row
-                    questions.append(question) // Append question
-                } else if quizId == prevQuizId { // If the current row is a part of the same row
-                    questions.append(question) // Append question
-                } else { // Current row is part of a different quiz than before, append quiz, reset questions array
-                    let quiz = Quiz(quizId: prevQuizId, userId: userId!, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
-                    quizzes.append(quiz) // Append quiz
-                    questions = [] // Reset questions array
-                    questions.append(question) // Append question to clean questions array
-                }
-                prevQuizId = quizId // Track previous quizId
-
-                if currentRow == totalRowCount { // If this is the last row, append quiz before exiting loop
-                    let quiz = Quiz(quizId: quizId, userId: userId!, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
-                    quizzes.append(quiz) // Append quiz
-                }
-                currentRow += 1 // Track current row
-            }
-        } catch {
-            print("Error retrieving quizzes: \(error)")
-        }
-        print("Successfully retrieved quizzes")
-        return quizzes
+        return getFilteredQuizzes(columnFilter: privacyCol, filterValue: "Public")
     }
     
-    // Get all Quizzes owned by a user via their userId ############## Check userId ###################
+    // Get all Quizzes owned by a user via their userId
     func getUserQuizzes(userIdInput: Int) -> [Quiz]? {
-        var quizzes: [Quiz] = []
-        var questions: [Question] = []
-
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            // Query execution and results
-            let query = fullQuizView.filter(userIdCol == userIdInput) // SELECT * FROM FullQuiz WHERE userId = (userIdInput)
-            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result
-            
-            // Tracking / other
-            let totalRowCount = rows.count // Get total row count for tracking
-            var prevQuizId: Int = 0
-            var currentRow = 1
-
-            // Loop through results
-            for row in rows {
-                // Get values from row/data and store into variables
-                let quizId = row[quizIdCol]
-                let userId = row[userIdCol]
-                let title = row[titleCol]
-                let privacy = row[privacyCol]
-                let questionId = row[questionIdColLiteral]
-                let questionText = row[questionCol]
-                let correctAnswer = row[correctAnswerCol]
-                let incorrectAnswers = [row[incorrectAnswer1Col], row[incorrectAnswer2Col], row[incorrectAnswer3Col]].compactMap { $0 }
-                let question = Question(questionId: questionId, question: questionText, correctAnswer: correctAnswer, incorrectAnswers: incorrectAnswers) // Create question
-
-                if prevQuizId == 0 { // Is the first iteration/row
-                    questions.append(question) // Append question
-                } else if quizId == prevQuizId { // If the current row is a part of the same row
-                    questions.append(question) // Append question
-                } else { // Current row is part of a different quiz than before, append quiz, reset questions array
-                    let quiz = Quiz(quizId: prevQuizId, userId: userId ?? userIdInput, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
-                    quizzes.append(quiz) // Append quiz
-                    questions = [] // Reset questions array
-                    questions.append(question) // Append question to clean questions array
-                }
-                prevQuizId = quizId // Track previous quizId
-
-                if currentRow == totalRowCount { // If this is the last row, append quiz before exiting loop
-                    let quiz = Quiz(quizId: quizId, userId: userId ?? userIdInput, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
-                    quizzes.append(quiz) // Append quiz
-                }
-                currentRow += 1 // Track current row
-            }
-        } catch {
-            print("Error retrieving quizzes: \(error)")
-        }
-        print("Successfully retrieved quizzes")
-        return quizzes
+        return getFilteredQuizzes(columnFilter: userIdCol, filterValue: userIdInput)
     }
     
     // Get a quiz via quizId & userId ############## Check userId ###################
     // Note: quizId on it's own should be sufficient as it is the primary key. However, we also need userId as a parameter to workaround an unknown issue.
-    func getQuiz(quizId: Int, userIdInput: Int) -> Quiz? {
+    func getQuiz(quizId: Int) -> Quiz? {
         do {
             // DB connection
             let db = try Connection(databaseURL)
@@ -211,7 +107,7 @@ struct QuizManager {
                 questions.append(question)
 
                 if currentRow == totalRowCount { // If this is the last row, append quiz before exiting loop
-                    let quiz = Quiz(quizId: quizId, userId: userId ?? userIdInput, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
+                    let quiz = Quiz(quizId: quizId, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
                     return quiz // Append quiz
                 }
                 currentRow += 1 // Track current row
@@ -241,34 +137,117 @@ struct QuizManager {
         }
     }
     
-    // Update Quiz
-    func updateQuiz(updatedQuiz: Quiz) -> Bool {
+    // Get quizzes based on filter - used to recycle code
+    func getFilteredQuizzes<T: Value>(columnFilter: Expression<T>, filterValue: T) -> [Quiz] where T.Datatype: Equatable {
+        var quizzes: [Quiz] = []
+        var questions: [Question] = []
+
         do {
             // DB connection
             let db = try Connection(databaseURL)
-        
-            let quizId = updatedQuiz.quizId!
+            // Query execution and results
+            let query = fullQuizView.filter(columnFilter == filterValue) // SELECT * FROM FullQuiz WHERE userId = userIdInput ORDER BY id
+                                    .order(quizIdCol)
+            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
+            let rows = try Array(rowIterator) // Create array using result
+
+            // Loop through results
+            for (index, row) in rows.enumerated() {
+                
+                // Get values from row/data and store into variables
+                let quizId = row[quizIdCol]
+                let title = row[titleCol]
+                let privacy = row[privacyCol]
+                let questionId = row[questionIdColLiteral]
+                let questionText = row[questionCol]
+                let correctAnswer = row[correctAnswerCol]
+                let incorrectAnswers = [row[incorrectAnswer1Col], row[incorrectAnswer2Col], row[incorrectAnswer3Col]].compactMap { $0 }
+                let question = Question(questionId: questionId, question: questionText, correctAnswer: correctAnswer, incorrectAnswers: incorrectAnswers) // Create question
+
+                if index < rows.count - 1 {
+                    let nextRow = rows[index + 1]
+                    let nextQuizId = nextRow[quizIdCol]
+                    
+                    if quizId == nextQuizId { // Is the first iteration/row
+                        questions.append(question) // Append question
+                    } else { // Current row is part of a different quiz than before, append quiz, reset questions array
+                        questions.append(question) // Append question
+                        let quiz = Quiz(quizId: quizId, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
+                        // print(quiz)
+                        quizzes.append(quiz) // Append quiz
+                        questions = [] // Reset questions array
+                    }
+                } else {
+                    questions.append(question) // Append question
+                    let quiz = Quiz(quizId: quizId, title: title, privacy: privacy, questions: questions) // Create quiz (with questions)
+                    quizzes.append(quiz) // Append quiz
+                }
+            }
+        } catch {
+            print("Error retrieving quizzes: \(error)")
+        }
+        print("Successfully retrieved quizzes")
+        return quizzes
+    }
+    
+    // Update Quiz
+    func updateQuiz(updatedQuiz: Quiz, userId: Int) -> Bool {
+        do {
+            // DB connection
+            let db = try Connection(databaseURL)
             
-            guard let oldQuizRow = try db.pluck(quizTable.filter(quizIdCol == quizId)) else { // SELECT * FROM quizzes WHERE id = quizId
-                return false
-            }
-            guard let oldQuiz = getQuiz(quizId: oldQuizRow[quizIdCol], userIdInput: updatedQuiz.userId) else { // Get old quiz as Quiz object
-                return false
-            }
-            guard deleteRemovedQuestions(oldQuiz: oldQuiz, updatedQuiz: updatedQuiz) else { // Check for and delete any removed questions
-                return false
-            }
-            guard updateQuestions(questions: updatedQuiz.questions) else { // Update remaining questions
+            guard let quizId = updatedQuiz.quizId else {
+                print("Invalid quiz ID")
                 return false
             }
             
-            let quizToUpdate = quizTable.filter(quizIdCol == quizId) // SELECT * FROM quizzes WHERE id = quizId
-            try db.run(quizToUpdate.update(titleCol <- updatedQuiz.title, privacyCol <- updatedQuiz.privacy)) // Update quiz
+            // Update title and privacy
+            let updatedRow = quizTable.filter(quizIdCol == quizId)
+                .update(titleCol <- updatedQuiz.title,
+                        privacyCol <- updatedQuiz.privacy)
+            
+            // Delete existing questions for the quiz
+            try deleteQuestions(forQuizId: quizId, inDatabase: db)
+            
+            // Insert or update questions
+            try insertOrUpdateQuestions(updatedQuiz.questions, forQuizId: quizId, userId: userId, inDatabase: db)
+            
+            // Commit the updates
+            try db.run(updatedRow)
             
             return true
         } catch {
             print("Error updating quiz: \(error)")
             return false
+        }
+        
+        func deleteQuestions(forQuizId quizId: Int, inDatabase db: Connection) throws {
+            let deleteQuery = questionTable.filter(quizIdColLiteral == quizId)
+            try db.run(deleteQuery.delete())
+        }
+
+        func insertOrUpdateQuestions(_ questions: [Question], forQuizId quizId: Int, userId: Int, inDatabase db: Connection) throws {
+            for updatedQuestion in questions {
+                let insertQuery = questionTable.insert(quizIdColLiteral <- quizId,
+                                                       userIdCol <- userId,
+                                                       questionCol <- updatedQuestion.question,
+                                                       correctAnswerCol <- updatedQuestion.correctAnswer,
+                                                       incorrectAnswer1Col <- updatedQuestion.incorrectAnswers[0],
+                                                       incorrectAnswer2Col <- updatedQuestion.incorrectAnswers[1],
+                                                       incorrectAnswer3Col <- updatedQuestion.incorrectAnswers[2])
+                
+                // Update or insert the question
+                let questionId = updatedQuestion.questionId ?? -1
+                if try db.run(insertQuery) > 0 {
+                    let lastInsertedRowID = db.lastInsertRowid
+                    if questionId != -1 {
+                        // Update the questionId with the newly inserted row ID
+                        let updateQuery = questionTable.filter(rowIdCol == lastInsertedRowID)
+                            .update(questionIdColLiteral <- questionId)
+                        try db.run(updateQuery)
+                    }
+                }
+            }
         }
     }
     

@@ -7,77 +7,185 @@
 
 import UIKit
 
-class ModifyQuizViewController: UIViewController {
-    
-    var loggedUser: User?
+class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var quiz: Quiz?
-    var modifiedQuiz: Quiz?
-    var selectedQuestionIndex: Int?
+    var quizManager = QuizManager()
     
+    // Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var privacySwitch: UISwitch!
     @IBOutlet weak var modifyTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
+        
+        // Set the initial values for the view components
+        titleTextField.text = quiz?.title
+        privacySwitch.isOn = quiz?.privacy == "Public"
+        
+        // Register the custom cell
+        let nib = UINib(nibName: "ModifyCell", bundle: nil)
+        modifyTableView.register(nib, forCellReuseIdentifier: "ModifyCell")
+        
+        // Set the delegate and dataSource
+        modifyTableView.delegate = self
+        modifyTableView.dataSource = self
     }
     
-    func setupUI() {
-        guard let quiz = quiz else { return }
-        
-        // Create a deep copy of the quiz object
-        modifiedQuiz = Quiz(userId: quiz.userId, title: quiz.title, privacy: quiz.privacy, questions: quiz.questions)
-        
-        titleTextField.text = modifiedQuiz?.title
-        privacySwitch.isOn = modifiedQuiz?.privacy == "Public"
-    }
-    
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-            guard var modifiedQuiz = modifiedQuiz else { return }
-            
-            if let newTitle = titleTextField.text {
-                modifiedQuiz.title = newTitle
-                modifiedQuiz.privacy = privacySwitch.isOn ? "Public" : "Private"
-                
-                // Call the modifyQuiz function in the data storage manager to update the quiz
-                DataStorageManager().modifyQuiz(modifiedQuiz)
-                
-                // Pop the view controller to go back to the previous screen
-                navigationController?.popViewController(animated: true)
-            }
-        }
-    }
 
-extension ModifyQuizViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return modifiedQuiz?.questions.count ?? 0
+        return quiz?.questions.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ModificationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ModifyCell", for: indexPath) as! ModifyCell
         
-        guard let question = modifiedQuiz?.questions[indexPath.row] else {
-            return cell
+        if let question = quiz?.questions[indexPath.row] {
+            cell.questionTextField.text = question.question
+            cell.correctAnswerTextField.text = question.correctAnswer
+            cell.incorrectAnswersTextField.text = question.incorrectAnswers.joined(separator: ", ")
         }
         
-        cell.textLabel?.text = question.question
+        cell.deleteButton.tag = indexPath.row
+        cell.deleteButton.addTarget(self, action: #selector(deleteQuestion(_:)), for: .touchUpInside)
         
-        if let selectedQuestionIndex = selectedQuestionIndex, indexPath.row == selectedQuestionIndex {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
-        }
+        cell.questionTextField.addTarget(self, action: #selector(questionTextFieldChanged(_:)), for: .editingChanged)
+        cell.correctAnswerTextField.addTarget(self, action: #selector(correctAnswerTextFieldChanged(_:)), for: .editingChanged)
+        cell.incorrectAnswersTextField.addTarget(self, action: #selector(incorrectAnswersTextFieldChanged(_:)), for: .editingChanged)
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedQuestionIndex = indexPath.row
-        tableView.reloadData()
+   
+    
+    @objc func deleteQuestion(_ sender: UIButton) {
+        guard let cell = sender.superview?.superview as? UITableViewCell,
+              let indexPath = modifyTableView.indexPath(for: cell),
+              let questionCount = quiz?.questions.count else {
+            return
+        }
         
-        // Load the question details when a question is selected
-        setupUI()
+        if questionCount <= 1 {
+            // Display an alert informing that the last question cannot be deleted
+            let alert = UIAlertController(title: "Cannot Delete Question",
+                                          message: "You cannot delete the last question.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // Create an alert to confirm deletion
+        let alert = UIAlertController(title: "Delete Question",
+                                      message: "Are you sure you want to delete this question?",
+                                      preferredStyle: .alert)
+        
+        // Add a cancel action
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        // Add a delete action
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
+            // Remove the question at the corresponding index
+            self?.quiz?.questions.remove(at: indexPath.row)
+            
+            // Reload the table view to reflect the changes
+            self?.modifyTableView.reloadData()
+        }
+        alert.addAction(deleteAction)
+        
+        // Present the alert
+        present(alert, animated: true, completion: nil)
+    }
+
+
+    
+    @objc func questionTextFieldChanged(_ textField: UITextField) {
+        guard let index = textField.superview?.tag else { return }
+        quiz?.questions[index].question = textField.text ?? ""
+    }
+    
+    @objc func correctAnswerTextFieldChanged(_ textField: UITextField) {
+        guard let index = textField.superview?.tag else { return }
+        quiz?.questions[index].correctAnswer = textField.text ?? ""
+    }
+    
+    @objc func incorrectAnswersTextFieldChanged(_ textField: UITextField) {
+        guard let index = textField.superview?.tag else { return }
+        let answers = textField.text?.components(separatedBy: ", ") ?? []
+        quiz?.questions[index].incorrectAnswers = answers
+    }
+    
+
+    
+    @IBAction func updateQuizButtonTapped(_ sender: UIButton) {
+        guard let quizId = quiz?.quizId,
+              let updatedTitle = titleTextField.text,
+              !updatedTitle.isEmpty else {
+            displayAlert(message: "Invalid quiz data")
+            return
+        }
+        
+        let updatedPrivacy = privacySwitch.isOn ? "Public" : "Private"
+        
+        var updatedQuestions: [Question] = []
+        
+        for row in 0..<modifyTableView.numberOfRows(inSection: 0) {
+            guard let cell = modifyTableView.cellForRow(at: IndexPath(row: row, section: 0)) as? ModifyCell,
+                  let questionText = cell.questionTextField.text,
+                  !questionText.isEmpty,
+                  let correctAnswerText = cell.correctAnswerTextField.text,
+                  !correctAnswerText.isEmpty,
+                  let incorrectAnswersText = cell.incorrectAnswersTextField.text,
+                  !incorrectAnswersText.isEmpty else {
+                displayAlert(message: "Invalid quiz data")
+                return
+            }
+            
+            let updatedQuestion = Question(question: questionText, correctAnswer: correctAnswerText, incorrectAnswers: incorrectAnswersText.components(separatedBy: ","))
+            updatedQuestions.append(updatedQuestion)
+        }
+        
+        let updatedQuiz = Quiz(quizId: quizId, title: updatedTitle, privacy: updatedPrivacy, questions: updatedQuestions)
+        
+        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: 1) { // ########### NEED TO ADD USER ID #############
+            displayAlertWithCompletion(message: "Quiz updated successfully") { [weak self] in
+                self?.navigateBackToPage()
+            }
+        } else {
+            displayAlert(message: "Failed to update quiz")
+        }
+    }
+
+    func navigateBackToPage() {
+        if let navigationController = navigationController {
+            for viewController in navigationController.viewControllers {
+                if let quizMainMenuVC = viewController as? BaseTabBarController {
+                    navigationController.popToViewController(quizMainMenuVC, animated: true)
+                    return
+                }
+            }
+        }
+        
+        // Default fallback action
+        navigationController?.popViewController(animated: true)
+    }
+
+    
+    
+    func displayAlert(message: String) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func displayAlertWithCompletion(message: String, completion: @escaping () -> Void) {
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completion()
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

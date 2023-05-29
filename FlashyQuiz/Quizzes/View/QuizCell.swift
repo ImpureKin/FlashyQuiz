@@ -9,10 +9,10 @@ import UIKit
 
 class QuizCell: UITableViewCell {
 
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var quizTitle: UILabel!
-    
-    
+    @IBOutlet weak var questionLabel: UILabel! //label that will show the quesiton count
+    @IBOutlet weak var quizTitle: UILabel! //label that will show the stored quiz
+
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +23,5 @@ class QuizCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+
 }

@@ -41,7 +41,6 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="correctAnswer" destination="wFB-EQ-jKx" id="JHh-Ts-lcU"/>
                 <outlet property="correctAnswerLabel" destination="2nY-eU-Bkv" id="Kvs-4B-31h"/>
                 <outlet property="questionLabel" destination="mp6-9N-MCr" id="vpj-Tu-0jD"/>
             </connections>

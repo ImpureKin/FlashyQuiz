@@ -16,7 +16,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     var quizTitle: String = ""
     var privacy: String = ""
     var questions: [Question] = []
-    var dataManager = DataStorageManager()
+    var quizManager = QuizManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,17 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
-        _ = questions[indexPath.row]
+        let questionCount = questions.count
+        if questionCount <= 1 {
+            // Display an alert informing that the last question cannot be deleted
+            let alert = UIAlertController(title: "Cannot Delete Question",
+                                          message: "You cannot delete the last question.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         
         // Create an alert to confirm deletion
         let alert = UIAlertController(title: "Delete Question",
@@ -84,27 +94,29 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         present(alert, animated: true, completion: nil)
     }
     
-    
     @IBAction func submitButton(_ sender: UIButton) {
         saveQuizToDatabase()
     }
     
     
     func saveQuizToDatabase() {
-        let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-        dataManager.saveToFile([quiz])
-        
-        let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
-        
-        // Add an action to dismiss the view controller
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
-            // Navigate back to a certain page
-            self?.navigateBackToPage()
+        let quiz = Quiz(title: quizTitle, privacy: privacy, questions: questions)
+        if quizManager.addQuiz(quiz: quiz, userId: userId) {
+            print("SUCCESSFULLY ADDED QUIZ.")
+            let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
+            
+            // Add an action to dismiss the view controller
+            let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] _ in
+                // Navigate back to a certain page
+                self?.navigateBackToPage()
+            }
+            alert.addAction(okAction)
+            
+            // Present the alert
+            present(alert, animated: true, completion: nil)
+        } else {
+            print("ERROR: QUIZ NOT ADDED.")
         }
-        alert.addAction(okAction)
-        
-        // Present the alert
-        present(alert, animated: true, completion: nil)
     }
     
     func navigateBackToPage() {
