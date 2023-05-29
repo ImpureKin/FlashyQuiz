@@ -10,20 +10,17 @@ import Foundation
 struct FlashcardGroup: Equatable {
     var flashcardGroupId: Int?
     var title: String
-    var userId : Int
     var privacy: String
     var flashcards: [Flashcard]
     
-    init(userId: Int, title: String, privacy: String, flashcards: [Flashcard]) {
-        self.userId = userId
+    init(title: String, privacy: String, flashcards: [Flashcard]) {
         self.title = title
         self.privacy = privacy
         self.flashcards = flashcards
     }
     
-    init(flashcardGroupId: Int,userId: Int, title: String, privacy: String, flashcards: [Flashcard]) {
+    init(flashcardGroupId: Int, title: String, privacy: String, flashcards: [Flashcard]) {
         self.flashcardGroupId = flashcardGroupId
-        self.userId = userId
         self.title = title
         self.flashcards = flashcards
         self.privacy = privacy
