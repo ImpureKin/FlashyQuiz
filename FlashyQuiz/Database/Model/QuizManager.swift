@@ -75,8 +75,7 @@ struct QuizManager {
         return getFilteredQuizzes(columnFilter: userIdCol, filterValue: userIdInput)
     }
     
-    // Get a quiz via quizId & userId ############## Check userId ###################
-    // Note: quizId on it's own should be sufficient as it is the primary key. However, we also need userId as a parameter to workaround an unknown issue.
+    // Get a quiz via quizId & userId
     func getQuiz(quizId: Int) -> Quiz? {
         do {
             // DB connection
@@ -96,7 +95,6 @@ struct QuizManager {
             for row in rows {
                 // Get values from row/data and store into variables
                 let quizId = row[quizIdCol]
-                let userId = row[userIdCol]
                 let title = row[titleCol]
                 let privacy = row[privacyCol]
                 let questionId = row[questionIdColLiteral]
@@ -210,7 +208,7 @@ struct QuizManager {
             try deleteQuestions(forQuizId: quizId, inDatabase: db)
             
             // Insert or update questions
-            try insertOrUpdateQuestions(updatedQuiz.questions, forQuizId: quizId, userId: userId, inDatabase: db)
+            try insertOrUpdateQuestions(updatedQuiz.questions, quizId: quizId, userId: userId, inDatabase: db)
             
             // Commit the updates
             try db.run(updatedRow)
@@ -226,7 +224,7 @@ struct QuizManager {
             try db.run(deleteQuery.delete())
         }
 
-        func insertOrUpdateQuestions(_ questions: [Question], forQuizId quizId: Int, userId: Int, inDatabase db: Connection) throws {
+        func insertOrUpdateQuestions(_ questions: [Question], quizId: Int, userId: Int, inDatabase db: Connection) throws {
             for updatedQuestion in questions {
                 let insertQuery = questionTable.insert(quizIdColLiteral <- quizId,
                                                        userIdCol <- userId,
@@ -286,18 +284,18 @@ struct QuizManager {
     }
     
     // Check for questions that can be deleted
-    func deleteRemovedQuestions(oldQuiz: Quiz, updatedQuiz: Quiz) -> Bool {
-        let deletedQuestions = oldQuiz.questions.filter { !updatedQuiz.questions.contains($0) }
-        for deletableQuestion in deletedQuestions {
-            if deleteQuestion(question: deletableQuestion) {
-                print("Deleted question.")
-            } else {
-                print("Unable to delete question.")
-                return false
-            }
-        }
-        return true
-    }
+//    func deleteRemovedQuestions(oldQuiz: Quiz, updatedQuiz: Quiz) -> Bool {
+//        let deletedQuestions = oldQuiz.questions.filter { !updatedQuiz.questions.contains($0) }
+//        for deletableQuestion in deletedQuestions {
+//            if deleteQuestion(question: deletableQuestion) {
+//                print("Deleted question.")
+//            } else {
+//                print("Unable to delete question.")
+//                return false
+//            }
+//        }
+//        return true
+//    }
     
     // Delete quiz
     func deleteQuiz(quiz: Quiz) -> Bool {
@@ -313,6 +311,7 @@ struct QuizManager {
             
             let deletedQuizCount = try db.run(quizToDelete.delete()) // Proceed to deleting quiz
             
+            print("Successfully deleted quiz.")
             return deletedQuestionsCount > 0 && deletedQuizCount > 0
         } catch {
             print("Error deleting quiz: \(error)")

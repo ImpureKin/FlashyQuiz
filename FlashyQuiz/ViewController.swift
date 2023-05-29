@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         
         let testManager = TestManager()
-        testManager.runTests()
+        // testManager.runTests()
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
