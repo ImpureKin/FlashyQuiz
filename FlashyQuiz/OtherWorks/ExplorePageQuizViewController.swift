@@ -11,39 +11,52 @@ import UIKit
 
 class ExplorePageQuizViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let QM = FlashcardManager() // imports quiz manager
+    @IBOutlet weak var PBQtable: UITableView!
     
-    var PublicFC: [FlashcardGroup] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        PublicFC = QM.getPublicFlashcardGroups() ?? []
-    }
-    
-    
-    
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PublicFC.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "FlashCardCell", for: indexPath) as! FlashCardCell
         
         
-        let flashCardGroup = PublicFC[indexPath.row]
-        cell.flashCardTitle.text = flashCardGroup.title
-        cell.termLabel.text = "\(flashCardGroup.flashcards.count) terms"
         
-        return cell
+        let QM = QuizManager() // imports quiz manager
+        
+        var PublicQuizzes: [Quiz] = []
+        
+        override func viewDidLoad() {
+            super.viewDidLoad()
+            
+            PublicQuizzes = QM.getPublicQuizzes() ?? []
+            let nib = UINib(nibName: "QuizCell", bundle: nil)
+            
+            PBQtable.register(nib, forCellReuseIdentifier: "QuizCell")
+            
+            PBQtable.dataSource = self
+            PBQtable.delegate = self
+        }
+        
+        
+        
+        
+        
+        
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return PublicQuizzes.count
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "QuizCell", for: indexPath) as! QuizCell
+            
+            
+            let quiz = PublicQuizzes[indexPath.row]
+            cell.quizTitle.text = quiz.title
+            cell.questionLabel.text = "\(quiz.questions.count) questions"
+            
+            return cell
+        }
+        
     }
     
     
     
 
     
-}
+
