@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kWg-YB-Y1L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kWg-YB-Y1L">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -847,7 +846,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Modify FlashCard" id="bJB-cR-ICA"/>
                     <connections>
-                        <outlet property="modifyTableView" destination="lYl-FN-cfz" id="pPx-Vv-ZpW"/>
+                        <outlet property="modifyTableView1" destination="lYl-FN-cfz" id="eqY-ZE-ZWb"/>
                         <outlet property="privacySwitch" destination="Uzu-xT-CZy" id="5Sq-wP-TUj"/>
                         <outlet property="titleTextField" destination="cdh-Wu-Xwy" id="TOX-k4-XD8"/>
                     </connections>
@@ -1055,7 +1054,7 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Please enter the title for the quiz and chose whether your quiz is going to be public or private." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7g-NT-cY4">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Please enter the title for the quiz and choose whether your quiz is going to be public or private." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V7g-NT-cY4">
                                 <rect key="frame" x="38" y="201" width="316" height="125"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1226,7 +1225,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="submitButton:" destination="zw0-fx-nFp" eventType="touchUpInside" id="GA6-vj-1nj"/>
+                                    <action selector="submitButton:" destination="zw0-fx-nFp" eventType="touchUpInside" id="Pnn-gr-vgB"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="340" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="y56-OG-6wI">
@@ -1325,6 +1324,16 @@
                                 <rect key="frame" x="0.0" y="280" width="393" height="444"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ModifyCell" id="wqQ-lJ-7XT">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wqQ-lJ-7XT" id="8v6-9D-BJd">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LxE-E0-Sub">
                                 <rect key="frame" x="16" y="743" width="142" height="57"/>
@@ -1334,6 +1343,9 @@
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="baseBackgroundColor" systemColor="systemRedColor"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteQuizButtonTapped:" destination="FM5-nY-OEZ" eventType="touchUpInside" id="xPG-mx-snm"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ot-tR-qRF">
                                 <rect key="frame" x="235" y="743" width="142" height="57"/>
@@ -1382,7 +1394,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Modify Quiz" id="ZwD-uL-zCK"/>
                     <connections>
-                        <outlet property="modifyTableView" destination="nyG-5C-0rr" id="1c9-rV-Svg"/>
+                        <outlet property="modifyTableView" destination="nyG-5C-0rr" id="swA-fq-REh"/>
                         <outlet property="privacySwitch" destination="zoc-Sv-ce7" id="Sap-Z8-Vr2"/>
                         <outlet property="titleTextField" destination="KWM-Ad-g6Y" id="rDA-vF-4za"/>
                     </connections>

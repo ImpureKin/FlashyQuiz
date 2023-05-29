@@ -16,7 +16,7 @@ class EditFlashCardViewController: UIViewController {
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var privacySwitch: UISwitch!
-    @IBOutlet weak var modifyTableView: UITableView!
+    @IBOutlet weak var modifyTableView1: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

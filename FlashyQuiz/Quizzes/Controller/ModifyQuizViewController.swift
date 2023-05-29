@@ -8,6 +8,7 @@
 import UIKit
 
 class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     var quiz: Quiz?
     var userId: Int = 0 
     var quizManager = QuizManager()
@@ -148,6 +149,8 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         // Present the alert
         present(alert, animated: true, completion: nil)
     }
+    
+    
 
     
     @IBAction func updateQuizButtonTapped(_ sender: UIButton) {
