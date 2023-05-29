@@ -44,7 +44,7 @@ class AddTitleFlashCardViewController: UIViewController, UITextFieldDelegate {
             } else if !privacySwitch.isOn {
                 // The privacy switch is off
                 errorMessage.isHidden = false
-                errorMessage.text = "Please enable privacy to proceed."
+                errorMessage.text = "Please enter a title to proceed."
                 return false
             }
         }

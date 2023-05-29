@@ -16,7 +16,7 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     var quizTitle: String = ""
     var privacy: String = ""
     var questions: [Question] = []
-    var dataManager = DataStorageManager()
+    //var dataManager = DataStorageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,13 +86,13 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     @IBAction func submitButton(_ sender: UIButton) {
-        saveQuizToDatabase()
+       // saveQuizToDatabase()
     }
     
     
     func saveQuizToDatabase() {
         let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-        dataManager.saveToFile([quiz])
+        //dataManager.saveToFile([quiz])
         
         let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
         

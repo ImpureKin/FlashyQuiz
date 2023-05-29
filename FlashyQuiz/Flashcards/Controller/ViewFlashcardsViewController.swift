@@ -8,10 +8,12 @@
 import UIKit
 
 class ViewFlashcardsViewController: UIViewController {
+    var flashCardGroup: FlashcardGroup?
+    
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
-    
+    @IBOutlet weak var flashCardTitleLabel: UILabel!
     let questions = ["Question 1", "Question 2", "Question 3"]
     let answers = ["Answer 1", "Answer 2", "Answer 3"]
     
@@ -19,7 +21,7 @@ class ViewFlashcardsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
         updateCard()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(flipCard))
@@ -34,6 +36,9 @@ class ViewFlashcardsViewController: UIViewController {
         cardView.addGestureRecognizer(swipeRightGestureRecognizer)
     }
     
+    @IBAction func mainmenuButton(_ sender: Any) {
+        navigateBackToPage()
+    }
     @objc func flipCard() {
         UIView.transition(with: cardView, duration: 0.3, options: .transitionFlipFromRight, animations: {
             self.answerLabel.isHidden = !self.answerLabel.isHidden
@@ -71,4 +76,23 @@ class ViewFlashcardsViewController: UIViewController {
         questionLabel.isHidden = false
         answerLabel.isHidden = true
     }
+    
+    func setupUI() {
+        if let flashCardGroup = flashCardGroup {
+            flashCardTitleLabel.text = flashCardGroup.title
+        }
+    }
+    
+    func navigateBackToPage() {
+        if let navigationController = navigationController {
+            for viewController in navigationController.viewControllers {
+                if let flashCardMainVC = viewController as? FlashCardMainMenuViewController {
+                    navigationController.popToViewController(flashCardMainVC, animated: true)
+                    return
+                }
+            }
+        }
+    }
 }
+
+

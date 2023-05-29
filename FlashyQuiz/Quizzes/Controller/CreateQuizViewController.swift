@@ -21,7 +21,7 @@ class CreateQuizViewController: UIViewController {
     var selectedTitle: String = ""
     var selectedPrivacy: String = ""
     var questions : [Question] = []
-    var dataManager = DataStorageManager()
+    //var dataManager = DataStorageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -18,7 +18,7 @@ class CreateFlashCardViewController: UIViewController {
     var selectedPrivacy: String = ""
     var flashcards: [Flashcard] = []
     
-    var dataManager = DataStorageManager()
+    //var dataManager = DataStorageManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class CreateFlashCardViewController: UIViewController {
         
         // Save the flashcardGroup to the data manager
         let flashcardGroup = FlashcardGroup(userId: flashcardGroup.userId, title: flashcardGroup.title, privacy: flashcardGroup.privacy, flashcards: []) // Modify as needed based on your data model
-        dataManager.saveToFile([flashcardGroup])
+        //dataManager.saveToFile([flashcardGroup])
         
         let alert = UIAlertController(title: "Flashcard Deck Saved", message: "The flashcard deck has been saved successfully.", preferredStyle: .alert)
         
@@ -97,12 +97,12 @@ class CreateFlashCardViewController: UIViewController {
     }
 }
 
-extension UIAlertController {
+/*extension UIAlertController {
     static func showAlert(title: String, message: String, in viewController: UIViewController) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(okAction)
         viewController.present(alertController, animated: true, completion: nil)
     }
-}
+}*/
 
