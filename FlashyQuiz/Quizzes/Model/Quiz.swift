@@ -9,21 +9,18 @@ import Foundation
 
 struct Quiz: Equatable {
     var quizId: Int?
-    var userId : Int
     var title: String
     var privacy: String
     var questions: [Question]
     
-    init(userId: Int, title: String, privacy: String, questions: [Question]) {
-        self.userId = userId
+    init(title: String, privacy: String, questions: [Question]) {
         self.title = title
         self.questions = questions
         self.privacy = privacy
     }
     
-    init(quizId: Int,userId: Int, title: String, privacy: String, questions: [Question]) {
+    init(quizId: Int, title: String, privacy: String, questions: [Question]) {
         self.quizId = quizId
-        self.userId = userId
         self.title = title
         self.questions = questions
         self.privacy = privacy
@@ -42,8 +39,6 @@ struct Quiz: Equatable {
     }
     
 }
-
-
 
 struct Question : Equatable {
     var questionId: Int?

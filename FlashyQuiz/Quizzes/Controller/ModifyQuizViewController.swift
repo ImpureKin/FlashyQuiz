@@ -122,7 +122,6 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBAction func updateQuizButtonTapped(_ sender: UIButton) {
         guard let quizId = quiz?.quizId,
-              let userId = quiz?.userId,
               let updatedTitle = titleTextField.text,
               !updatedTitle.isEmpty else {
             displayAlert(message: "Invalid quiz data")
@@ -149,9 +148,9 @@ class ModifyQuizViewController: UIViewController, UITableViewDelegate, UITableVi
             updatedQuestions.append(updatedQuestion)
         }
         
-        let updatedQuiz = Quiz(quizId: quizId, userId: userId, title: updatedTitle, privacy: updatedPrivacy, questions: updatedQuestions)
+        let updatedQuiz = Quiz(quizId: quizId, title: updatedTitle, privacy: updatedPrivacy, questions: updatedQuestions)
         
-        if quizManager.updateQuiz(updatedQuiz: updatedQuiz) {
+        if quizManager.updateQuiz(updatedQuiz: updatedQuiz, userId: 1) { // ########### NEED TO ADD USER ID #############
             displayAlertWithCompletion(message: "Quiz updated successfully") { [weak self] in
                 self?.navigateBackToPage()
             }

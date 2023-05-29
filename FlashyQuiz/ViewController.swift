@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         let userManager = UserManager()
         let quizManager = QuizManager()
+        let userId = 1
         
         /** // Pull user details test
         if let userDetails = userManager.getUserDetails(userId: 1) {
@@ -55,7 +56,7 @@ class ViewController: UIViewController {
                 print("Quiz ID: \(quiz.quizId ?? -1)")
                 print("Quiz Title: \(quiz.title)")
                 print("Quiz Privacy: \(quiz.privacy)")
-                print("Quiz UserId: \(quiz.userId)")
+                print("Quiz UserId: \(userId)")
                 for question in quiz.questions {
                     print("Question: \(question.question)")
                     print("Question Answer: \(question.correctAnswer)")

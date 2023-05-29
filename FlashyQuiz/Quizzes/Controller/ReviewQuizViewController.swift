@@ -100,8 +100,8 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func saveQuizToDatabase() {
-        let quiz = Quiz(userId: userId, title: quizTitle, privacy: privacy, questions: questions)
-        if quizManager.addQuiz(quiz: quiz) {
+        let quiz = Quiz(title: quizTitle, privacy: privacy, questions: questions)
+        if quizManager.addQuiz(quiz: quiz, userId: userId) {
             print("SUCCESSFULLY ADDED QUIZ.")
             let alert = UIAlertController(title: "Quiz Saved", message: "The quiz has been saved successfully.", preferredStyle: .alert)
             
