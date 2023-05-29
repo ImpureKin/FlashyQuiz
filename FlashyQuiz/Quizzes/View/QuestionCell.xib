@@ -64,10 +64,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="correctAnswer" destination="ngD-sG-cuX" id="l5L-mS-CEJ"/>
                 <outlet property="correctAnswerLabel" destination="hZw-MY-erL" id="Tuz-eG-gY7"/>
                 <outlet property="deleteButton" destination="DSM-qQ-Esi" id="ypr-Pv-Nzq"/>
-                <outlet property="incorrectAnswer" destination="dph-E1-wUC" id="cVK-aX-EmK"/>
                 <outlet property="incorrectAnswerTextView" destination="X8D-Ky-J37" id="day-Vi-rlp"/>
                 <outlet property="question" destination="Xdt-4Y-qiO" id="hd1-C1-WBF"/>
             </connections>

@@ -59,7 +59,17 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
             return
         }
         
-        _ = questions[indexPath.row]
+        let questionCount = questions.count
+        if questionCount <= 1 {
+            // Display an alert informing that the last question cannot be deleted
+            let alert = UIAlertController(title: "Cannot Delete Question",
+                                          message: "You cannot delete the last question.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
         
         // Create an alert to confirm deletion
         let alert = UIAlertController(title: "Delete Question",
@@ -83,7 +93,6 @@ class ReviewQuizViewController: UIViewController, UITableViewDelegate, UITableVi
         // Present the alert
         present(alert, animated: true, completion: nil)
     }
-    
     
     @IBAction func submitButton(_ sender: UIButton) {
         saveQuizToDatabase()

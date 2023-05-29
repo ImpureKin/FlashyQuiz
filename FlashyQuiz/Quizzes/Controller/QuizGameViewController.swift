@@ -9,41 +9,47 @@ import UIKit
 
 class QuizGameViewController: UIViewController {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var timerButton: UIButton!
-    @IBOutlet var answerButtons: [UIButton]!
+    @IBOutlet weak var titleLabel: UILabel! //label to store the quizzes title
+    @IBOutlet weak var questionLabel: UILabel! //Label to store the quizzes question
+    @IBOutlet weak var timerButton: UIButton! //buton that will be used as the countdown
+    @IBOutlet var answerButtons: [UIButton]! //collection of answer buttons
     
-    var quiz: Quiz?
-    var currentQuestionIndex = 0
-    var answeredQuestions: [Int] = []
-    var correctAnswers = 0
-    var timer: Timer?
-    var remainingTime = 11
-    var isQuestionAnswered = false
-    var isAlertShown = false
+    var quiz: Quiz? //variable used to store the quiz being passed through the segue
+    var currentQuestionIndex = 0 //count of questions currently needing to be answered
+    var answeredQuestions: [Int] = [] //stores the array of the questions answered
+    var correctAnswers = 0 // int that stores the number of correct answers the user has done
+    var timer: Timer? //intialises timer for the quiz
+    var remainingTime = 11 //time used for the timer. Was made 11 seconds to allow users more time to answer
+    var isQuestionAnswered = false // bool used to track if a question has been answered or not
+    var isAlertShown = false //bool to tack whether the alert is shown or not
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        startTimer()
+        startGame() // starts start game function when the view controller first loads
+        startTimer() //starts timer fucniton when the view controller first loads
     }
     
+    //overide function will make the view controller disappear of the screen and invadiate the timer
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
     }
     
-    func setupUI() {
-        guard let quiz = quiz else { return }
+    //function to set up the quiz game
+    func startGame() {
+        guard let quiz = quiz else { return } //checks if quiz is avaliable
         
-        titleLabel.text = quiz.title
+        titleLabel.text = quiz.title //adds the title to the quiz
         
-        let unansweredQuestions = quiz.questions.indices.filter { !answeredQuestions.contains($0) }
+        // Finds the indices of unanswered questions
+        let unansweredQuestions = quiz.questions.indices.filter { !answeredQuestions.contains($0) } //
         
+        //checks if there is any unanswered questions
         if unansweredQuestions.isEmpty {
-            showResults()
+            showResults() //shows results if there are no unanswered questions
+            
         } else {
+            //chooses a random unanswered question 
             let randomQuestionIndex = unansweredQuestions.randomElement()!
             currentQuestionIndex = randomQuestionIndex
             
@@ -59,12 +65,14 @@ class QuizGameViewController: UIViewController {
         }
     }
     
+    // Sets up the timer for the quiz
     func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
+    //How timer is incremented and what happens when the title is invalidate
     @objc func updateTimer() {
-        remainingTime -= 1
+        remainingTime -= 1 // decreasing by one
         timerButton.setTitle("\(remainingTime)", for: .normal)
         
         if remainingTime == 0 {
@@ -130,7 +138,7 @@ class QuizGameViewController: UIViewController {
                 currentQuestionIndex = randomQuestionIndex
                 remainingTime = 11
                 isQuestionAnswered = false
-                setupUI()
+                startGame()
                 startTimer()
             } else {
                 showResults()
