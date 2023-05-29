@@ -17,19 +17,19 @@ class QuizResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //hides the navigation back as it is not needed on this screen
+        // hides the navigation back as it is not needed on this screen
         navigationItem.hidesBackButton = true
 
-        //resultLabel displayed the stored var's data of how the user went
+        // resultLabel displayed the stored var's data of how the user went
         resultLabel!.text = "\(correctAnswers)/\(totalQuestions)"
     }
 
-    //when the user presses the main menu button to navigates back to the main menu
+    // when the user presses the main menu button to navigates back to the main menu
     @IBAction func mainMenuButton(_ sender: UIButton) {
         navigateBackToPage()
     }
 
-    //Takes the user back to the begining for the user to choose for the main menu new options
+    // Takes the user back to the begining for the user to choose for the main menu new options
     func navigateBackToPage() {
         if let navigationController = navigationController {
             for viewController in navigationController.viewControllers {
@@ -40,7 +40,7 @@ class QuizResultsViewController: UIViewController {
             }
         }
 
-        //Fallback action
+        // Fallback action
         navigationController?.popViewController(animated: true)
     }
 
