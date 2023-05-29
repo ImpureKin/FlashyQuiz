@@ -12,10 +12,7 @@ struct Flashcard : Equatable {
     var question: String
     var answer: String
     
-    static func == (lhs: Flashcard, rhs: Flashcard) -> Bool {
-        return lhs.question == rhs.question &&
-        lhs.answer == rhs.answer
-    }
+    
     
     init(question: String, answer: String) {
         self.question = question
