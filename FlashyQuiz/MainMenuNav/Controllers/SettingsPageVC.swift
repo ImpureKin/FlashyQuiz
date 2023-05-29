@@ -10,8 +10,6 @@ import UIKit
 
 class SettingsPageVC: UIViewController {
     
-    
-    @IBOutlet weak var Error_Label: UILabel!
     @IBOutlet weak var CurrentPassWordTF: UITextField!
     
     @IBOutlet weak var PasswordOneTF: UITextField!
@@ -27,7 +25,6 @@ class SettingsPageVC: UIViewController {
         super.viewDidLoad()
         let TabCont = self.tabBarController as! BaseTabBarController
         LoggedUser = TabCont.loggedUser;
-        Error_Label.isHidden = true;
     }
     
     
@@ -43,21 +40,30 @@ class SettingsPageVC: UIViewController {
             
             if (newPasswordOne == newPasswordTwo) {
                 LoggedUser?.setPassword(oldPassword: currentPassword, newPassword: newPasswordOne)
-                Error_Label.isHidden = false
-                Error_Label.text = "Password Updated!"
-                Error_Label.textColor = .green
+                let success = UIAlertController(title: "Success!",
+                                              message: "Your password has been updated for future logins!",
+                                              preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                success.addAction(okAction)
+                present(success, animated: true, completion: nil)
                 
                 
             } else {
-                Error_Label.textColor = .red
-                Error_Label.isHidden = false
-                Error_Label.text = "New Passwords Dont Match"
+                let alert = UIAlertController(title: "Mismatched Passwords",
+                                              message: "You have provided two different password. Please provide the same password twice.",
+                                              preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
             }
             
         } else {
-            Error_Label.textColor = .red
-            Error_Label.isHidden = false
-            Error_Label.text = "Incorrect Current Password"
+            let alert = UIAlertController(title: "Incorrect Current Password",
+                                          message: "You have provided the wrong details. Incorrect Current Password.",
+                                          preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
         }
         
         

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */; };
 		01995FD62A21F8DA00ADB834 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */; };
+		01E4B0862A25014800E519DF /* ExplorePageQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4B0852A25014800E519DF /* ExplorePageQuizViewController.swift */; };
+		01E4B0882A25016C00E519DF /* ExplorePageFlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4B0872A25016C00E519DF /* ExplorePageFlashCardViewController.swift */; };
 		282CCE302A247B8F00250B86 /* QuizCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982E3FA2A1F0B3F00DB4DE2 /* QuizCell.swift */; };
 		282CCE312A247BA000250B86 /* QuizDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2982E3F62A1EFDA500DB4DE2 /* QuizDetailsViewController.swift */; };
 		282CCE322A247BB500250B86 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29892DCA2A1DF568001725E0 /* QuestionCell.swift */; };
@@ -43,7 +45,6 @@
 		29892DCD2A1DF568001725E0 /* QuestionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29892DCB2A1DF568001725E0 /* QuestionCell.xib */; };
 		2997100F2A231C7500944E3B /* ModifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2997100D2A231C7500944E3B /* ModifyCell.swift */; };
 		299710102A231C7500944E3B /* ModifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2997100E2A231C7500944E3B /* ModifyCell.xib */; };
-		29DF85C02A1A4AB0004EB124 /* quiz.txt in Resources */ = {isa = PBXBuildFile; fileRef = 29DF85BF2A1A4AB0004EB124 /* quiz.txt */; };
 		29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FEE2A18C5D200B152E2 /* Quiz.swift */; };
 		29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF12A18C65000B152E2 /* QuizMainMenuViewController.swift */; };
 		29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF72A18C6EB00B152E2 /* QuizListViewViewController.swift */; };
@@ -65,6 +66,8 @@
 /* Begin PBXFileReference section */
 		0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageVC.swift; sourceTree = "<group>"; };
 		01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		01E4B0852A25014800E519DF /* ExplorePageQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageQuizViewController.swift; sourceTree = "<group>"; };
+		01E4B0872A25016C00E519DF /* ExplorePageFlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageFlashCardViewController.swift; sourceTree = "<group>"; };
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -311,6 +314,8 @@
 			isa = PBXGroup;
 			children = (
 				28F121B92A13408F000E1AFB /* dumbyfile.md */,
+				01E4B0852A25014800E519DF /* ExplorePageQuizViewController.swift */,
+				01E4B0872A25016C00E519DF /* ExplorePageFlashCardViewController.swift */,
 			);
 			path = OtherWorks;
 			sourceTree = "<group>";
@@ -542,8 +547,6 @@
 				282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */,
 				29639D052A24744A009903C0 /* Question.swift in Sources */,
 				2934F4392A19E4D800DC38D9 /* AddTitleCreateQuizViewController.swift in Sources */,
-				2982E3FC2A1F0B3F00DB4DE2 /* QuizCell.swift in Sources */,
-				28B3C2312A1C5865007554F7 /* SettingsManager.swift in Sources */,
 				28B3C2272A1C5075007554F7 /* UserManager.swift in Sources */,
 				28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */,
 				282CCE332A247CDB00250B86 /* ViewFlashcardsViewController.swift in Sources */,
@@ -559,7 +562,9 @@
 				282DD5822A1B266F00003F6D /* DatabaseManager.swift in Sources */,
 				28B3C22D2A1C562B007554F7 /* QuizManager.swift in Sources */,
 				29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */,
+				01E4B0862A25014800E519DF /* ExplorePageQuizViewController.swift in Sources */,
 				29702D732A1B923C00A8B3F3 /* ReviewQuizViewController.swift in Sources */,
+				01E4B0882A25016C00E519DF /* ExplorePageFlashCardViewController.swift in Sources */,
 				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
 				2997100F2A231C7500944E3B /* ModifyCell.swift in Sources */,
 				282CCE302A247B8F00250B86 /* QuizCell.swift in Sources */,
