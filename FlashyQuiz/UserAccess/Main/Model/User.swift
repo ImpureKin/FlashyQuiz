@@ -40,23 +40,19 @@ class User {
     //-----------------------------//
     
     //--------Setter Section-------//
-    func setUserId(newUserId: Int) {
-        userId = newUserId
-        // DB Operation
-    }
 
     func setUsername(newUsername: String) {
-        username = newUsername
-        // DB Operation
+        self.username = newUsername
+        userManager.updateUsername(userId: userId!, newUsername: newUsername)
     }
 
     func setEmail(newEmail: String) {
-        email = newEmail
-        // DB Operation
+        self.email = newEmail
+        userManager.updateEmail(userId: userId!, newEmail: newEmail)
     }
 
-    func setPassword(oldPassword: String, newPassword: String){
-        // DB Operation
+    func setPassword(newPassword: String){
+        userManager.updatePassword(userId: userId!, newPassword: newPassword)
     }
     //-----------------------------//
     
