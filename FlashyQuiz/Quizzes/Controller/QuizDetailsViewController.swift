@@ -12,14 +12,24 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var quizTitle: UILabel!
     @IBOutlet weak var detailTable: UITableView!
+    @IBOutlet weak var modifyButton: UIButton!  // button used to modify the current quiz
     
     var quiz: Quiz?
-    var userId: Int = 0 
+    var userId: Int = 0
+    var isComingFromExplorePage: Bool = false // flags the view controller its coming from
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         quizTitle.text = quiz?.title
+      
+        // if it is coming from this page it will not be avaliable
+        if isComingFromExplorePage {
+            modifyButton.isEnabled = false // disabled the modify button
+            modifyButton.setTitleColor(.gray, for: .disabled) //sets it to be gray
+            modifyButton.backgroundColor = .lightGray //sets it to be gray 
+        }
+
         
         let nib = UINib(nibName: "DetailCell", bundle: nil)
         detailTable.register(nib, forCellReuseIdentifier: "DetailCell")

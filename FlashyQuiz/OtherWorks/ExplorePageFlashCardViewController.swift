@@ -61,6 +61,7 @@ class ExplorePageFlashCardViewController : UIViewController, UITableViewDelegate
            let VC = segue.destination as? FlashCardDetailsViewController, //next view controller
            let FC = sender as? FlashcardGroup {
             VC.flashCardGroup = FC
+            VC.isComingFromExplorePage = true
         }
     }
         

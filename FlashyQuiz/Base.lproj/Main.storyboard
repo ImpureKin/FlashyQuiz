@@ -446,7 +446,7 @@
                                     <color key="baseBackgroundColor" systemColor="systemMintColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="esx-1Q-QBa" kind="show" id="2nk-Fd-nRI"/>
+                                    <segue destination="esx-1Q-QBa" kind="show" identifier="" id="2nk-Fd-nRI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8n-Cr-mDi">
@@ -460,7 +460,7 @@
                                     <color key="baseBackgroundColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="GlT-OD-ZEg" kind="show" id="NH7-UD-Mi0"/>
+                                    <segue destination="GlT-OD-ZEg" kind="show" identifier="" id="NH7-UD-Mi0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1437,6 +1437,7 @@
                     <navigationItem key="navigationItem" id="zPp-8h-Z3F"/>
                     <connections>
                         <outlet property="detailTable" destination="gx9-ln-Uhf" id="X0w-F2-F9B"/>
+                        <outlet property="modifyButton" destination="8fq-CX-Dtp" id="Fjj-54-t98"/>
                         <outlet property="quizTitle" destination="ZPU-ih-gdT" id="TzE-Fl-9iR"/>
                     </connections>
                 </viewController>
@@ -1537,7 +1538,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om2-dM-atj">
-                                <rect key="frame" x="-2" y="116" width="392" height="600"/>
+                                <rect key="frame" x="-3" y="114" width="392" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86j-DW-pKP">
@@ -1592,7 +1593,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WzD-PE-0d6"/>
+        <segue reference="Z4J-xd-PCP"/>
         <segue reference="KJQ-Wn-6SY"/>
         <segue reference="now-HL-7bE"/>
     </inferredMetricsTieBreakers>

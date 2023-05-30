@@ -12,9 +12,6 @@ import UIKit
 class ExplorePageQuizViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var PBQtable: UITableView!
-    
-        
-        
         
         let QM = QuizManager() // imports quiz manager
         
@@ -64,15 +61,13 @@ class ExplorePageQuizViewController : UIViewController, UITableViewDelegate, UIT
         }
             
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "ExploreToQDetails",
-                let VC = segue.destination as? QuizDetailsViewController, //next view controller
-                let quiz = sender as? Quiz {
-                VC.quiz = quiz
-            }
+                if segue.identifier == "ExploreToQDetails",
+                    let VC = segue.destination as? QuizDetailsViewController,
+                    let quiz = sender as? Quiz {
+                    VC.quiz = quiz
+                    VC.isComingFromExplorePage = true // Set the flag to true
+                }
         }
-        
-            
-            
     }
     
     
