@@ -35,7 +35,7 @@ class UpdateUsernameVC : UIViewController {
             if (NewUsernameOne == NewUsernameTwo) {
                 LoggedUser?.setUsername(newUsername: NewUsernameOne)
                 let alert = UIAlertController(title: "Success",message: "Your username has been updated.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: {action in self.performSegue(withIdentifier: "resetPasswordBackToMain", sender: self)})
                 alert.addAction(okAction)
                 present(alert, animated: true, completion: nil)
             } else {
@@ -43,7 +43,6 @@ class UpdateUsernameVC : UIViewController {
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
                 present(alert, animated: true, completion: nil)
-                
             }
             
         }
@@ -51,11 +50,17 @@ class UpdateUsernameVC : UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
-        
-        
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "resetPasswordBackToMain" {
+            guard let backToMainTV = segue.destination as? BaseTabBarController else {
+                return
+            }
+            backToMainTV.loggedUser = self.LoggedUser;
+        }
+                
+    }
     
     
     
