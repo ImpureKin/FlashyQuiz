@@ -37,7 +37,7 @@ class UpdatePasswordVC : UIViewController {
                 LoggedUser?.setPassword(newPassword: NewPasswordOne)
                 
                 let alert = UIAlertController(title: "Success!",message: "Your password has been updated.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: {action in self.performSegue(withIdentifier: "PasswordBackToNV", sender: self)})
                 alert.addAction(okAction)
                 present(alert, animated: true, completion: nil)
                 
@@ -53,6 +53,16 @@ class UpdatePasswordVC : UIViewController {
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PasswordBackToNV" {
+            guard let backToMainTV = segue.destination as? BaseTabBarController else {
+                return
+            }
+            backToMainTV.loggedUser = self.LoggedUser;
+        }
+                
     }
     
 

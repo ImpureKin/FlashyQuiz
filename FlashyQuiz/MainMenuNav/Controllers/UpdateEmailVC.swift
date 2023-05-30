@@ -35,7 +35,7 @@ class UpdateEmailVC : UIViewController {
             if (newEmailOne == newEmailTwo) {
                 LoggedUser?.setEmail(newEmail: newEmailOne)
                 let alert = UIAlertController(title: "Success",message: "Your email has been updated.", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: {action in self.performSegue(withIdentifier: "EmailBackToNV", sender: self)})
                 alert.addAction(okAction)
                 present(alert, animated: true, completion: nil)
             } else {
@@ -51,5 +51,15 @@ class UpdateEmailVC : UIViewController {
             present(alert, animated: true, completion: nil)
         }
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "EmailBackToNV" {
+            guard let backToMainTV = segue.destination as? BaseTabBarController else {
+                return
+            }
+            backToMainTV.loggedUser = self.LoggedUser;
+        }
+                
     }
 }
