@@ -11,6 +11,7 @@ class FlashCardDetailsViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var flashcardGroupTitleLabel: UILabel!
     @IBOutlet weak var flashcardTable: UITableView!
+    @IBOutlet weak var deleteButton: UIButton!
     
     var flashcardGroup: FlashcardGroup?
     var flashcardManager = FlashcardManager()
@@ -28,7 +29,9 @@ class FlashCardDetailsViewController: UIViewController, UITableViewDelegate, UIT
         
         if isComingFromExplorePage {
             // Hide the delete button if coming from the explore page
-            navigationItem.rightBarButtonItem = nil
+            deleteButton.isEnabled = false // disabled the modify button
+            deleteButton.setTitleColor(.gray, for: .disabled) //sets to gray text
+            deleteButton.backgroundColor = .lightGray //sets it to be gray background
         }
     }
     
