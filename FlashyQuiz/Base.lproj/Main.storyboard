@@ -157,24 +157,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4dT-QO-v7M">
-                                <rect key="frame" x="46" y="283" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ysv-TQ-Ybj">
-                                <rect key="frame" x="46" y="384" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="52J-HP-dk9">
-                                <rect key="frame" x="46" y="490" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhs-Py-hYz">
                                 <rect key="frame" x="92" y="613" width="209" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -187,6 +169,24 @@
                                     <action selector="UpdatePasswordButton:" destination="y6p-48-0xH" eventType="touchUpInside" id="72e-HS-TG3"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OON-pZ-Og2">
+                                <rect key="frame" x="46" y="283" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkT-7L-6El">
+                                <rect key="frame" x="46" y="384" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-uE-krO">
+                                <rect key="frame" x="46" y="490" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dA2-qk-r3b"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -198,18 +198,16 @@
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="4z6-bc-QKr"/>
                     <connections>
-                        <outlet property="CurrentPasswordTF" destination="4dT-QO-v7M" id="HDi-bd-aUN"/>
-                        <outlet property="NewPassowordOneTF" destination="ysv-TQ-Ybj" id="kWT-ju-W1S"/>
+                        <outlet property="CurrentPasswordTF" destination="OON-pZ-Og2" id="Rti-JJ-cnV"/>
                         <outlet property="NewPasswordOne" destination="sDD-N2-H62" id="2Bs-1S-bQe"/>
-                        <outlet property="NewPasswordOneTF" destination="ysv-TQ-Ybj" id="6zL-Nh-hhD"/>
-                        <outlet property="NewPasswordTwo" destination="52J-HP-dk9" id="kJB-mJ-bji"/>
-                        <outlet property="NewPasswordTwoTF" destination="52J-HP-dk9" id="4OS-qy-nF9"/>
+                        <outlet property="NewPasswordOneTF" destination="RkT-7L-6El" id="xUE-lI-TLS"/>
+                        <outlet property="NewPasswordTwoTF" destination="jIE-uE-krO" id="Cq3-qF-DX1"/>
                         <outlet property="UpdateButton" destination="vhs-Py-hYz" id="ADR-ew-Okb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KcY-FA-mTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="1691"/>
+            <point key="canvasLocation" x="1626.7175572519084" y="1690.8450704225354"/>
         </scene>
         <!--Update EmailVC-->
         <scene sceneID="PNG-xf-J8y">
