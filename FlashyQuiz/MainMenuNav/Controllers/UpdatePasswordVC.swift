@@ -42,8 +42,6 @@ class UpdatePasswordVC : UIViewController {
                 present(alert, animated: true, completion: nil)
                 
             } else {
-                
-                
                 let alert = UIAlertController(title: "Mismatched Passwords",message: "The new passwords provided do not match. Please ensure they are identical.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
