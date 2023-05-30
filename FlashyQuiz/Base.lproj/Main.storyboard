@@ -1570,6 +1570,7 @@
                     <view key="view" contentMode="scaleToFill" id="A7Z-Gh-ebZ">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="iEM-99-60B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
