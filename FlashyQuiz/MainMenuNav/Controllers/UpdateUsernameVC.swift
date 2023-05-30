@@ -33,7 +33,11 @@ class UpdateUsernameVC : UIViewController {
         
         if (LoggedUser?.username == currentUsername) {
             if (NewUsernameOne == NewUsernameTwo) {
-                LoggedUser?.username = NewUsernameOne
+                LoggedUser?.setUsername(newUsername: NewUsernameOne)
+                let alert = UIAlertController(title: "Success",message: "Your username has been updated.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Mismatched Usernames",message: "The new usernames provided do not match. Please ensure they are identical.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

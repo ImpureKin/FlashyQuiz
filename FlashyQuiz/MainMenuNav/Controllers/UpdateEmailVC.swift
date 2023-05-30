@@ -34,6 +34,10 @@ class UpdateEmailVC : UIViewController {
         if (currentEmail == LoggedUser?.email) {
             if (newEmailOne == newEmailTwo) {
                 LoggedUser?.setEmail(newEmail: newEmailOne)
+                let alert = UIAlertController(title: "Success",message: "Your email has been updated.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Mismatched Emails",message: "The new Emails provided do not match. Please ensure they are identical.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
