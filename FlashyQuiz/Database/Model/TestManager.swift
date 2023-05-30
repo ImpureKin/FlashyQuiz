@@ -137,14 +137,14 @@ struct TestManager {
         }
     }
     
-    func deleteFlashcardGroup(id: Int) {
-        print("\n-------------------Test: Delete Flashcard Group-------------------")
-        if let flashcardGroup = flashcardManager.getFlashcardGroup(flashcardGroupId: id) {
-            let _ = flashcardManager.deleteFlashcardGroup(flashcardGroup: flashcardGroup)
-        } else {
-            print("Failed to get flashcard group.")
-        }
-    }
+//    func deleteFlashcardGroup(id: Int) {
+//        print("\n-------------------Test: Delete Flashcard Group-------------------")
+//        if let flashcardGroup = flashcardManager.getFlashcardGroup(flashcardGroupId: id) {
+//            let _ = flashcardManager.deleteFlashcardGroup(flashcardGroup: flashcardGroup)
+//        } else {
+//            print("Failed to get flashcard group.")
+//        }
+//    }
     
     
     func runTests() {
@@ -172,7 +172,7 @@ struct TestManager {
 
         // D - Delete
         deleteQuiz(id: id)
-        deleteFlashcardGroup(id: id)
+//        deleteFlashcardGroup(id: id)
 
         // Read again
         getUserQuizzes()

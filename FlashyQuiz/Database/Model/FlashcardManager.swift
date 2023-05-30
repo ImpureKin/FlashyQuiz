@@ -76,46 +76,6 @@ struct FlashcardManager {
         return getFilteredFlashcardGroups(columnFilter: userIdCol, filterValue: userIdInput)
     }
     
-    // Get a FlashcardGroup via flashcardGroupId
-    func getFlashcardGroup(flashcardGroupId: Int) -> FlashcardGroup? {
-        do {
-            // DB connection
-            let db = try Connection(databaseURL)
-            
-            // Query execution and results
-            let query = fullFlashcardGroupView.filter(flashcardGroupIdCol == flashcardGroupId) // SELECT * FROM FullFlashcardGroups WHERE id = flashcardGroupId
-            let rowIterator = try db.prepareRowIterator(query) // Execute query via row iterator to handle errors
-            let rows = try Array(rowIterator) // Create array using result
-            
-            // Tracking / other
-            let totalRowCount = rows.count // Get total row count for tracking
-            var currentRow = 1
-            var flashcards: [Flashcard] = []
-
-            // Loop through results
-            for row in rows {
-                // Get values from row/data and store into variables
-                let flashcardGroupId = row[flashcardGroupIdCol]
-                let title = row[titleCol]
-                let privacy = row[privacyCol]
-                let flashcardId = row[flashcardIdColLiteral]
-                let question = row[questionCol]
-                let answer = row[answerCol]
-                let flashcard = Flashcard(flashcardId: flashcardId, question: question, answer: answer) // Create flashcard
-
-                if currentRow == totalRowCount { // If this is the last row, append flashcardGroup before exiting loop
-                    let flashcardGroup = FlashcardGroup(flashcardGroupId: flashcardGroupId, title: title, privacy: privacy, flashcards: flashcards) // Create flashcardGroup (with flashcards)
-                    return flashcardGroup // Append flashcardGroup
-                }
-                currentRow += 1 // Track current row
-            }
-        } catch {
-            print("Error retrieving flashcardGroups: \(error)")
-        }
-        print("Failed to retrieve flashcardGroup")
-        return nil
-    }
-    
     // Get quizzes based on filter - used to recycle code
     func getFilteredFlashcardGroups<T: Value>(columnFilter: Expression<T>, filterValue: T) -> [FlashcardGroup] where T.Datatype: Equatable {
         var flashcardGroups: [FlashcardGroup] = []
@@ -256,21 +216,6 @@ struct FlashcardManager {
             return false
         }
     }
-    
-    // Check for flashcards that can be deleted and send for deletion
-//    func deleteRemovedFlashcards(oldFlashcardGroup: FlashcardGroup, updatedFlashcardGroup: FlashcardGroup) -> Bool {
-//        let deletedFlashcards = oldFlashcardGroup.flashcards.filter { !updatedFlashcardGroup.flashcards.contains($0) }
-//
-//        for deletableFlashcard in deletedFlashcards {
-//            if deleteFlashcard(flashcard: deletableFlashcard) {
-//                print("Deleted flashcard.")
-//            } else {
-//                print("Unable to delete flashcard.")
-//                return false
-//            }
-//        }
-//        return true
-//    }
     
     // Delete flashcardGroup
     func deleteFlashcardGroup(flashcardGroup: FlashcardGroup) -> Bool {
