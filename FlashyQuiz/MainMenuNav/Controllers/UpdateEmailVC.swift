@@ -31,7 +31,7 @@ class UpdateEmailVC : UIViewController {
         let newEmailOne = newEmailTF.text ?? ""
         let newEmailTwo = RepeatNewEmailTF.text ?? ""
         
-        if (currentEmail == LoggedUser?.email) {
+        if (currentEmail == LoggedUser!.getEmail()) {
             if (newEmailOne == newEmailTwo) {
                 LoggedUser?.setEmail(newEmail: newEmailOne)
                 let alert = UIAlertController(title: "Success",message: "Your email has been updated.", preferredStyle: .alert)
