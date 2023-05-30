@@ -29,7 +29,6 @@
 		28A978202A00CC8C00B2A25A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A9781F2A00CC8C00B2A25A /* AppDelegate.swift */; };
 		28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A978212A00CC8C00B2A25A /* SceneDelegate.swift */; };
 		28A978242A00CC8C00B2A25A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A978232A00CC8C00B2A25A /* ViewController.swift */; };
-		28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A978252A00CC8C00B2A25A /* Main.storyboard */; };
 		28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28A978282A00CC8D00B2A25A /* Assets.xcassets */; };
 		28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A9782A2A00CC8D00B2A25A /* LaunchScreen.storyboard */; };
 		28B3C2272A1C5075007554F7 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B3C2262A1C5075007554F7 /* UserManager.swift */; };
@@ -55,8 +54,11 @@
 		29EB9FFA2A18CACC00B152E2 /* QuizResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FF92A18CACC00B152E2 /* QuizResultsViewController.swift */; };
 		29EB9FFC2A18CB2200B152E2 /* QuizGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFB2A18CB2200B152E2 /* QuizGameViewController.swift */; };
 		29EBA0002A18CF7000B152E2 /* CreateQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */; };
+		310D5EBC2A249F6C0048D6BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A978252A00CC8C00B2A25A /* Main.storyboard */; };
 		3148F9752A1C7BFC002C2C3C /* FlashCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3148F9742A1C7BFC002C2C3C /* FlashCard.swift */; };
 		319AC7712A247157009EAF82 /* FlashcardGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319AC7702A247157009EAF82 /* FlashcardGroup.swift */; };
+		346D88632A25A98900BE7A7F /* DetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346D88622A25A98900BE7A7F /* DetailsCell.swift */; };
+		346D88672A25AA1800BE7A7F /* DetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 346D88662A25AA1800BE7A7F /* DetailsCell.xib */; };
 		348FA69F2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA69E2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift */; };
 		348FA6A52A23D402009C1D8F /* AddTitleFlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA6A42A23D402009C1D8F /* AddTitleFlashCardViewController.swift */; };
 		348FA6A72A23DD36009C1D8F /* FlashCardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA6A62A23DD36009C1D8F /* FlashCardListViewController.swift */; };
@@ -122,6 +124,8 @@
 		29EB9FFF2A18CF7000B152E2 /* CreateQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateQuizViewController.swift; sourceTree = "<group>"; };
 		3148F9742A1C7BFC002C2C3C /* FlashCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCard.swift; sourceTree = "<group>"; };
 		319AC7702A247157009EAF82 /* FlashcardGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashcardGroup.swift; sourceTree = "<group>"; };
+		346D88622A25A98900BE7A7F /* DetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCell.swift; sourceTree = "<group>"; };
+		346D88662A25AA1800BE7A7F /* DetailsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsCell.xib; sourceTree = "<group>"; };
 		348FA69E2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardMainMenuViewController.swift; sourceTree = "<group>"; };
 		348FA6A42A23D402009C1D8F /* AddTitleFlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTitleFlashCardViewController.swift; sourceTree = "<group>"; };
 		348FA6A62A23DD36009C1D8F /* FlashCardListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardListViewController.swift; sourceTree = "<group>"; };
@@ -444,6 +448,8 @@
 			children = (
 				348FA6AF2A23E0A2009C1D8F /* FlashCardCell.swift */,
 				348FA6B02A23E0A2009C1D8F /* FlashCardCell.xib */,
+				346D88622A25A98900BE7A7F /* DetailsCell.swift */,
+				346D88662A25AA1800BE7A7F /* DetailsCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -514,11 +520,12 @@
 				2982E4012A1F5BA500DB4DE2 /* DetailCell.xib in Resources */,
 				29892DCD2A1DF568001725E0 /* QuestionCell.xib in Resources */,
 				348FA6B22A23E0A2009C1D8F /* FlashCardCell.xib in Resources */,
+				310D5EBC2A249F6C0048D6BC /* Main.storyboard in Resources */,
 				28B3C2292A1C51B6007554F7 /* SQLite.swift in Resources */,
 				28A9782C2A00CC8D00B2A25A /* LaunchScreen.storyboard in Resources */,
 				28A978292A00CC8D00B2A25A /* Assets.xcassets in Resources */,
 				299710102A231C7500944E3B /* ModifyCell.xib in Resources */,
-				28A978272A00CC8C00B2A25A /* Main.storyboard in Resources */,
+				346D88672A25AA1800BE7A7F /* DetailsCell.xib in Resources */,
 				286157782A1B47030023D85A /* FlashyQuiz.db in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,6 +582,7 @@
 				282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */,
 				282CCE362A24927900250B86 /* TestManager.swift in Sources */,
 				28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */,
+				346D88632A25A98900BE7A7F /* DetailsCell.swift in Sources */,
 				282DD5772A1B24E100003F6D /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

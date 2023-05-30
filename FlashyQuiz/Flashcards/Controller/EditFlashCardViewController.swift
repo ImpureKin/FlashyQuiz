@@ -13,6 +13,7 @@ class EditFlashCardViewController: UIViewController {
     var flashcardGroup: FlashcardGroup?
     var modifiedFlashcardGroup: FlashcardGroup?
     var selectedQuestionIndex: Int?
+    var isComingFromExplorePage: Bool = false
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var privacySwitch: UISwitch!
@@ -33,6 +34,7 @@ class EditFlashCardViewController: UIViewController {
         privacySwitch.isOn = modifiedFlashcardGroup?.privacy == "public"
     }
     
+    
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         guard var modifiedFlashcardGroup = modifiedFlashcardGroup else { return }
         
@@ -48,6 +50,7 @@ class EditFlashCardViewController: UIViewController {
         }
     }
 }
+
 
 extension EditFlashCardViewController: UITableViewDataSource, UITableViewDelegate {
     
