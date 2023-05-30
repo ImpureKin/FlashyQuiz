@@ -41,12 +41,7 @@ class AddTitleFlashCardViewController: UIViewController, UITextFieldDelegate {
                 // The flashcard title is empty
                 errorMessage.isHidden = false
                 return false
-            } else if !privacySwitch.isOn {
-                // The privacy switch is off
-                errorMessage.isHidden = false
-                errorMessage.text = "Please enter a title to proceed."
-                return false
-            }
+            } 
         }
         return true
     }
