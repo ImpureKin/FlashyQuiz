@@ -10,7 +10,8 @@ import UIKit
 
 class UpdatePasswordVC : UIViewController {
     
-
+    @IBOutlet weak var updateButton: UIButton!
+    
     @IBOutlet weak var currentPasswordTF: UITextField!
     
     @IBOutlet weak var newPasswordTF: UITextField!
@@ -24,8 +25,7 @@ class UpdatePasswordVC : UIViewController {
         super.viewDidLoad()
     }
     
-    
-    @IBAction func UpdatePasswordButton(_ sender: Any) {
+    @IBAction func UpdatePasswordButtonPressed(_ sender: Any) {
         let currentPassword = currentPasswordTF.text ?? ""
         let NewPasswordOne = newPasswordTF.text ?? ""
         let NewPasswordTwo = newPasswordTwoTF.text ?? ""

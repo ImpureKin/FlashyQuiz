@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kWg-YB-Y1L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kWg-YB-Y1L">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -184,6 +183,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Update Password"/>
                                 <connections>
                                     <action selector="UpdateEmailButton:" destination="iIj-uW-EhZ" eventType="touchUpInside" id="d46-lc-OlL"/>
+                                    <action selector="UpdatePasswordButtonPressed:" destination="0Ch-iQ-cZ0" eventType="touchUpInside" id="7kC-WH-x72"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -195,6 +195,7 @@
                         <outlet property="currentPasswordTF" destination="hUi-6g-SKX" id="tL0-Qd-sUx"/>
                         <outlet property="newPasswordTF" destination="CWY-99-ibR" id="oIT-FP-A69"/>
                         <outlet property="newPasswordTwoTF" destination="CWY-99-ibR" id="5PP-Z7-rWP"/>
+                        <outlet property="updateButton" destination="YkX-9Y-lCw" id="FR2-Ab-8XP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CHU-JG-0fY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
