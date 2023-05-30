@@ -21,8 +21,8 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
         
         quizTitle.text = quiz?.title
         
-        let nib = UINib(nibName: "FlashCardCell", bundle: nil)
-        detailTable.register(nib, forCellReuseIdentifier: "FlashCardCell")
+        let nib = UINib(nibName: "DetailCell", bundle: nil)
+        detailTable.register(nib, forCellReuseIdentifier: "DetailCell")
         
         detailTable.delegate = self
         detailTable.dataSource = self
@@ -33,7 +33,7 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FlashCardCell", for: indexPath) as! DetailCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailCell
         
         let question = quiz!.questions[indexPath.row]
         cell.questionLabel.text = question.question
