@@ -12,15 +12,23 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var quizTitle: UILabel! // Label for quiz title 
     @IBOutlet weak var detailTable: UITableView! // connects the detail table view
-    @IBOutlet weak var modifyButton: UIButton! // button to modify quiz 
+    @IBOutlet weak var modifyButton: UIButton! // button used to modify the current quiz
     
     var quiz: Quiz? // variable used to store the quiz being passed through the segue
     var userId: Int = 0  // stores the userId passed through the segue
+    var isComingFromExplorePage: Bool = false // flags the view controller its coming from
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         quizTitle.text = quiz?.title // displays the title from the quiz in the label
+        
+        // if it is coming from Explore modify button will not be avaliable
+        if isComingFromExplorePage {
+            modifyButton.isEnabled = false // disabled the modify button
+            modifyButton.setTitleColor(.gray, for: .disabled) //sets to gray text
+            modifyButton.backgroundColor = .lightGray //sets it to be gray background
+        }
         
         let nib = UINib(nibName: "DetailCell", bundle: nil) // sets an NIB for the QuizCell
         detailTable.register(nib, forCellReuseIdentifier: "DetailCell") // registers the nib to the DetailCell
