@@ -36,7 +36,8 @@ class FlashCardDetailsViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCell(withIdentifier: "FlashCardCell", for: indexPath) as! FlashCardCell
         
         let flashcard = flashcardGroup?.flashcards[indexPath.row]
-        cell.flashCardTitle.text = flashcardGroup?.title
+        cell.flashCardTitle.text = flashcard?.question
+        cell.termLabel.text = flashcard?.answer
         
         // Configure other cell properties based on the flashcard
         
@@ -48,8 +49,8 @@ class FlashCardDetailsViewController: UIViewController, UITableViewDelegate, UIT
             switch identifier {
             case "goToModifyFlashcard":
                 if let modifyFlashcardVC = segue.destination as? EditFlashCardViewController {
-                    // Pass necessary data to the ModifyFlashcardViewController
-                }
+                
+                                    }
             case "goToPlayFlashcard":
                 if let playFlashcardVC = segue.destination as? ViewFlashcardsViewController {
                     playFlashcardVC.flashCardGroup = flashcardGroup
