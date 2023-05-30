@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */; };
+		01848C6E2A25B7590007D4D2 /* UpdateUsernameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01848C6D2A25B7590007D4D2 /* UpdateUsernameVC.swift */; };
+		01848C702A25B7670007D4D2 /* UpdateEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01848C6F2A25B7670007D4D2 /* UpdateEmailVC.swift */; };
+		01848C722A25B7880007D4D2 /* UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01848C712A25B7880007D4D2 /* UpdatePasswordVC.swift */; };
+		01848C742A25B9830007D4D2 /* AccountManagermentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01848C732A25B9830007D4D2 /* AccountManagermentVC.swift */; };
 		01995FD62A21F8DA00ADB834 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */; };
 		01E4B0862A25014800E519DF /* ExplorePageQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4B0852A25014800E519DF /* ExplorePageQuizViewController.swift */; };
 		01E4B0882A25016C00E519DF /* ExplorePageFlashCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E4B0872A25016C00E519DF /* ExplorePageFlashCardViewController.swift */; };
@@ -65,7 +68,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageVC.swift; sourceTree = "<group>"; };
+		01848C6D2A25B7590007D4D2 /* UpdateUsernameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUsernameVC.swift; sourceTree = "<group>"; };
+		01848C6F2A25B7670007D4D2 /* UpdateEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEmailVC.swift; sourceTree = "<group>"; };
+		01848C712A25B7880007D4D2 /* UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordVC.swift; sourceTree = "<group>"; };
+		01848C732A25B9830007D4D2 /* AccountManagermentVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManagermentVC.swift; sourceTree = "<group>"; };
 		01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		01E4B0852A25014800E519DF /* ExplorePageQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageQuizViewController.swift; sourceTree = "<group>"; };
 		01E4B0872A25016C00E519DF /* ExplorePageFlashCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageFlashCardViewController.swift; sourceTree = "<group>"; };
@@ -151,8 +157,11 @@
 		01C2FD232A1CE4EF0074C7AD /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */,
 				01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */,
+				01848C6D2A25B7590007D4D2 /* UpdateUsernameVC.swift */,
+				01848C6F2A25B7670007D4D2 /* UpdateEmailVC.swift */,
+				01848C712A25B7880007D4D2 /* UpdatePasswordVC.swift */,
+				01848C732A25B9830007D4D2 /* AccountManagermentVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -529,6 +538,7 @@
 				282CCE332A247CDB00250B86 /* ViewFlashcardsViewController.swift in Sources */,
 				348FA69F2A23CE17009C1D8F /* FlashCardMainMenuViewController.swift in Sources */,
 				34B7EBD52A1E63BD00F533D7 /* CreateFlashCardViewController.swift in Sources */,
+				01848C722A25B7880007D4D2 /* UpdatePasswordVC.swift in Sources */,
 				29EB9FEF2A18C5D200B152E2 /* Quiz.swift in Sources */,
 				28B3C2352A1C7A7D007554F7 /* HomeViewController.swift in Sources */,
 				348FA6A72A23DD36009C1D8F /* FlashCardListViewController.swift in Sources */,
@@ -542,7 +552,7 @@
 				01E4B0862A25014800E519DF /* ExplorePageQuizViewController.swift in Sources */,
 				29702D732A1B923C00A8B3F3 /* ReviewQuizViewController.swift in Sources */,
 				01E4B0882A25016C00E519DF /* ExplorePageFlashCardViewController.swift in Sources */,
-				0198418C2A1DD845004ABBC0 /* SettingsPageVC.swift in Sources */,
+				01848C742A25B9830007D4D2 /* AccountManagermentVC.swift in Sources */,
 				2997100F2A231C7500944E3B /* ModifyCell.swift in Sources */,
 				282CCE302A247B8F00250B86 /* QuizCell.swift in Sources */,
 				282CCE312A247BA000250B86 /* QuizDetailsViewController.swift in Sources */,
@@ -558,8 +568,10 @@
 				282DD5712A1B23FB00003F6D /* User.swift in Sources */,
 				34B7EBDE2A1E64FA00F533D7 /* EditFlashCardViewController.swift in Sources */,
 				3148F9752A1C7BFC002C2C3C /* FlashCard.swift in Sources */,
+				01848C6E2A25B7590007D4D2 /* UpdateUsernameVC.swift in Sources */,
 				29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */,
 				29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */,
+				01848C702A25B7670007D4D2 /* UpdateEmailVC.swift in Sources */,
 				282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */,
 				282CCE362A24927900250B86 /* TestManager.swift in Sources */,
 				28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */,
