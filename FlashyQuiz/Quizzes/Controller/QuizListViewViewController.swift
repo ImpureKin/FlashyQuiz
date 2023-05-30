@@ -25,7 +25,7 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
         let nib = UINib(nibName: "QuizCell", bundle: nil) // sets an NIB for the QuizCell
         userTable.register(nib, forCellReuseIdentifier: "QuizCell") // registers the NIB for QuizCell
 
-        // Stating we are using our own custom data
+        // stating we are using our own custom data
         userTable.dataSource = self
         userTable.delegate = self
 
