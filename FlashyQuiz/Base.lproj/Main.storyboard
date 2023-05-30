@@ -120,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="-338.16793893129767" y="-745.07042253521126"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="rMe-1b-I9s">
+        <!--Update PasswordVC-->
+        <scene sceneID="P2T-0D-TDO">
             <objects>
-                <viewController storyboardIdentifier="SettingsPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="y6p-48-0xH" customClass="UpdatePasswordVC" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sDD-N2-H62">
+                <viewController id="0Ch-iQ-cZ0" customClass="UpdatePasswordVC" customModule="FlashyQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2DG-mO-96X">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -136,78 +136,69 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VUx-1k-Awg">
-                                <rect key="frame" x="46" y="254" width="136" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyZ-sd-xE6">
+                                <rect key="frame" x="46" y="253" width="136" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNP-NK-G20">
-                                <rect key="frame" x="46" y="355" width="112" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yt1-YI-V3Q">
+                                <rect key="frame" x="46" y="354" width="112" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repeat New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NRJ-9o-ElQ">
-                                <rect key="frame" x="46" y="461" width="170" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Repeat New Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSO-Qf-I3a">
+                                <rect key="frame" x="46" y="460" width="170" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhs-Py-hYz">
-                                <rect key="frame" x="92" y="613" width="209" height="46"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hUi-6g-SKX">
+                                <rect key="frame" x="46" y="282" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lmz-2c-6Fv">
+                                <rect key="frame" x="46" y="383" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWY-99-ibR">
+                                <rect key="frame" x="46" y="489" width="300" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkX-9Y-lCw">
+                                <rect key="frame" x="92" y="612" width="209" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Password"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="b0W-BE-sVI"/>
-                                    <action selector="UpdateEmailButton:" destination="iIj-uW-EhZ" eventType="touchUpInside" id="Efr-fB-bdl"/>
-                                    <action selector="UpdatePasswordButton:" destination="y6p-48-0xH" eventType="touchUpInside" id="72e-HS-TG3"/>
+                                    <action selector="UpdateEmailButton:" destination="iIj-uW-EhZ" eventType="touchUpInside" id="d46-lc-OlL"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OON-pZ-Og2">
-                                <rect key="frame" x="46" y="283" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RkT-7L-6El">
-                                <rect key="frame" x="46" y="384" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jIE-uE-krO">
-                                <rect key="frame" x="46" y="490" width="300" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="dA2-qk-r3b"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dft-HY-JED"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" id="3wE-fH-PGc">
-                        <imageReference key="image" image="gear.circle" catalog="system" symbolScale="large"/>
-                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <imageReference key="selectedImage" image="gear.circle" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" id="4z6-bc-QKr"/>
+                    <navigationItem key="navigationItem" id="ITu-0k-Cpm"/>
                     <connections>
-                        <outlet property="CurrentPasswordTF" destination="OON-pZ-Og2" id="Rti-JJ-cnV"/>
-                        <outlet property="NewPasswordOne" destination="sDD-N2-H62" id="2Bs-1S-bQe"/>
-                        <outlet property="NewPasswordOneTF" destination="RkT-7L-6El" id="xUE-lI-TLS"/>
-                        <outlet property="NewPasswordTwoTF" destination="jIE-uE-krO" id="Cq3-qF-DX1"/>
-                        <outlet property="UpdateButton" destination="vhs-Py-hYz" id="ADR-ew-Okb"/>
+                        <outlet property="currentPasswordTF" destination="hUi-6g-SKX" id="tL0-Qd-sUx"/>
+                        <outlet property="newPasswordTF" destination="CWY-99-ibR" id="oIT-FP-A69"/>
+                        <outlet property="newPasswordTwoTF" destination="CWY-99-ibR" id="5PP-Z7-rWP"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KcY-FA-mTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CHU-JG-0fY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1626.7175572519084" y="1690.8450704225354"/>
+            <point key="canvasLocation" x="1532" y="1691"/>
         </scene>
         <!--Update EmailVC-->
         <scene sceneID="PNG-xf-J8y">
@@ -271,7 +262,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Email"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="JPD-oW-3Fo"/>
                                     <action selector="UpdateEmailButton:" destination="iIj-uW-EhZ" eventType="touchUpInside" id="fts-nb-1R7"/>
                                 </connections>
                             </button>
@@ -352,7 +342,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Username"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="esa-b7-X8V"/>
                                     <action selector="UpdateUsernameButtonPressed:" destination="DZe-n5-qS4" eventType="touchUpInside" id="HiC-aV-FEz"/>
                                 </connections>
                             </button>
@@ -395,8 +384,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Password"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="5g7-92-Fbu"/>
-                                    <segue destination="y6p-48-0xH" kind="show" id="0On-Bf-T9t"/>
+                                    <segue destination="0Ch-iQ-cZ0" kind="show" id="bwM-e2-3rv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJh-qH-zc6">
@@ -406,7 +394,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Username"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="90A-7o-J65"/>
                                     <segue destination="DZe-n5-qS4" kind="show" identifier="AccToUsername" id="a9c-YO-EdT"/>
                                 </connections>
                             </button>
@@ -417,7 +404,6 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Update Email"/>
                                 <connections>
-                                    <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="tcW-Ct-hYJ"/>
                                     <segue destination="iIj-uW-EhZ" kind="show" identifier="AccToEmail" id="ZB0-J9-7Ol"/>
                                 </connections>
                             </button>

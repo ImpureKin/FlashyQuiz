@@ -10,11 +10,12 @@ import UIKit
 
 class UpdatePasswordVC : UIViewController {
     
+
+    @IBOutlet weak var currentPasswordTF: UITextField!
     
-    @IBOutlet weak var CurrentPasswordTF: UITextField!
-    @IBOutlet weak var NewPasswordOneTF: UITextField!
-    @IBOutlet weak var NewPasswordTwoTF: UITextField!
+    @IBOutlet weak var newPasswordTF: UITextField!
     
+    @IBOutlet weak var newPasswordTwoTF: UITextField!
     
     var LoggedUser: User?
     let userManager = UserManager()
@@ -25,15 +26,21 @@ class UpdatePasswordVC : UIViewController {
     
     
     @IBAction func UpdatePasswordButton(_ sender: Any) {
-        let currentPassword = CurrentPasswordTF.text ?? ""
-        let NewPasswordOne = NewPasswordOneTF.text ?? ""
-        let NewPasswordTwo = NewPasswordTwoTF.text ?? ""
+        let currentPassword = currentPasswordTF.text ?? ""
+        let NewPasswordOne = newPasswordTF.text ?? ""
+        let NewPasswordTwo = newPasswordTwoTF.text ?? ""
         
         if (userManager.loginUser(email: LoggedUser!.email , password: currentPassword) != nil) {
             
             
             if (NewPasswordOne == NewPasswordTwo) {
                 LoggedUser?.setPassword(oldPassword: currentPassword, newPassword: NewPasswordOne)
+                
+                let alert = UIAlertController(title: "Success!",message: "Your password has been updated.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+                
             } else {
                 
                 
