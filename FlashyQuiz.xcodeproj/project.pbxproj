@@ -14,6 +14,7 @@
 		282CCE322A247BB500250B86 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29892DCA2A1DF568001725E0 /* QuestionCell.swift */; };
 		282CCE332A247CDB00250B86 /* ViewFlashcardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B7EBD82A1E64A900F533D7 /* ViewFlashcardsViewController.swift */; };
 		282CCE342A247CE000250B86 /* FlashCardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348FA6B62A23E302009C1D8F /* FlashCardDetailsViewController.swift */; };
+		282CCE362A24927900250B86 /* TestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282CCE352A24927900250B86 /* TestManager.swift */; };
 		282DD5712A1B23FB00003F6D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5702A1B23FB00003F6D /* User.swift */; };
 		282DD5752A1B24B600003F6D /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5742A1B24B600003F6D /* SignUpController.swift */; };
 		282DD5772A1B24E100003F6D /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282DD5762A1B24E100003F6D /* LoginController.swift */; };
@@ -66,6 +67,7 @@
 /* Begin PBXFileReference section */
 		0198418B2A1DD845004ABBC0 /* SettingsPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPageVC.swift; sourceTree = "<group>"; };
 		01995FD52A21F8DA00ADB834 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
+		282CCE352A24927900250B86 /* TestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestManager.swift; sourceTree = "<group>"; };
 		282DD5702A1B23FB00003F6D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		282DD5742A1B24B600003F6D /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		282DD5762A1B24E100003F6D /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				28B3C22C2A1C562B007554F7 /* QuizManager.swift */,
 				28B3C22E2A1C5859007554F7 /* FlashcardManager.swift */,
 				28B3C2302A1C5865007554F7 /* SettingsManager.swift */,
+				282CCE352A24927900250B86 /* TestManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				29EB9FF82A18C6EB00B152E2 /* QuizListViewViewController.swift in Sources */,
 				29EB9FF22A18C65000B152E2 /* QuizMainMenuViewController.swift in Sources */,
 				282DD5802A1B265F00003F6D /* DatabaseController.swift in Sources */,
+				282CCE362A24927900250B86 /* TestManager.swift in Sources */,
 				28A978222A00CC8C00B2A25A /* SceneDelegate.swift in Sources */,
 				346D88632A25A98900BE7A7F /* DetailsCell.swift in Sources */,
 				282DD5772A1B24E100003F6D /* LoginController.swift in Sources */,
