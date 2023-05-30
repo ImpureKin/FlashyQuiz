@@ -34,7 +34,7 @@ class QuizListViewController: UIViewController, UITableViewDelegate, UITableView
     // FUNCTION: fetch quizzes from the database
     func fetchQuizzes() {
         // calls function from quiz manager using the userID as an input
-        if let quizzes = quizManager.getUserQuizzes(userIdInput: 1) {
+        if let quizzes = quizManager.getUserQuizzes(userIdInput: userId) {
 
             // Fetches quizzes for the data source for your table view
             self.quizzes = quizzes
