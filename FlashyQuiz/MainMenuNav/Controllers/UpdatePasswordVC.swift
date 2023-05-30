@@ -37,7 +37,7 @@ class UpdatePasswordVC : UIViewController {
             
             
             if (NewPasswordOne == NewPasswordTwo) {
-                //LoggedUser?.setPassword(oldPassword: currentPassword, newPassword: NewPasswordOne)
+                LoggedUser?.setPassword(oldPassword: currentPassword, newPassword: NewPasswordOne)
             } else {
                 
                 

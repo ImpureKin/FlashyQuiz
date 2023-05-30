@@ -355,6 +355,7 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Update Username"/>
                                 <connections>
                                     <action selector="UpdateButtonPressed:" destination="y6p-48-0xH" eventType="touchUpInside" id="esa-b7-X8V"/>
+                                    <action selector="UpdateUsernameButtonPressed:" destination="DZe-n5-qS4" eventType="touchUpInside" id="HiC-aV-FEz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -362,6 +363,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="cAZ-D9-bC3"/>
+                    <connections>
+                        <outlet property="CurrentUserNameTF" destination="uMf-dj-uQy" id="IaO-ED-QXD"/>
+                        <outlet property="NewUsernameOneTF" destination="nGz-R9-n1M" id="BpP-pm-hJv"/>
+                        <outlet property="NewUsernameTwoTF" destination="WLP-mu-DNj" id="gES-WP-w7s"/>
+                        <outlet property="UpdateUsernameButton" destination="0kC-19-vQ9" id="ZGE-Ua-4Zd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTz-HK-gyq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1762,7 +1769,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Om2-dM-atj">
-                                <rect key="frame" x="-3" y="114" width="392" height="600"/>
+                                <rect key="frame" x="-3" y="113" width="392" height="600"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86j-DW-pKP">
