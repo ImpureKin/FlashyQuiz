@@ -10,6 +10,7 @@ import UIKit
 class FlashCardDetailsViewController: UIViewController {
     
     var flashCardGroup: FlashcardGroup?
+    var isComingFromExplorePage: Bool = false 
     
     @IBOutlet weak var flashCardTitleLabel: UILabel!
     @IBOutlet weak var flashCardTableView: UITableView!
