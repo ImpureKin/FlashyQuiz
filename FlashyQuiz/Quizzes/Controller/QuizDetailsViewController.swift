@@ -12,6 +12,7 @@ class QuizDetailsViewController : UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var quizTitle: UILabel! // Label for quiz title 
     @IBOutlet weak var detailTable: UITableView! // connects the detail table view
+    @IBOutlet weak var modifyButton: UIButton! // button to modify quiz 
     
     var quiz: Quiz? // variable used to store the quiz being passed through the segue
     var userId: Int = 0  // stores the userId passed through the segue

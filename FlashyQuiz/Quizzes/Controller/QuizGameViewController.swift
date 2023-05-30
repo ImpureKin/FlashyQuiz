@@ -125,8 +125,9 @@ class QuizGameViewController: UIViewController {
 
         timer?.invalidate() // the timer is invalidated
         isQuestionAnswered = true // question will be marked as true
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+        
+        // stalls the reset of the buttons by how many seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.resetAnswerButtons()
 
         }
