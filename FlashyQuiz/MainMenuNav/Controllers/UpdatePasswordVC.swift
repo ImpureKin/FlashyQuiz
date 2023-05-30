@@ -34,7 +34,7 @@ class UpdatePasswordVC : UIViewController {
             
             
             if (NewPasswordOne == NewPasswordTwo) {
-                LoggedUser?.setPassword(oldPassword: currentPassword, newPassword: NewPasswordOne)
+                LoggedUser?.setPassword(newPassword: NewPasswordOne)
                 
                 let alert = UIAlertController(title: "Success!",message: "Your password has been updated.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
